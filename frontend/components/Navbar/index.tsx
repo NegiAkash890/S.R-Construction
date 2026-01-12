@@ -4,8 +4,18 @@ import Link from 'next/link';
 import content from '../../data/siteContent.json';
 import styles from './Navbar.module.css';
 
-export default function Navbar() {
-  const { logo, links } = content.navbar;
+// Define types for the navigation items
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface NavbarProps {
+  links: NavItem[];
+}
+
+export default function Navbar({ links }: NavbarProps) {
+  const { logo } = content.navbar;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 

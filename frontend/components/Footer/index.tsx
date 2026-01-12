@@ -3,9 +3,18 @@ import content from '../../data/siteContent.json';
 import styles from './Footer.module.css';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-export default function Footer() {
+// Re-use or redefine NavItem type if shared, effectively locally defined for now
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface FooterProps {
+  links: NavItem[];
+}
+
+export default function Footer({ links }: FooterProps) {
   const { brand, tagline, address, phone, email, copyright, social } = content.footer;
-  const { links } = content.navbar;
 
   const getIcon = (platform: string) => {
     switch (platform) {
@@ -39,10 +48,11 @@ export default function Footer() {
             ))}
           </div>
           <div className={styles.footerContact}>
-            <h4>Contact</h4>
+            <h4>Address</h4>
             <p style={{ whiteSpace: 'pre-line' }}>{address}</p>
-            <p>{phone}</p>
+            <h4>Reach out</h4>
             <p>{email}</p>
+            <p>{phone}</p>
           </div>
         </div>
         <div className={styles.copyright}>

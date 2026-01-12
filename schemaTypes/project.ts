@@ -24,13 +24,19 @@ export const project = defineType({
             },
         }),
         defineField({
+            name: 'isFeatured',
+            title: 'Featured Project',
+            type: 'boolean',
+            initialValue: false,
+        }),
+        defineField({
             name: 'status',
             title: 'Project Status',
             type: 'string',
             options: {
                 list: [
                     { title: 'Completed', value: 'completed' },
-                    { title: 'Ongoing', value: 'ongoing' },
+                    { title: 'In Progress', value: 'in-progress' },
                 ],
                 layout: 'radio',
             },
@@ -42,8 +48,20 @@ export const project = defineType({
             type: 'string',
         }),
         defineField({
+            name: 'workDescription',
+            title: 'Work Description',
+            type: 'text',
+            rows: 3,
+            description: 'Detailed description of the work (e.g., Fire and Steel Door...)',
+        }),
+        defineField({
+            name: 'workValue',
+            title: 'Work Value (Rs.)',
+            type: 'string',
+        }),
+        defineField({
             name: 'location',
-            title: 'Location',
+            title: 'Location / Project Details',
             type: 'string',
         }),
         defineField({

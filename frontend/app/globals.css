@@ -1,13 +1,16 @@
 /* CSS Reset and Variables */
 :root {
-  --primary-color: #0F172A; /* Slate 900 */
-  --accent-color: #EAB308; /* Yellow 500 - Construction vibe */
-  --text-color: #334155; /* Slate 700 */
-  --bg-color: #F8FAFC; /* Slate 50 */
+  --primary-color: #0F172A;
+  /* Slate 900 */
+  --accent-color: #EAB308;
+  /* Yellow 500 - Construction vibe */
+  --text-color: #334155;
+  /* Slate 700 */
+  --bg-color: #F8FAFC;
+  /* Slate 50 */
   --white: #ffffff;
   --max-width: 1200px;
   --header-height: 80px;
-  --border-radius: 8px;
   --transition: all 0.3s ease;
 }
 
@@ -41,15 +44,29 @@ img {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
-h1 { font-size: 3.5rem; line-height: 1.1; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 1.75rem; }
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
 
 /* Buttons */
 .btn {
@@ -58,14 +75,14 @@ h3 { font-size: 1.75rem; }
   background-color: var(--accent-color);
   color: var(--primary-color);
   font-weight: 600;
-  border-radius: var(--border-radius);
   transition: var(--transition);
   border: none;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #CA8A04; /* Darker yellow */
+  background-color: #CA8A04;
+  /* Darker yellow */
   transform: translateY(-2px);
 }
 

@@ -1,0 +1,214 @@
+.section {
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    /* Slate 50 */
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 1rem auto 0;
+    /* border-radius removed */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    /* Reduced gap for mobile */
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    background: var(--white);
+    /* border-radius removed */
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+    border-color: rgba(234, 179, 8, 0.3);
+    /* Accent color hint */
+}
+
+.imageContainer {
+    position: relative;
+    height: 200px;
+    /* Reduced height */
+    width: 100%;
+    background-color: #e2e8f0;
+    overflow: hidden;
+}
+
+.projectImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .projectImage {
+    transform: scale(1.05);
+}
+
+.statusOverlay {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+}
+
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    /* border-radius removed */
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.statusCompleted {
+    background-color: rgba(220, 252, 231, 0.9);
+    /* Green 100 */
+    color: #15803d;
+    /* Green 700 */
+}
+
+.statusInProgress {
+    background-color: rgba(219, 234, 254, 0.9);
+    /* Blue 100 */
+    color: #1d4ed8;
+    /* Blue 700 */
+}
+
+.cardContent {
+    padding: 1rem;
+    /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cardHeader {
+    margin-bottom: 0.75rem;
+}
+
+.clientName {
+    font-size: 1.1rem;
+    /* Reduced font size */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.cardBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.description {
+    font-size: 0.85rem;
+    /* Reduced font size */
+    line-height: 1.5;
+    color: #64748b;
+    /* Slate 500 */
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    /* Standard property */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.metaGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.metaLabel {
+    font-size: 0.65rem;
+    /* Reduced font size */
+    text-transform: uppercase;
+    color: #94a3b8;
+    /* Slate 400 */
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.metaValue {
+    font-size: 0.8rem;
+    /* Reduced font size */
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.viewAllButton {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    /* border-radius removed */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
+}
+
+.viewAllButton:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.3);
+}

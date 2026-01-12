@@ -1,13 +1,13 @@
 
 import { client } from '@/utils/sanity/client';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ClientLogos from '@/components/ClientLogos';
 import Gallery from '@/components/Gallery';
 import BlogSection from '@/components/BlogSection';
 import Testimonials from '@/components/Testimonials';
 import Awards from '@/components/Awards';
-import Footer from '@/components/Footer';
+import EnquiryForm from '@/components/EnquiryForm';
+import FeaturedProjects from '@/components/FeaturedProjects';
 
 async function getData() {
   const homepage = await client.fetch(`*[_type == "homepage"][0]`);
@@ -16,8 +16,9 @@ async function getData() {
   const posts = await client.fetch(`*[_type == "blog"] | order(publishedAt desc)[0...3]`);
   const testimonials = await client.fetch(`*[_type == "testimonial"]`);
   const awards = await client.fetch(`*[_type == "award"] | order(year desc)`);
+  const featuredProjects = await client.fetch(`*[_type == "project" && isFeatured == true] | order(_createdAt desc)[0...3]`);
 
-  return { homepage, clients, gallery, posts, testimonials, awards };
+  return { homepage, clients, gallery, posts, testimonials, awards, featuredProjects };
 }
 
 export default async function Home() {
@@ -25,14 +26,14 @@ export default async function Home() {
 
   return (
     <main>
-      <Navbar />
       <Hero data={data.homepage} />
       <ClientLogos data={data.clients} />
       <Gallery data={data.gallery} />
+      <FeaturedProjects projects={data.featuredProjects} />
       <BlogSection data={data.posts} />
       <Testimonials data={data.testimonials} />
       <Awards data={data.awards} />
-      <Footer />
+      <EnquiryForm />
     </main>
   );
 }

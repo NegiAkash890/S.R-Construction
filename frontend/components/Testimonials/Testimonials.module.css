@@ -1,74 +1,152 @@
-.testimonialSection {
-    padding: 80px 0;
-    background: var(--primary-color);
-    color: white;
+.section {
+    padding: 6rem 0;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    /* Hide overflow for marquee */
+    position: relative;
 }
 
-.sectionTitle {
+.title {
     text-align: center;
-    margin-bottom: 3rem;
-    color: white;
-}
-
-.testimonialGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.testimonialCard {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: var(--border-radius);
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
     position: relative;
+    display: inline-block;
+    width: 100%;
 }
 
-.quoteIcon {
-    font-size: 4rem;
-    color: var(--accent-color);
-    opacity: 0.3;
-    position: absolute;
-    top: 10px;
-    left: 20px;
+.title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 1rem auto 0;
+    /* border-radius removed */
 }
 
-.quoteText {
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 2;
-}
-
-.author {
+.marqueeContainer {
+    width: 100%;
     display: flex;
-    align-items: center;
-    gap: 15px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+    /* Masking for fade effect on edges */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.authorImg {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 40s linear infinite;
+    /* Ensure track is wide enough */
+    min-width: 100%;
+}
+
+/* Pause animation on hover */
+.marqueeContainer:hover .track {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 1rem));
+        /* Adjust based on gap logic */
+    }
+}
+
+.card {
+    background: var(--white);
+    /* border-radius removed */
+    padding: 1.5rem;
+    width: 300px;
+    /* Reduced base width */
+    max-width: 80vw;
+    /* Responsive constraint */
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    white-space: normal;
+    /* Allow text wrapping inside card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+    width: 80px;
+    height: 80px;
+    /* border-radius removed */
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--accent-color);
+    position: relative;
+}
+
+.image {
     object-fit: cover;
 }
 
-.authorInfo h4 {
-    color: white;
-    margin: 0;
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quote {
     font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    position: relative;
 }
 
-.authorInfo span {
-    font-size: 0.85rem;
-    opacity: 0.7;
+.quote::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.5;
+    position: relative;
+    top: 5px;
+    margin-right: 2px;
 }
 
-@media (max-width: 768px) {
-    .testimonialSection {
-        padding: 40px 0;
-    }
+.quote::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.5;
+    position: relative;
+    top: 10px;
+    margin-left: 2px;
+}
 
-    .testimonialGrid {
-        grid-template-columns: 1fr;
-    }
+.name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.role {
+    font-size: 0.875rem;
+    color: #64748b;
+    /* Slate 500 */
+    margin-top: 0.25rem;
 }
