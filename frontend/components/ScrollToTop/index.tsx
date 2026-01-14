@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import styles from './ScrollToTop.module.css';
-import { FaArrowUp } from 'react-icons/fa';
+import { BsArrowUp } from 'react-icons/bs';
 
 export default function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +30,7 @@ export default function ScrollToTop() {
         <>
             {isVisible && (
                 <button onClick={scrollToTop} className={styles.scrollToTopBtn} aria-label="Scroll to top">
-                    <FaArrowUp />
+                    <BsArrowUp />
                 </button>
             )}
         </>

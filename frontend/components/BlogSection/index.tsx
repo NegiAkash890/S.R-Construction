@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { BsArrowRight } from 'react-icons/bs';
+import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { urlFor } from "@/utils/sanity/client";
 import content from "../../data/siteContent.json";
 import styles from './BlogSection.module.css';
@@ -19,8 +19,8 @@ export default function BlogSection({ data }: Props) {
             {content?.sections?.blog?.title || "News & Featured Stories"}
           </h2>
           <div className={styles.navArrows}>
-            <button className={styles.arrowBtn}>&lt;</button>
-            <button className={styles.arrowBtn}>&gt;</button>
+            <button className={styles.arrowBtn}><BsArrowLeft /></button>
+            <button className={styles.arrowBtn}><BsArrowRight /></button>
           </div>
         </div>
         <div className={styles.blogGrid}>

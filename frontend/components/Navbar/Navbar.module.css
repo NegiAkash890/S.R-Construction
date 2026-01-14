@@ -13,14 +13,13 @@
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.7);
-    /* More translucent */
+    background: rgba(30, 30, 30, 0.85);
+    /* "Light Black" / Dark Grey with transparency */
     backdrop-filter: blur(16px);
-    /* Stronger blur */
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    color: var(--text-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
 .navContainer {
@@ -58,6 +57,9 @@
     cursor: pointer;
     background: none;
     border: none;
+    z-index: 1001;
+    /* Ensure above navLinks overlay */
+    position: relative;
 }
 
 .bar {
@@ -90,19 +92,18 @@
         position: fixed;
         left: -100%;
         top: 0;
-        padding-top: var(--header-height);
+        padding: var(--header-height) 2rem 2rem;
         height: 100vh;
         gap: 0;
         flex-direction: column;
         background-color: var(--white);
         color: var(--text-color);
-        width: 70%;
-        max-width: 300px;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-        text-align: left;
+        width: 100%;
+        max-width: none;
+        box-shadow: none;
+        text-align: center;
         transition: 0.3s ease-in-out;
-        align-items: flex-start;
-        padding-left: 2rem;
+        align-items: center;
     }
 
     .navLinks.active {
@@ -114,15 +115,27 @@
         width: 100%;
     }
 
+    /* Push first link down to center group */
+    .navLinks li:first-child {
+        margin-top: auto;
+    }
+
+    /* Push last item (button) to bottom */
+    .navLinks li:last-child {
+        margin-top: auto;
+    }
+
     .navLinks a {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+        /* Thin font */
         display: block;
     }
 }
 
 .ctaButton {
     background: var(--accent-color);
-    color: var(--primary-color);
+    color: var(--white);
     padding: 10px 24px;
     border: none;
     /* Square button per request */
@@ -136,7 +149,7 @@
 }
 
 .ctaButton:hover {
-    background: #CA8A04;
+    background: var(--accent-hover);
     /* Darker Yellow */
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);

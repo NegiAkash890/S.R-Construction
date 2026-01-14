@@ -1,7 +1,12 @@
 .section {
-    padding: 6rem 0;
-    background-color: #F1F5F9;
-    /* Slate 100 */
+    padding: var(--section-padding);
+    background-color: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
 }
 
 .title {
@@ -29,14 +34,12 @@
     height: 4px;
     background: var(--accent-color);
     margin: 1rem auto 0;
-    /* border-radius removed */
 }
 
 .grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    /* Reduced gap for mobile */
     margin-bottom: 4rem;
 }
 
@@ -48,30 +51,35 @@
 
 .card {
     background: var(--white);
-    /* border-radius removed */
-    overflow: hidden;
+    /* overflow: hidden; Removed to allow tooltip to pop out */
+    border-radius: 12px;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.02);
     height: 100%;
+    position: relative;
 }
 
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
     border-color: rgba(234, 179, 8, 0.3);
-    /* Accent color hint */
+    z-index: 50;
+    /* Ensure tooltip shows above other cards */
 }
 
 .imageContainer {
     position: relative;
     height: 200px;
-    /* Reduced height */
     width: 100%;
-    background-color: #e2e8f0;
+    background-color: var(--slate-200);
     overflow: hidden;
+    /* Keep image zoom contained */
+    border-top-left-radius: 11px;
+    /* Match card radius - border width */
+    border-top-right-radius: 11px;
 }
 
 .projectImage {
@@ -92,7 +100,6 @@
 
 .statusBadge {
     padding: 0.25rem 0.75rem;
-    /* border-radius removed */
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -103,21 +110,16 @@
 
 .statusCompleted {
     background-color: rgba(220, 252, 231, 0.9);
-    /* Green 100 */
     color: #15803d;
-    /* Green 700 */
 }
 
 .statusInProgress {
     background-color: rgba(219, 234, 254, 0.9);
-    /* Blue 100 */
     color: #1d4ed8;
-    /* Blue 700 */
 }
 
 .cardContent {
     padding: 1rem;
-    /* Reduced padding */
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -129,7 +131,6 @@
 
 .clientName {
     font-size: 1.1rem;
-    /* Reduced font size */
     font-weight: 700;
     color: var(--primary-color);
     margin: 0;
@@ -144,26 +145,30 @@
 
 .description {
     font-size: 0.85rem;
-    /* Reduced font size */
     line-height: 1.5;
-    color: #64748b;
-    /* Slate 500 */
+    color: var(--slate-500);
     margin-bottom: 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
-    /* Standard property */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .metaGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     margin-top: auto;
     padding-top: 0.75rem;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid var(--slate-100);
+}
+
+@media (min-width: 768px) {
+    .metaGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
 }
 
 .metaItem {
@@ -173,17 +178,14 @@
 
 .metaLabel {
     font-size: 0.65rem;
-    /* Reduced font size */
     text-transform: uppercase;
-    color: #94a3b8;
-    /* Slate 400 */
+    color: var(--slate-400);
     font-weight: 600;
     margin-bottom: 0.2rem;
 }
 
 .metaValue {
     font-size: 0.8rem;
-    /* Reduced font size */
     font-weight: 600;
     color: var(--text-color);
 }
@@ -200,7 +202,6 @@
     background-color: var(--primary-color);
     color: var(--white);
     text-decoration: none;
-    /* border-radius removed */
     font-weight: 600;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
@@ -221,17 +222,63 @@
 }
 
 .moreLocations {
-    background: #F1F5F9;
-    color: #64748B;
+    background: var(--slate-100);
+    color: var(--slate-500);
     font-size: 0.75rem;
     font-weight: 600;
     padding: 2px 6px;
     cursor: help;
-    border: 1px solid #E2E8F0;
-    /* Square badge per request */
+    border: 1px solid var(--slate-200);
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    /* Anchor for tooltip */
 }
 
 .moreLocations:hover {
-    background: #E2E8F0;
-    color: #0F172A;
+    background: var(--slate-200);
+    color: var(--slate-900);
+}
+
+.locationsTooltip {
+    position: absolute;
+    bottom: 120%;
+    /* Position above */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: normal;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Tooltip Arrow */
+.locationsTooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-color) transparent transparent transparent;
+}
+
+.moreLocations:hover .locationsTooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: 130%;
+    /* Slight lift on hover */
 }

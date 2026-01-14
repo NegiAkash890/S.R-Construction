@@ -129,3 +129,57 @@
     backdrop-filter: blur(4px);
     width: fit-content;
 }
+
+/* Added Grid Styles */
+.gallerySection {
+    padding: var(--section-padding);
+    background-color: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .gallerySection {
+        padding: var(--section-padding-mobile);
+    }
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .galleryGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .galleryGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.galleryItem {
+    width: 100%;
+}
+
+.imgWrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    /* Consistent with other cards */
+}
+
+.imgWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.cardWrapper:hover .imgWrapper img {
+    transform: scale(1.1);
+}

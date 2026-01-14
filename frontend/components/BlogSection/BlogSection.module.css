@@ -1,6 +1,6 @@
 .blogSection {
-    padding: 6rem 0;
-    background-color: #F1F5F9;
+    padding: var(--section-padding);
+    background-color: var(--bg-secondary);
 }
 
 .header {
@@ -13,7 +13,7 @@
 .sectionTitle {
     font-size: 2rem;
     font-weight: 700;
-    color: #333;
+    color: var(--slate-800);
     text-transform: uppercase;
     margin: 0;
 }
@@ -26,10 +26,8 @@
 .arrowBtn {
     width: 40px;
     height: 40px;
-    /* border-radius removed */
-    background-color: #CBD5E1;
-    /* Light gray */
-    color: #fff;
+    background-color: var(--slate-300);
+    color: var(--white);
     border: none;
     display: flex;
     align-items: center;
@@ -40,7 +38,13 @@
 }
 
 .arrowBtn:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .navArrows {
+        display: none;
+    }
 }
 
 .blogGrid {
@@ -58,12 +62,8 @@
 .blogCard {
     position: relative;
     aspect-ratio: 1 / 1;
-    /* Square card */
-    /* border-radius removed */
-    /* Slight radius */
     overflow: hidden;
-    background-color: #0056b3;
-    /* Fallback blue */
+    background-color: var(--slate-800);
     transition: transform 0.3s ease;
 }
 
@@ -84,7 +84,6 @@
     height: 100%;
     object-fit: cover;
     opacity: 0.8;
-    /* Slight fade to blend */
 }
 
 /* Gradient Overlay - Blue tint to black */
@@ -95,7 +94,7 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom,
-            rgba(0, 86, 179, 0.3) 0%,
+            rgba(15, 23, 42, 0.3) 0%,
             rgba(0, 0, 0, 0.4) 50%,
             rgba(0, 0, 0, 0.9) 100%);
     z-index: 1;
@@ -115,10 +114,9 @@
 }
 
 .tag {
-    background-color: #fff;
-    color: #333;
+    background-color: var(--white);
+    color: var(--slate-800);
     padding: 6px 16px;
-    /* border-radius removed */
     font-size: 0.75rem;
     font-weight: 700;
     align-self: flex-start;
@@ -146,6 +144,7 @@
     /* Limit lines if needed */
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import ClientLogos from '@/components/ClientLogos';
 import Process from '@/components/Process';
 import BlogSection from '@/components/BlogSection';
-import CTASection from '@/components/CTASection';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import EquipmentSection from '@/components/EquipmentSection';
 import Industries from '@/components/Industries';
@@ -30,7 +29,6 @@ export default async function Home() {
       <FeaturedProjects projects={data.featuredProjects} />
       <EquipmentSection />
       <BlogSection data={data.posts} />
-      <CTASection />
     </main>
   );
 }

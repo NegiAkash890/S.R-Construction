@@ -37,8 +37,22 @@ const CountUp = ({ end, duration = 2000, suffix = '' }: { end: number, duration?
     return <span ref={countRef}>{count}{suffix}</span>;
 };
 
-export default function ProjectsHero() {
-    const { title, subtitle, stats } = content.projectsPage.hero;
+interface HeroProps {
+    data: {
+        heroTitle?: string;
+        heroSubtitle?: string;
+        stats?: Array<{ label: string; value: string }>;
+    }
+}
+
+export default function ProjectsHero({ data }: HeroProps) {
+    const { title, subtitle, stats } = content.projectsPage.hero; // Fallback
+
+    // Use data from props if available, otherwise fallback (or just use defaults)
+    const heroTitle = data?.heroTitle || title;
+    const heroSubtitle = data?.heroSubtitle || subtitle;
+    const heroStats = data?.stats || stats;
+
 
     const parseStat = (value: string) => {
         const number = parseInt(value, 10);
@@ -50,11 +64,11 @@ export default function ProjectsHero() {
         <section className={styles.hero}>
             <div className="container">
                 <div className={styles.heroContent}>
-                    <h1>{title}</h1>
-                    <p className={styles.subtitle}>{subtitle}</p>
+                    <h1>{heroTitle}</h1>
+                    <p className={styles.subtitle}>{heroSubtitle}</p>
 
                     <div className={styles.statsGrid}>
-                        {stats.map((stat, index) => {
+                        {heroStats && heroStats.map((stat: any, index: number) => {
                             const { number, suffix } = parseStat(stat.value);
                             return (
                                 <div key={index} className={styles.statItem}>

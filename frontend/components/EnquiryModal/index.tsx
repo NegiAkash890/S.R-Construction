@@ -1,6 +1,8 @@
 "use client";
 import { useState, FormEvent, useEffect } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaTimes, FaLinkedin, FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
 import styles from './EnquiryModal.module.css';
 
 interface EnquiryModalProps {
@@ -57,43 +59,87 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
     return (
         <div className={styles.overlay} onClick={onClose}>
             <div className={styles.modal} onClick={e => e.stopPropagation()}>
-                <button className={styles.closeBtn} onClick={onClose}><FaTimes /></button>
 
-                {isSuccess ? (
-                    <div className={styles.success}>
-                        <div className={styles.checkIcon}>✓</div>
-                        <h3>Request Received!</h3>
-                        <p>We'll be in touch shortly.</p>
-                        <button onClick={onClose} className={styles.submitBtn}>Close</button>
+                {/* Left Side - Image (Hidden on mobile via CSS) */}
+                <div className={styles.imageSide}>
+                    <Image
+                        src="/form_bg.png"
+                        alt="Construction Site"
+                        fill
+                        className={styles.sidebarImage}
+                    />
+                    <div className={styles.imageOverlay}>
+                        <div className={styles.overlayContent}>
+                            <h3>S.R. Construction</h3>
+                            <p>Let's build your vision together.</p>
+                            <div className={styles.socialIcons}>
+                                <FaLinkedin />
+                                <FaInstagram />
+                                <FaTwitter />
+                                <FaFacebook />
+                            </div>
+                        </div>
                     </div>
-                ) : (
-                    <>
-                        <h2 className={styles.title}>Start Your Project</h2>
-                        <p className={styles.subtitle}>Fill in the details below and our team will contact you.</p>
+                </div>
 
-                        <form onSubmit={handleSubmit} className={styles.form}>
-                            <div className={styles.field}>
-                                <label>Name</label>
-                                <input type="text" name="name" className={styles.input} placeholder="Full Name" style={errors.name ? { borderColor: 'red' } : {}} />
-                            </div>
-                            <div className={styles.field}>
-                                <label>Email</label>
-                                <input type="email" name="email" className={styles.input} placeholder="Email Address" style={errors.email ? { borderColor: 'red' } : {}} />
-                            </div>
-                            <div className={styles.field}>
-                                <label>Mobile</label>
-                                <input type="tel" name="mobile" className={styles.input} placeholder="Phone Number" style={errors.mobile ? { borderColor: 'red' } : {}} />
-                            </div>
-                            <div className={styles.field}>
-                                <label>Requirement</label>
-                                <textarea name="message" className={styles.textarea} placeholder="Briefly describe your project..."></textarea>
-                            </div>
-                            <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                                {isSubmitting ? 'Sending...' : 'Send Request'}
-                            </button>
-                        </form>
-                    </>
-                )}
+                {/* Right Side - Form */}
+                <div className={styles.formSide}>
+                    <button className={styles.closeBtn} onClick={onClose}><FaTimes /></button>
+
+                    {isSuccess ? (
+                        <div className={styles.success}>
+                            <h3>Request Received!</h3>
+                            <p>We'll be in touch shortly.</p>
+                            <button onClick={onClose} className={styles.submitBtn}>Close</button>
+                        </div>
+                    ) : (
+                        <>
+                            <h2 className={styles.title}>Get In Touch</h2>
+                            <p className={styles.subtitle}>24/7 We will answer your questions</p>
+
+                            <form onSubmit={handleSubmit} className={styles.form}>
+                                <div className={styles.inputWrapper}>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className={styles.input}
+                                        placeholder="Full Name"
+                                        style={errors.name ? { borderColor: '#ef4444' } : {}}
+                                    />
+                                    {errors.name && <span className={styles.errorMsg}>{errors.name}</span>}
+                                </div>
+                                <div className={styles.inputWrapper}>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        className={styles.input}
+                                        placeholder="Email Address"
+                                        style={errors.email ? { borderColor: '#ef4444' } : {}}
+                                    />
+                                    {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
+                                </div>
+                                <div className={styles.inputWrapper}>
+                                    <input
+                                        type="tel"
+                                        name="mobile"
+                                        className={styles.input}
+                                        placeholder="Phone Number"
+                                        style={errors.mobile ? { borderColor: '#ef4444' } : {}}
+                                    />
+                                    {errors.mobile && <span className={styles.errorMsg}>{errors.mobile}</span>}
+                                </div>
+                                <textarea
+                                    name="message"
+                                    className={styles.textarea}
+                                    placeholder="Describe your issue"
+                                ></textarea>
+                                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                                    {isSubmitting ? 'Sending...' : 'Send Request'}
+                                </button>
+                            </form>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );

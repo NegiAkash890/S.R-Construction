@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
+import Image from 'next/image';
 import { urlFor } from "@/utils/sanity/client";
-import styles from '../Gallery/Gallery.module.css'; // Reusing Gallery styles for grid
-import filterStyles from './ProjectsGallery.module.css';
+import styles from './ProjectsGallery.module.css';
 
 interface Props {
     data: any[];
@@ -22,21 +22,21 @@ export default function ProjectsGallery({ data }: Props) {
         <section className={styles.gallerySection}>
             <div className="container">
 
-                <div className={filterStyles.filterContainer}>
+                <div className={styles.filterContainer}>
                     <button
-                        className={`${filterStyles.filterButton} ${filter === 'all' ? filterStyles.active : ''}`}
+                        className={`${styles.filterButton} ${filter === 'all' ? styles.active : ''}`}
                         onClick={() => setFilter('all')}
                     >
                         All Projects
                     </button>
                     <button
-                        className={`${filterStyles.filterButton} ${filter === 'completed' ? filterStyles.active : ''}`}
+                        className={`${styles.filterButton} ${filter === 'completed' ? styles.active : ''}`}
                         onClick={() => setFilter('completed')}
                     >
                         Completed
                     </button>
                     <button
-                        className={`${filterStyles.filterButton} ${filter === 'ongoing' ? filterStyles.active : ''}`}
+                        className={`${styles.filterButton} ${filter === 'ongoing' ? styles.active : ''}`}
                         onClick={() => setFilter('ongoing')}
                     >
                         Ongoing
@@ -47,30 +47,36 @@ export default function ProjectsGallery({ data }: Props) {
                     {filteredData.map((item) => (
                         <div key={item._id} className={styles.galleryItem}>
                             {item.image && (
-                                <div className={`${styles.imgWrapper} ${filterStyles.cardWrapper}`}>
-                                    <img src={urlFor(item.image).height(400).width(600).url()} alt={item.title} />
+                                <div className={`${styles.imgWrapper} ${styles.cardWrapper}`}>
+                                    <Image
+                                        src={urlFor(item.image).width(800).height(600).url()}
+                                        alt={item.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        className={styles.projectImage} // We'll need to double check this class exists or allow img inheritance
+                                    />
 
                                     {/* Using a custom class for the overlay to override/extend defaults */}
-                                    <div className={filterStyles.projectOverlay}>
-                                        <h3 className={filterStyles.projectTitle}>{item.title}</h3>
-                                        <span className={filterStyles.projectCategory}>{item.category}</span>
+                                    <div className={styles.projectOverlay}>
+                                        <h3 className={styles.projectTitle}>{item.title}</h3>
+                                        <span className={styles.projectCategory}>{item.category}</span>
 
-                                        <div className={filterStyles.metaGrid}>
+                                        <div className={styles.metaGrid}>
                                             {item.clientName && (
-                                                <div className={filterStyles.metaRow}>
-                                                    <span className={filterStyles.metaLabel}>Client:</span>
+                                                <div className={styles.metaRow}>
+                                                    <span className={styles.metaLabel}>Client:</span>
                                                     <span>{item.clientName}</span>
                                                 </div>
                                             )}
                                             {item.location && (
-                                                <div className={filterStyles.metaRow}>
-                                                    <span className={filterStyles.metaLabel}>Location:</span>
+                                                <div className={styles.metaRow}>
+                                                    <span className={styles.metaLabel}>Location:</span>
                                                     <span>{item.location}</span>
                                                 </div>
                                             )}
                                             {(item.startDate || item.endDate) && (
-                                                <div className={filterStyles.metaRow}>
-                                                    <span className={filterStyles.metaLabel}>Date:</span>
+                                                <div className={styles.metaRow}>
+                                                    <span className={styles.metaLabel}>Date:</span>
                                                     <span>
                                                         {item.startDate ? new Date(item.startDate).getFullYear() : ''}
                                                         {item.endDate ? ` - ${new Date(item.endDate).getFullYear()}` : item.startDate ? ' - Present' : ''}
@@ -80,7 +86,7 @@ export default function ProjectsGallery({ data }: Props) {
                                         </div>
 
                                         {item.status && (
-                                            <span className={filterStyles.projectStatusBadge}>
+                                            <span className={styles.projectStatusBadge}>
                                                 {item.status}
                                             </span>
                                         )}

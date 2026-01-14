@@ -1,5 +1,5 @@
 "use client";
-import { FaChevronDown } from "react-icons/fa";
+import { BsArrowDown } from "react-icons/bs";
 import { urlFor } from "@/utils/sanity/client";
 import content from "../../data/siteContent.json";
 import styles from './Hero.module.css';
@@ -17,7 +17,7 @@ export default function Hero({ data }: HeroProps) {
   const { defaultHeading, defaultSubheading, ctaPrimary, ctaPrimaryLink, ctaSecondary, ctaSecondaryLink } = content.hero;
 
   return (
-    <section className={styles.hero} style={{ backgroundImage: bgImage ? `url(${bgImage})` : undefined }}>
+    <section className={styles.hero} style={{ '--hero-bg-image': bgImage ? `url(${bgImage})` : undefined } as React.CSSProperties}>
       <div className={`container ${styles.heroContent}`}>
         <h1>{data?.heroHeading || defaultHeading}</h1>
         <p className={styles.subheading}>{data?.heroSubheading || defaultSubheading}</p>
@@ -27,7 +27,7 @@ export default function Hero({ data }: HeroProps) {
         </div>
       </div>
       <div className={styles.scrollIcon}>
-        <FaChevronDown />
+        <BsArrowDown />
       </div>
       <div className={styles.overlay}></div>
     </section>

@@ -1,16 +1,36 @@
-/* CSS Reset and Variables */
 :root {
-  --primary-color: #0F172A;
-  /* Slate 900 */
-  --accent-color: #EAB308;
-  /* Yellow 500 - Construction vibe */
-  --text-color: #334155;
-  /* Slate 700 */
-  --bg-color: #F8FAFC;
-  /* Slate 50 */
+  /* Color Palette - Slate Scale */
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  --black-pure: #000000;
+  --black-rich: #111111;
+
+  /* Semantic Colors */
+  --primary-color: var(--slate-900);
+  --accent-color: #F97316;
+  /* Orange 500 - Modern Construction / Safety */
+  --accent-hover: #EA580C;
+  /* Orange 600 */
+  --text-color: var(--slate-700);
+  --bg-color: var(--slate-50);
+  --bg-secondary: var(--slate-100);
   --white: #ffffff;
+
+  /* Layout */
   --max-width: 1200px;
   --header-height: 80px;
+  --section-padding: 6rem 0;
+  --section-padding-mobile: 3rem 0;
+
+  /* Other */
   --transition: all 0.3s ease;
 }
 
@@ -138,5 +158,23 @@ h3 {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
   }
 }

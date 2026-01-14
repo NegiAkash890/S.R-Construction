@@ -8,10 +8,13 @@ interface Props {
 }
 
 export default function ClientLogos({ data }: Props) {
-  if (!data || data.length === 0) return null;
+  // Use Sanity data
+  const allClients = data || [];
+
+  if (allClients.length === 0) return null;
 
   // Duplicate data to create seamless loop
-  const marqueeData = [...data, ...data, ...data];
+  const marqueeData = [...allClients, ...allClients];
 
   return (
     <section className={styles.clientsSection} id="clients">
@@ -20,18 +23,24 @@ export default function ClientLogos({ data }: Props) {
 
         <div className={styles.marqueeWrapper}>
           <div className={styles.marqueeTrack}>
-            {marqueeData.map((client, index) => (
-              client.logo && (
-                <div key={`${client._id}-${index}`} className={styles.logoItem}>
+            {marqueeData.map((client, index) => {
+              const logoSrc = typeof client.logo === 'string'
+                ? client.logo
+                : client.logo ? urlFor(client.logo).width(400).url() : null;
+
+              if (!logoSrc) return null;
+
+              return (
+                <div key={`${client._id || client.name}-${index}`} className={styles.logoItem}>
                   <img
-                    src={urlFor(client.logo).width(400).url()}
+                    src={logoSrc}
                     alt={client.name}
                     title={client.name}
                     className={styles.logoImage}
                   />
                 </div>
-              )
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

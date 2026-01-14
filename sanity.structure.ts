@@ -6,6 +6,7 @@ export const structure = (S: StructureBuilder) =>
         .items([
             // Group: Site Settings (Singletons)
             S.listItem()
+                .id('settings')
                 .title('Site Settings')
                 .child(
                     S.list()
@@ -25,6 +26,13 @@ export const structure = (S: StructureBuilder) =>
                                         .schemaType('navigation')
                                         .documentId('navigation')
                                 ),
+                            S.listItem()
+                                .title('General Settings')
+                                .child(
+                                    S.document()
+                                        .schemaType('siteSettings')
+                                        .documentId('siteSettings')
+                                ),
                         ])
                 ),
 
@@ -32,6 +40,7 @@ export const structure = (S: StructureBuilder) =>
 
             // Group: Portfolio
             S.listItem()
+                .id('portfolio')
                 .title('Project Portfolio')
                 .child(
                     S.list()
@@ -44,6 +53,7 @@ export const structure = (S: StructureBuilder) =>
 
             // Group: Organization
             S.listItem()
+                .id('organization')
                 .title('Our Organization')
                 .child(
                     S.list()
@@ -58,6 +68,7 @@ export const structure = (S: StructureBuilder) =>
 
             // Group: Editorial
             S.listItem()
+                .id('editorial')
                 .title('Editorial & Pages')
                 .child(
                     S.list()
@@ -71,7 +82,7 @@ export const structure = (S: StructureBuilder) =>
             // Filter out mapped items from the default list
             ...S.documentTypeListItems().filter(
                 (listItem) =>
-                    !['homepage', 'navigation', 'project', 'industry', 'staffRole', 'client', 'blog', 'page'].includes(
+                    !['homepage', 'navigation', 'siteSettings', 'project', 'industry', 'staffRole', 'client', 'blog', 'page'].includes(
                         listItem.getId() as string
                     )
             ),

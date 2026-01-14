@@ -37,17 +37,18 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                 <div className={styles.grid}>
                     {projects.map((project) => {
                         const locations = Array.isArray(project.location) ? project.location : [];
-                        const displayLocations = locations.slice(0, 2);
-                        const extraLocations = locations.slice(2);
+                        const displayLocations = locations.slice(0, 1);
+                        const extraLocations = locations.slice(1);
 
                         return (
                             <div key={project._id} className={styles.card}>
                                 <div className={styles.imageContainer}>
                                     {project.image && (
                                         <Image
-                                            src={urlFor(project.image).url()}
+                                            src={urlFor(project.image).width(1200).quality(100).url()}
                                             alt={project.title || project.clientName}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             className={styles.projectImage}
                                         />
                                     )}
@@ -79,11 +80,11 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                                                         {displayLocations.join(', ')}
                                                     </span>
                                                     {extraLocations.length > 0 && (
-                                                        <span
-                                                            className={styles.moreLocations}
-                                                            title={extraLocations.join(', ')}
-                                                        >
+                                                        <span className={styles.moreLocations}>
                                                             +{extraLocations.length}
+                                                            <span className={styles.locationsTooltip}>
+                                                                {locations.join(', ')}
+                                                            </span>
                                                         </span>
                                                     )}
                                                 </div>

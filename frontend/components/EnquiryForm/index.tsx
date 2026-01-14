@@ -2,11 +2,16 @@
 import { useState, FormEvent } from 'react';
 import styles from './EnquiryForm.module.css';
 
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+
 export default function EnquiryForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
+    // ... (handler logic remains same)
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setIsSubmitting(true);
@@ -31,7 +36,6 @@ export default function EnquiryForm() {
             return;
         }
 
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
         setIsSubmitting(false);
         setIsSuccess(true);
@@ -59,74 +63,101 @@ export default function EnquiryForm() {
     }
 
     return (
-        <section className={styles.section}>
-            <div className="container">
-                <h2 className={styles.title}>Partner With Us</h2>
-                <p className={styles.subtitle}>Ready to discuss your next project? Fill out the form below and let's build something exceptional together.</p>
+        <section className={styles.section} id="enquiry">
+            <div className={`container ${styles.container}`}>
+                <div className={styles.formWrapper}>
+                    {/* Left Side - Image */}
+                    <div className={styles.imageSide}>
+                        <Image
+                            src="/form_bg.png"
+                            alt="Construction Site"
+                            fill
+                            className={styles.sidebarImage}
+                        />
+                        <div className={styles.imageOverlay}>
+                            <div className={styles.overlayContent}>
+                                <h3>Designed by S.R. Construction</h3>
+                                <p>Building dreams with precision and excellence since 1995.</p>
+                                <div className={styles.socialIcons}>
+                                    <FaLinkedin />
+                                    <FaInstagram />
+                                    <FaTwitter />
+                                    <FaFacebook />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <form onSubmit={handleSubmit} className={styles.form}>
-                    <div className={styles.field}>
-                        <label htmlFor="name">Full Name</label>
-                        <input
-                            id="name"
-                            type="text"
-                            name="name"
-                            className={styles.input}
-                            placeholder="John Doe"
-                            style={errors.name ? { borderColor: '#ef4444' } : {}}
-                            required
-                        />
-                        {errors.name && <span style={{ color: '#ef4444', fontSize: '0.75rem' }}>{errors.name}</span>}
+                    {/* Right Side - Form */}
+                    <div className={styles.formSide}>
+                        <h2 className={styles.formTitle}>GET IN TOUCH</h2>
+                        <p className={styles.formSubtitle}>24/7 We will answer your questions and problems</p>
+
+                        <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className={styles.row}>
+                                <div className={styles.field}>
+
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        className={styles.input}
+                                        placeholder="First Name"
+                                        style={errors.name ? { borderColor: '#ef4444' } : {}}
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.field}>
+
+                                    <input
+                                        id="lastname" // Added for visual match, optional logic
+                                        type="text"
+                                        name="lastname"
+                                        className={styles.input}
+                                        placeholder="Last Name"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className={styles.field}>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    className={styles.input}
+                                    placeholder="Email Id"
+                                    style={errors.email ? { borderColor: '#ef4444' } : {}}
+                                    required
+                                />
+                            </div>
+
+                            <div className={styles.field}>
+                                <input
+                                    id="mobile"
+                                    type="tel"
+                                    name="mobile"
+                                    className={styles.input}
+                                    placeholder="Phone"
+                                    style={errors.mobile ? { borderColor: '#ef4444' } : {}}
+                                    required
+                                />
+                            </div>
+
+                            <div className={styles.field}>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    className={styles.textarea}
+                                    placeholder="Describe your issue"
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                                {isSubmitting ? 'Sending...' : 'Send'}
+                            </button>
+                        </form>
                     </div>
-                    <div className={styles.field}>
-                        <label htmlFor="email">Email Address</label>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            className={styles.input}
-                            placeholder="john@example.com"
-                            style={errors.email ? { borderColor: '#ef4444' } : {}}
-                            required
-                        />
-                        {errors.email && <span style={{ color: '#ef4444', fontSize: '0.75rem' }}>{errors.email}</span>}
-                    </div>
-                    <div className={styles.field}>
-                        <label htmlFor="mobile">Mobile Number</label>
-                        <input
-                            id="mobile"
-                            type="tel"
-                            name="mobile"
-                            className={styles.input}
-                            placeholder="+91 98765 43210"
-                            style={errors.mobile ? { borderColor: '#ef4444' } : {}}
-                            required
-                        />
-                        {errors.mobile && <span style={{ color: '#ef4444', fontSize: '0.75rem' }}>{errors.mobile}</span>}
-                    </div>
-                    <div className={styles.field}>
-                        <label htmlFor="subject">Subject / Project Type</label>
-                        <input
-                            id="subject"
-                            type="text"
-                            name="subject"
-                            className={styles.input}
-                            placeholder="e.g. Industrial Construction"
-                        />
-                    </div>
-                    <div className={`${styles.field} ${styles.fullWidth}`}>
-                        <label htmlFor="message">Your Requirements</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            className={styles.textarea}
-                            placeholder="Tell us about your project or specific requirements..."
-                        ></textarea>
-                    </div>
-                    <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                        {isSubmitting ? 'Submitting...' : 'Send Inquiry'}
-                    </button>
-                </form>
+                </div>
             </div>
         </section>
     );

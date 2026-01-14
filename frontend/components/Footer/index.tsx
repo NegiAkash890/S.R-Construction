@@ -1,7 +1,7 @@
 "use client";
 import content from '../../data/siteContent.json';
 import styles from './Footer.module.css';
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 
 interface NavItem {
   label: string;
@@ -28,21 +28,34 @@ export default function Footer({ links }: FooterProps) {
   return (
     <footer className={styles.footer}>
       {/* Top Section with Safety Badge */}
-      <div className={styles.topBar}>
+      {/* <div className={styles.topBar}>
         <div className="container">
           <div className={styles.safetyBadge}>
             <FaHardHat className={styles.safetyIcon} />
             <span>Committed to Zero Accidents | Industry Leading Safety Standards</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="container">
         <div className={styles.mainGrid}>
-          {/* Brand Column */}
+          {/* Combined Brand & Excellence Column */}
           <div className={styles.columnBrand}>
             <h2 className={styles.brandTitle}>{brand}</h2>
             <p className={styles.tagline}>{tagline}</p>
+
+            <div className={styles.miniExcellence}>
+              <div className={styles.certItem}>
+                <FaAward /> ISO 9001:2015
+              </div>
+              <div className={styles.certItem}>
+                <FaHardHat /> NSC Member
+              </div>
+              <div className={styles.certItem}>
+                <FaAward /> Leading EPC 2024
+              </div>
+            </div>
+
             <div className={styles.socialRow}>
               {social?.map((item: any, index: number) => (
                 <a key={index} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
@@ -54,7 +67,7 @@ export default function Footer({ links }: FooterProps) {
 
           {/* Links Column */}
           <div className={styles.columnLinks}>
-            <h4 className={styles.colTitle}>Quick Links</h4>
+            <h4 className={styles.colTitle}>Company</h4>
             <ul className={styles.linkList}>
               {links.map((link, index) => (
                 <li key={index}><a href={link.href}>{link.label}</a></li>
@@ -62,42 +75,43 @@ export default function Footer({ links }: FooterProps) {
             </ul>
           </div>
 
-          {/* Services/Certifications Column */}
-          <div className={styles.columnCerts}>
-            <h4 className={styles.colTitle}>Excellence</h4>
-            <ul className={styles.iconList}>
-              <li><FaAward className={styles.listIcon} /> ISO 9001:2015 Certified</li>
-              <li><FaHardHat className={styles.listIcon} /> National Safety Council Member</li>
-              <li><FaAward className={styles.listIcon} /> Best EPC Contractor 2024</li>
-            </ul>
-          </div>
-
-          {/* Contact Column (Restored) */}
+          {/* Contact Column */}
           <div className={styles.columnContact}>
-            <h4 className={styles.colTitle}>Contact</h4>
+            <h4 className={styles.colTitle}>Get In Touch</h4>
+
             <div className={styles.contactItem}>
-              <span className={styles.contactLabel}>Address</span>
-              <p style={{ whiteSpace: 'pre-line' }}>{address}</p>
+              <FaMapMarkerAlt className={styles.contactIcon} />
+              <div className={styles.contactContent}>
+                <p style={{ whiteSpace: 'pre-line' }}>{address}</p>
+              </div>
             </div>
+
             <div className={styles.contactItem}>
-              <span className={styles.contactLabel}>Email</span>
-              <p><a href={`mailto:${email}`}>{email}</a></p>
+              <FaEnvelope className={styles.contactIcon} />
+              <div className={styles.contactContent}>
+                <p><a href={`mailto:${email}`}>{email}</a></p>
+              </div>
             </div>
+
             <div className={styles.contactItem}>
-              <span className={styles.contactLabel}>Phone</span>
-              <p><a href={`tel:${phone}`}>{phone}</a></p>
+              <FaPhoneAlt className={styles.contactIcon} />
+              <div className={styles.contactContent}>
+                <p><a href={`tel:${phone}`}>{phone}</a></p>
+              </div>
             </div>
           </div>
         </div>
 
         <div className={styles.bottomBar}>
-          <p>© {new Date().getFullYear()} {copyright}. All rights reserved.</p>
+          <p className={styles.copyright}>© {new Date().getFullYear()} {copyright}.</p>
           <div className={styles.legalLinks}>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/sitemap">Sitemap</a>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+

@@ -1,6 +1,12 @@
 .section {
-    padding: 6rem 0;
-    background-color: #F1F5F9;
+    padding: var(--section-padding);
+    background-color: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
 }
 
 .header {
@@ -14,13 +20,13 @@
 .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #111827;
+    color: var(--slate-900);
     margin-bottom: 1.5rem;
 }
 
 .sectionDescription {
     font-size: 1.125rem;
-    color: #4b5563;
+    color: var(--slate-600);
     line-height: 1.6;
     margin: 0;
 }
@@ -81,7 +87,7 @@
 .cardTitle {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--white);
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     max-width: 70%;
@@ -91,7 +97,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,6 +110,6 @@
 
 .icon {
     font-size: 1.25rem;
-    color: #0f172a;
+    color: var(--slate-900);
     /* Dark blue/slate */
 }

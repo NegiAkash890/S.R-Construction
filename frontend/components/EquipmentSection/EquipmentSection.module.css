@@ -1,7 +1,13 @@
 .section {
-    padding: 6rem 0;
-    background-color: #ffffff;
+    padding: var(--section-padding);
+    background-color: var(--white);
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
 }
 
 .header {
@@ -44,14 +50,14 @@
     height: 48px;
     border-radius: 50%;
     /* Circular buttons as requested */
-    border: 1px solid #CBD5E1;
+    border: 1px solid var(--slate-300);
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #64748B;
+    color: var(--slate-500);
     font-size: 1.25rem;
 }
 
@@ -85,8 +91,8 @@
 }
 
 .card {
-    background: #fff;
-    border: 1px solid #E2E8F0;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
     display: flex;
     flex-direction: column;
     min-width: 300px;
@@ -106,14 +112,25 @@
 
 .imagePlaceholder {
     height: 180px;
-    background: #E2E8F0;
+    background: var(--slate-200);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #94A3B8;
+    color: var(--slate-400);
     font-weight: 600;
     font-size: 0.9rem;
     position: relative;
+    overflow: hidden;
+    /* Ensure image scale stays inside */
+}
+
+.equipmentImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .equipmentImage {
+    transform: scale(1.05);
 }
 
 .cardContent {
@@ -126,13 +143,14 @@
 .itemName {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #1E293B;
+    color: var(--slate-800);
     margin-bottom: 1rem;
     line-height: 1.4;
     height: 3.2rem;
     /* Limit lines */
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -140,7 +158,7 @@
 .divider {
     height: 2px;
     width: 40px;
-    background: #F1F5F9;
+    background: var(--slate-100);
     margin-bottom: 1rem;
     transition: width 0.3s;
 }
@@ -176,7 +194,19 @@
     }
 
     .card {
-        min-width: 260px;
-        width: 260px;
+        min-width: 85vw;
+        width: 85vw;
+        scroll-snap-align: start;
+    }
+
+    .list {
+        gap: 1rem;
+        /* Smaller gap on mobile */
+        padding-right: 20%;
+        /* Ensure user sees there is more to scroll */
+    }
+
+    .controls {
+        display: none;
     }
 }
