@@ -83,10 +83,12 @@
 }
 
 .logoImage {
-    width: 180px;
-    height: 80px;
-    /* Fixed dimensions for uniform appearance */
+    width: auto;
+    height: auto;
+    max-width: 180px;
+    max-height: 90px;
     object-fit: contain;
+    display: block;
 }
 
 @keyframes scroll {
