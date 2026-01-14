@@ -9,22 +9,22 @@ const query = `{
 }`;
 
 export async function generateMetadata() {
-    const { meta } = await sanityClient.fetch(query);
-    return {
-        title: meta?.heroTitle || 'Projects',
-        description: meta?.heroSubtitle || 'Explore our portfolio of construction projects.',
-    };
+  const { meta } = await sanityClient.fetch(query);
+  return {
+    title: meta?.heroTitle || 'Projects',
+    description: meta?.heroSubtitle || 'Explore our portfolio of construction projects.',
+  };
 }
 
 export default async function ProjectsPage() {
-    const { projects, meta } = await sanityClient.fetch(query);
+  const { projects, meta } = await sanityClient.fetch(query);
 
-    return (
-      <main>
-        <ProjectsHero data={meta} />
-        <div>
-          <ProjectsGallery data={projects} />
-        </div>
-      </main>
-    );
+  return (
+    <main>
+      <ProjectsHero data={meta} />
+      <div>
+        <ProjectsGallery data={projects} />
+      </div>
+    </main>
+  );
 }

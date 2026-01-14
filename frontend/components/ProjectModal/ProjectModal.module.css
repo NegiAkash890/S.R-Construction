@@ -1,0 +1,288 @@
+/* Modal Backdrop */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.backdrop.open {
+    opacity: 1;
+}
+
+/* Modal Container */
+.modal {
+    background: var(--slate-900);
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 0;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal.slideIn {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Close Button */
+.closeButton {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    transition: all 0.2s;
+    color: white;
+}
+
+.closeButton:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.heroImageWrapper {
+    width: 100%;
+    height: 480px;
+    position: relative;
+    background: var(--slate-900);
+    overflow: hidden;
+}
+
+.heroImage {
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Carousel Controls */
+.carouselBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s;
+    border-radius: 0;
+}
+
+.carouselBtn:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.prevBtn {
+    left: 1rem;
+}
+
+.nextBtn {
+    right: 1rem;
+}
+
+.carouselIndicators {
+    position: absolute;
+    bottom: 8rem;
+    /* Above the overlay content */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+.indicator {
+    width: 32px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.indicator.activeIndicator {
+    background: var(--accent-color);
+}
+
+/* Overlay */
+.heroOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem;
+    background: linear-gradient(to top, var(--slate-900) 10%, rgba(15, 23, 42, 0.6) 50%, transparent 100%);
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    pointer-events: none;
+    /* Allow clicks to pass through to carousel if needed */
+    z-index: 10;
+}
+
+.projectTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    max-width: 90%;
+    color: white;
+    /* Text Shadow for readability over images */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Details Body */
+.detailsBody {
+    padding: 3rem;
+    color: white;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 3rem;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--slate-400);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.statValue {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.divider {
+    display: none;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.descriptionText {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--slate-300);
+}
+
+/* Modal Gallery Grid (If kept) */
+.modalGallerySection {
+    margin-top: 4rem;
+}
+
+.modalGalleryGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.modalGalleryItem {
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    background: var(--slate-800);
+}
+
+.modalGalleryImage {
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.modalGalleryItem:hover .modalGalleryImage {
+    transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .modal {
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .heroImageWrapper {
+        height: 300px;
+    }
+
+    .heroOverlay {
+        padding: 1.5rem;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .projectTitle {
+        font-size: 1.75rem;
+        max-width: 100%;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .carouselBtn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carouselIndicators {
+        bottom: 6rem;
+    }
+
+    .detailsBody {
+        padding: 1.5rem;
+    }
+
+    .modalGalleryGrid {
+        grid-template-columns: 1fr;
+    }
+}

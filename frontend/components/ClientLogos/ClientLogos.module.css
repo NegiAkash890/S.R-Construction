@@ -74,6 +74,8 @@
     filter: grayscale(100%);
     opacity: 0.6;
     transition: all 0.3s;
+    position: relative;
+    /* Required for Next.js Image fill */
 }
 
 .logoItem:hover {
@@ -83,12 +85,9 @@
 }
 
 .logoImage {
-    width: auto;
-    height: auto;
-    max-width: 180px;
-    max-height: 90px;
     object-fit: contain;
-    display: block;
+    padding: 10px;
+    /* Optional padding so logo doesn't touch edges */
 }
 
 @keyframes scroll {

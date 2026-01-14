@@ -33,7 +33,7 @@ export default function Navbar({ links }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const showBackground = scrolled || !isHome;
+  const showBackground = scrolled;
 
   return (
     <nav className={`${styles.navbar} ${showBackground ? styles.scrolled : ''}`}>

@@ -1,5 +1,4 @@
-"use client";
-
+import Image from 'next/image';
 import { urlFor } from "@/utils/sanity/client";
 import content from "../../data/siteContent.json";
 import styles from './ClientLogos.module.css';
@@ -33,11 +32,13 @@ export default function ClientLogos({ data }: Props) {
 
               return (
                 <div key={`${client._id || client.name}-${index}`} className={styles.logoItem}>
-                  <img
+                  <Image
                     src={logoSrc}
                     alt={client.name}
                     title={client.name}
                     className={styles.logoImage}
+                    fill
+                    sizes="(max-width: 768px) 150px, 220px"
                   />
                 </div>
               );
