@@ -1,4 +1,3 @@
-
 import { client } from '@/utils/sanity/client';
 import Hero from '@/components/Hero';
 import ClientLogos from '@/components/ClientLogos';
@@ -8,6 +7,7 @@ import Testimonials from '@/components/Testimonials';
 import Awards from '@/components/Awards';
 import EnquiryForm from '@/components/EnquiryForm';
 import FeaturedProjects from '@/components/FeaturedProjects';
+import Industries from '@/components/Industries';
 
 async function getData() {
   const homepage = await client.fetch(`*[_type == "homepage"][0]`);
@@ -17,8 +17,9 @@ async function getData() {
   const testimonials = await client.fetch(`*[_type == "testimonial"]`);
   const awards = await client.fetch(`*[_type == "award"] | order(year desc)`);
   const featuredProjects = await client.fetch(`*[_type == "project" && isFeatured == true] | order(_createdAt desc)[0...3]`);
+  const industries = await client.fetch(`*[_type == "industry"] | order(_createdAt asc)`);
 
-  return { homepage, clients, gallery, posts, testimonials, awards, featuredProjects };
+  return { homepage, clients, gallery, posts, testimonials, awards, featuredProjects, industries };
 }
 
 export default async function Home() {
@@ -28,6 +29,7 @@ export default async function Home() {
     <main>
       <Hero data={data.homepage} />
       <ClientLogos data={data.clients} />
+      <Industries data={data.industries} />
       <Gallery data={data.gallery} />
       <FeaturedProjects projects={data.featuredProjects} />
       <BlogSection data={data.posts} />

@@ -1,4 +1,4 @@
-"use client"; // Remove if using server component + client components strategy properly, but for simplicity we might need client features if we use hooks, OR keep it server.
+
 // Actually, generic page can be server component.
 
 import { client, urlFor } from '@/utils/sanity/client';

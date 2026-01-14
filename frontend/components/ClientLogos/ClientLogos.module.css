@@ -1,11 +1,13 @@
 .clientsSection {
     padding: 80px 0;
-    background-color: var(--white);
+    background-color: #222222;
+    /* Light black shade */
 }
 
 .sectionTitle {
     text-align: center;
     margin-bottom: 3rem;
+    color: var(--white);
 }
 
 .logoGrid {
@@ -22,13 +24,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: grayscale(100%);
-    opacity: 0.7;
     transition: var(--transition);
 }
 
 .logoItem:hover {
-    filter: grayscale(0%);
+    filter: grayscale(0%) invert(0);
     opacity: 1;
 }
 

@@ -1,4 +1,5 @@
 "use client";
+import { FaChevronDown } from "react-icons/fa";
 import { urlFor } from "@/utils/sanity/client";
 import content from "../../data/siteContent.json";
 import styles from './Hero.module.css';
@@ -24,6 +25,9 @@ export default function Hero({ data }: HeroProps) {
           <a href={ctaPrimaryLink} className="btn">{ctaPrimary}</a>
           <a href={ctaSecondaryLink} className="btn btn-outline">{ctaSecondary}</a>
         </div>
+      </div>
+      <div className={styles.scrollIcon}>
+        <FaChevronDown />
       </div>
       <div className={styles.overlay}></div>
     </section>

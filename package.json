@@ -9,7 +9,9 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "dev:all": "npx -y concurrently -n \"CMS,FE\" -c \"magenta,blue\" \"npm run dev\" \"npm run dev --prefix frontend\"",
+    "delete:industries": "sanity exec scripts/deleteIndustries.ts --with-user-token"
   },
   "keywords": [
     "sanity"

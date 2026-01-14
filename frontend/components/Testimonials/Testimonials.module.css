@@ -91,7 +91,7 @@
 .imageContainer {
     width: 80px;
     height: 80px;
-    /* border-radius removed */
+    border-radius: 50%;
     overflow: hidden;
     margin-bottom: 1.5rem;
     border: 3px solid var(--accent-color);
