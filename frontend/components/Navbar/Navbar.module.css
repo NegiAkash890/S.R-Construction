@@ -119,3 +119,34 @@
         display: block;
     }
 }
+
+.ctaButton {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 10px 24px;
+    border: none;
+    /* Square button per request */
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 100%;
+    margin-left: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.ctaButton:hover {
+    background: #CA8A04;
+    /* Darker Yellow */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .ctaButton {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1rem;
+        padding: 12px;
+    }
+}

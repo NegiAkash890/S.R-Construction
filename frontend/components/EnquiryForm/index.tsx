@@ -20,20 +20,10 @@ export default function EnquiryForm() {
             message: formData.get('message') as string,
         };
 
-        // Validation
         const newErrors: { [key: string]: string } = {};
-        if (!data.name.trim()) newErrors.name = 'Name is required';
-        if (!data.email.trim()) {
-            newErrors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-            newErrors.email = 'Invalid email format';
-        }
-        if (!data.mobile.trim()) {
-            newErrors.mobile = 'Mobile number is required';
-        } else if (!/^\+?[\d\s-]{10,}$/.test(data.mobile)) {
-            newErrors.mobile = 'Invalid mobile number (min 10 digits)';
-        }
-        if (!data.message.trim()) newErrors.message = 'Message is required';
+        if (!data.name.trim()) newErrors.name = 'Required';
+        if (!data.email.trim()) newErrors.email = 'Required';
+        if (!data.mobile.trim()) newErrors.mobile = 'Required';
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -42,9 +32,7 @@ export default function EnquiryForm() {
         }
 
         // Simulate API call
-        console.log('Form Submitted:', data);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
+        await new Promise(resolve => setTimeout(resolve, 1500));
         setIsSubmitting(false);
         setIsSuccess(true);
     }
@@ -53,18 +41,17 @@ export default function EnquiryForm() {
         return (
             <section className={styles.section}>
                 <div className="container">
-                    <div className={styles.formContainer}>
-                        <div className={styles.successMessage}>
-                            <h3>Thank you for your enquiry!</h3>
-                            <p>We will get back to you shortly.</p>
-                            <button
-                                onClick={() => setIsSuccess(false)}
-                                className={styles.submitButton}
-                                style={{ maxWidth: '200px', margin: '1rem auto' }}
-                            >
-                                Send Another
-                            </button>
-                        </div>
+                    <div className={styles.success}>
+                        <div className={styles.checkIcon}>✓</div>
+                        <h2 className={styles.title}>Thank You!</h2>
+                        <p className={styles.subtitle}>Your inquiry has been received. Our team will contact you shortly.</p>
+                        <button
+                            onClick={() => setIsSuccess(false)}
+                            className={styles.submitBtn}
+                            style={{ maxWidth: '200px', margin: '0 auto', display: 'block' }}
+                        >
+                            Send Another
+                        </button>
                     </div>
                 </div>
             </section>
@@ -72,67 +59,74 @@ export default function EnquiryForm() {
     }
 
     return (
-        <section className={styles.section} id="enquiry">
+        <section className={styles.section}>
             <div className="container">
-                <h2 className={styles.title}>Drop an Enquiry</h2>
-                <div className={styles.formContainer}>
-                    <form onSubmit={handleSubmit} noValidate>
-                        <div className={styles.formGroup}>
-                            <label htmlFor="name" className={styles.label}>Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                className={styles.input}
-                                placeholder="John Doe"
-                                style={errors.name ? { borderColor: '#ef4444' } : {}}
-                            />
-                            {errors.name && <p className={styles.errorText}>{errors.name}</p>}
-                        </div>
+                <h2 className={styles.title}>Partner With Us</h2>
+                <p className={styles.subtitle}>Ready to discuss your next project? Fill out the form below and let's build something exceptional together.</p>
 
-                        <div className={styles.formGroup}>
-                            <label htmlFor="email" className={styles.label}>Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className={styles.input}
-                                placeholder="john@example.com"
-                                style={errors.email ? { borderColor: '#ef4444' } : {}}
-                            />
-                            {errors.email && <p className={styles.errorText}>{errors.email}</p>}
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="mobile" className={styles.label}>Mobile Number</label>
-                            <input
-                                type="tel"
-                                id="mobile"
-                                name="mobile"
-                                className={styles.input}
-                                placeholder="+1 234 567 8900"
-                                style={errors.mobile ? { borderColor: '#ef4444' } : {}}
-                            />
-                            {errors.mobile && <p className={styles.errorText}>{errors.mobile}</p>}
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="message" className={styles.label}>Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                className={styles.textarea}
-                                placeholder="Tell us about your project..."
-                                style={errors.message ? { borderColor: '#ef4444' } : {}}
-                            ></textarea>
-                            {errors.message && <p className={styles.errorText}>{errors.message}</p>}
-                        </div>
-
-                        <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
-                            {isSubmitting ? 'Sending...' : 'Send Enquiry'}
-                        </button>
-                    </form>
-                </div>
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <div className={styles.field}>
+                        <label htmlFor="name">Full Name</label>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            className={styles.input}
+                            placeholder="John Doe"
+                            style={errors.name ? { borderColor: '#ef4444' } : {}}
+                            required
+                        />
+                        {errors.name && <span style={{ color: '#ef4444', fontSize: '0.75rem' }}>{errors.name}</span>}
+                    </div>
+                    <div className={styles.field}>
+                        <label htmlFor="email">Email Address</label>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            className={styles.input}
+                            placeholder="john@example.com"
+                            style={errors.email ? { borderColor: '#ef4444' } : {}}
+                            required
+                        />
+                        {errors.email && <span style={{ color: '#ef4444', fontSize: '0.75rem' }}>{errors.email}</span>}
+                    </div>
+                    <div className={styles.field}>
+                        <label htmlFor="mobile">Mobile Number</label>
+                        <input
+                            id="mobile"
+                            type="tel"
+                            name="mobile"
+                            className={styles.input}
+                            placeholder="+91 98765 43210"
+                            style={errors.mobile ? { borderColor: '#ef4444' } : {}}
+                            required
+                        />
+                        {errors.mobile && <span style={{ color: '#ef4444', fontSize: '0.75rem' }}>{errors.mobile}</span>}
+                    </div>
+                    <div className={styles.field}>
+                        <label htmlFor="subject">Subject / Project Type</label>
+                        <input
+                            id="subject"
+                            type="text"
+                            name="subject"
+                            className={styles.input}
+                            placeholder="e.g. Industrial Construction"
+                        />
+                    </div>
+                    <div className={`${styles.field} ${styles.fullWidth}`}>
+                        <label htmlFor="message">Your Requirements</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            className={styles.textarea}
+                            placeholder="Tell us about your project or specific requirements..."
+                        ></textarea>
+                    </div>
+                    <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                        {isSubmitting ? 'Submitting...' : 'Send Inquiry'}
+                    </button>
+                </form>
             </div>
         </section>
     );

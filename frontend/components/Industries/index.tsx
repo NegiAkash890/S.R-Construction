@@ -22,7 +22,7 @@ const Industries = ({ data }: IndustriesProps) => {
     if (!data || data.length === 0) return null;
 
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id="industries">
             <div className="container">
                 <div className={styles.header}>
                     <h2 className={styles.title}>Industries We Serve</h2>

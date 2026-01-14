@@ -19,8 +19,8 @@
                 "href": "#testimonials"
             },
             {
-                "label": "Awards",
-                "href": "#awards"
+                "label": "Team",
+                "href": "/team"
             }
         ]
     },
@@ -62,17 +62,60 @@
         "clients": {
             "title": "Our Trusted Clients"
         },
-        "gallery": {
-            "title": "Our Projects"
-        },
         "blog": {
-            "title": "Latest Updates"
-        },
-        "testimonials": {
-            "title": "What People Say"
+            "title": "News and Featured Stories"
         },
         "awards": {
             "title": "Awards & Accolades"
+        },
+        "equipment": {
+            "title": "Machinery & Equipment Assets",
+            "items": [
+                {
+                    "name": "Hydra 12/14 Ton Capacity",
+                    "quantity": "2 Nos"
+                },
+                {
+                    "name": "DG Set 30 KVA",
+                    "quantity": "1 Nos"
+                },
+                {
+                    "name": "Electric & Diesel Air Compressor",
+                    "quantity": "8 Nos"
+                },
+                {
+                    "name": "Airless Painting Machine",
+                    "quantity": "10 Nos"
+                },
+                {
+                    "name": "Welding Machine",
+                    "quantity": "10 Nos"
+                },
+                {
+                    "name": "Electric Winch Machine with rope",
+                    "quantity": "2 Nos"
+                },
+                {
+                    "name": "Chain pulley Blocks",
+                    "quantity": "20 Nos"
+                },
+                {
+                    "name": "Cutting Set",
+                    "quantity": "5 Set"
+                },
+                {
+                    "name": "Grinding Machine",
+                    "quantity": "5 Nos"
+                },
+                {
+                    "name": "Lifting Tackles (Sling, Belt, D-Schackel)",
+                    "quantity": "10 Lot"
+                },
+                {
+                    "name": "Other small tools",
+                    "quantity": "APR Lot"
+                }
+            ]
         }
     },
     "projectsPage": {

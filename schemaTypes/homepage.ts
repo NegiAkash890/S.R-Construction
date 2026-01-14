@@ -4,16 +4,22 @@ export const homepage = defineType({
     name: 'homepage',
     title: 'Homepage',
     type: 'document',
+    groups: [
+        { name: 'hero', title: 'Hero Section' },
+        { name: 'sections', title: 'Section Titles' },
+    ],
     fields: [
         defineField({
             name: 'heroHeading',
             title: 'Hero Heading',
             type: 'string',
+            group: 'hero',
         }),
         defineField({
             name: 'heroSubheading',
             title: 'Hero Subheading',
             type: 'string',
+            group: 'hero',
         }),
         defineField({
             name: 'heroImage',
@@ -22,6 +28,25 @@ export const homepage = defineType({
             options: {
                 hotspot: true,
             },
+            group: 'hero',
+        }),
+        defineField({
+            name: 'clientsTitle',
+            title: 'Clients Section Title',
+            type: 'string',
+            group: 'sections',
+        }),
+        defineField({
+            name: 'blogTitle',
+            title: 'Blog Section Title',
+            type: 'string',
+            group: 'sections',
+        }),
+        defineField({
+            name: 'equipmentTitle',
+            title: 'Equipment Section Title',
+            type: 'string',
+            group: 'sections',
         }),
     ],
 })

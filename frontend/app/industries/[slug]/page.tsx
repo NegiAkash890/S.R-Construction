@@ -1,5 +1,5 @@
+import EnquiryForm from '@/components/EnquiryForm';
 import { client, urlFor } from '@/utils/sanity/client';
-import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -41,16 +41,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             {/* Hero Section */}
             <div className={styles.hero}>
                 <div className={styles.heroImageWrapper}>
-                    {industry.image && (
-                        <Image
-                            src={urlFor(industry.image).url()}
-                            alt={industry.title}
-                            fill
-                            className={styles.heroImage}
-                            priority
-                        />
-                    )}
-                    <div className={styles.heroOverlay}></div>
+                    {/* Image removed as per user request to use default dark background */}
                 </div>
                 <div className="container" style={{ position: 'relative', height: '100%' }}>
                     <div className={styles.heroContent}>
@@ -83,13 +74,17 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                             {industry.offerings.map((offering: any, index: number) => (
                                 <div key={index} className={styles.offeringCard}>
                                     <div className={styles.offeringImageWrapper}>
-                                        {offering.image && (
+                                        {offering.image ? (
                                             <Image
                                                 src={urlFor(offering.image).url()}
                                                 alt={offering.title}
                                                 fill
                                                 className={styles.offeringImage}
                                             />
+                                        ) : (
+                                            <div className={styles.dummyImage}>
+                                                {/* Placeholder for missing image */}
+                                            </div>
                                         )}
                                         <div className={styles.offeringOverlay}>
                                             <span className={styles.offeringTitle}>{offering.title}</span>
@@ -158,6 +153,29 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
                     </div>
                 </div>
             </section>
+            {/* Enquiry Form */}
+            <EnquiryForm />
+
+            {/* Breadcrumb Section */}
+            <div className={styles.breadcrumbSection}>
+                <div className="container">
+                    <nav aria-label="Breadcrumb">
+                        <ol className={styles.breadcrumbList}>
+                            <li className={styles.breadcrumbItem}>
+                                <Link href="/">Home</Link>
+                            </li>
+                            <li className={styles.breadcrumbSeparator}>/</li>
+                            <li className={styles.breadcrumbItem}>
+                                <Link href="/#industries">Industries</Link>
+                            </li>
+                            <li className={styles.breadcrumbSeparator}>/</li>
+                            <li className={`${styles.breadcrumbItem} ${styles.breadcrumbActive}`} aria-current="page">
+                                {industry.title}
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </main>
     );
 }

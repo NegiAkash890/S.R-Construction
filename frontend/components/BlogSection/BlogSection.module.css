@@ -1,71 +1,188 @@
 .blogSection {
-    padding: 80px 0;
-    background: var(--white);
+    padding: 6rem 0;
+    background-color: #F1F5F9;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .sectionTitle {
-    text-align: center;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.navArrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrowBtn {
+    width: 40px;
+    height: 40px;
+    /* border-radius removed */
+    background-color: #CBD5E1;
+    /* Light gray */
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.arrowBtn:hover {
+    background-color: #0056b3;
 }
 
 .blogGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .blogGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .blogCard {
-    background: var(--bg-color);
-    border-radius: var(--border-radius);
+    position: relative;
+    aspect-ratio: 1 / 1;
+    /* Square card */
+    /* border-radius removed */
+    /* Slight radius */
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
+    background-color: #0056b3;
+    /* Fallback blue */
+    transition: transform 0.3s ease;
 }
 
 .blogCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
 }
 
-.cardImg {
-    height: 200px;
-    overflow: hidden;
+.cardBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.cardImg img {
+.bgImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0.8;
+    /* Slight fade to blend */
 }
 
-.cardContent {
-    padding: 20px;
+/* Gradient Overlay - Blue tint to black */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 86, 179, 0.3) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.9) 100%);
+    z-index: 1;
+}
+
+.cardInner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tag {
+    background-color: #fff;
+    color: #333;
+    padding: 6px 16px;
+    /* border-radius removed */
+    font-size: 0.75rem;
+    font-weight: 700;
+    align-self: flex-start;
+    text-transform: uppercase;
+}
+
+.bottomContent {
+    color: #fff;
 }
 
 .date {
     font-size: 0.85rem;
-    color: #64748B;
+    font-weight: 500;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
-.cardContent h3 {
+.cardTitle {
     font-size: 1.25rem;
-    margin: 10px 0;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 1.5rem 0;
+    color: #fff;
+    /* Limit lines if needed */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.readMore {
-    color: var(--accent-color);
-    font-weight: 600;
+.cardActions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.actionLink {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #fff;
     font-size: 0.9rem;
-    display: inline-block;
-    margin-top: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
 }
 
-@media (max-width: 768px) {
-    .blogSection {
-        padding: 40px 0;
-    }
+.actionLink:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
 
-    .blogGrid {
-        grid-template-columns: 1fr;
-    }
+.icon {
+    font-size: 1rem;
+}
+
+.shareIcon {
+    font-size: 1rem;
+    transform: rotate(-45deg);
+    /* Point up-right */
 }

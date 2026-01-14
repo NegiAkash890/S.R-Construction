@@ -1,8 +1,11 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import content from '../../data/siteContent.json';
 import styles from './Navbar.module.css';
+
+import { useEnquiry } from '@/context/EnquiryContext';
 
 // Define types for the navigation items
 export interface NavItem {
@@ -18,6 +21,9 @@ export default function Navbar({ links }: NavbarProps) {
   const { logo } = content.navbar;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openEnquiry } = useEnquiry();
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,8 +33,10 @@ export default function Navbar({ links }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const showBackground = scrolled || !isHome;
+
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${showBackground ? styles.scrolled : ''}`}>
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo}>{logo}</Link>
 
@@ -44,6 +52,17 @@ export default function Navbar({ links }: NavbarProps) {
               <Link href={link.href} onClick={() => setIsOpen(false)}>{link.label}</Link>
             </li>
           ))}
+          <li>
+            <button
+              className={styles.ctaButton}
+              onClick={() => {
+                setIsOpen(false);
+                openEnquiry();
+              }}
+            >
+              Enquire Now
+            </button>
+          </li>
         </ul>
       </div>
     </nav>

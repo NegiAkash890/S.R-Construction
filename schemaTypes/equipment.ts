@@ -1,28 +1,24 @@
 import { defineField, defineType } from 'sanity'
 
-export const testimonial = defineType({
-    name: 'testimonial',
-    title: 'Testimonial',
+export const equipment = defineType({
+    name: 'equipment',
+    title: 'Equipment',
     type: 'document',
     fields: [
         defineField({
             name: 'name',
-            title: 'Client Name',
+            title: 'Equipment Name',
+            type: 'string',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'quantity',
+            title: 'Quantity',
             type: 'string',
         }),
         defineField({
-            name: 'role',
-            title: 'Role / Company',
-            type: 'string',
-        }),
-        defineField({
-            name: 'quote',
-            title: 'Quote',
-            type: 'text',
-        }),
-        defineField({
-            name: 'photo',
-            title: 'Photo',
+            name: 'image',
+            title: 'Image',
             type: 'image',
             options: {
                 hotspot: true,

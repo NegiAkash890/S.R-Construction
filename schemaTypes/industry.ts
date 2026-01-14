@@ -4,12 +4,18 @@ export const industry = defineType({
     name: 'industry',
     title: 'Industry',
     type: 'document',
+    groups: [
+        { name: 'identity', title: 'Identity' },
+        { name: 'content', title: 'Page Content' },
+        { name: 'stats', title: 'Statistics' },
+    ],
     fields: [
         defineField({
             name: 'title',
             title: 'Title',
             type: 'string',
             validation: (Rule) => Rule.required(),
+            group: 'identity',
         }),
         defineField({
             name: 'image',
@@ -18,7 +24,7 @@ export const industry = defineType({
             options: {
                 hotspot: true,
             },
-            validation: (Rule) => Rule.required(),
+            group: 'identity',
         }),
         defineField({
             name: 'description',
@@ -26,6 +32,7 @@ export const industry = defineType({
             type: 'text',
             rows: 3,
             validation: (Rule) => Rule.required(),
+            group: 'identity',
         }),
         defineField({
             name: 'slug',
@@ -36,11 +43,13 @@ export const industry = defineType({
                 maxLength: 96,
             },
             validation: (Rule) => Rule.required(),
+            group: 'identity',
         }),
         defineField({
             name: 'heroSubtitle',
             title: 'Hero Subtitle',
             type: 'string',
+            group: 'content',
         }),
         defineField({
             name: 'offerings',
@@ -55,6 +64,7 @@ export const industry = defineType({
                     ],
                 },
             ],
+            group: 'content',
         }),
         defineField({
             name: 'stats',
@@ -69,6 +79,7 @@ export const industry = defineType({
                     ],
                 },
             ],
+            group: 'stats',
         }),
         defineField({
             name: 'content',
@@ -78,6 +89,7 @@ export const industry = defineType({
                 { type: 'block' },
                 { type: 'image' },
             ],
+            group: 'content',
         }),
     ],
 })

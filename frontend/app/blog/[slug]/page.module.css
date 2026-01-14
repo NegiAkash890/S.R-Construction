@@ -1,0 +1,152 @@
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 140px 20px 40px;
+    /* Top padding for navbar */
+    font-family: 'Inter', sans-serif;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #64748B;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.breadcrumb a {
+    color: #334155;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--accent-color);
+}
+
+.currentCrumb {
+    color: #94A3B8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 2rem;
+}
+
+.meta {
+    font-size: 0.9rem;
+    color: #64748B;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.shareSection {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.shareBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid #CBD5E1;
+    padding: 8px 16px;
+    /* border-radius removed */
+    cursor: pointer;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.shareBtn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 3rem;
+    background: #F1F5F9;
+    /* border-radius removed */
+    overflow: hidden;
+}
+
+.mainImage {
+    object-fit: cover;
+}
+
+.content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #334155;
+    max-width: 1000px;
+    /* Left aligned now */
+}
+
+/* Portable Text Styling */
+.content p {
+    margin-bottom: 1.5rem;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    color: #0F172A;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.content li {
+    margin-bottom: 0.5rem;
+}
+
+.footerLink {
+    margin-top: 4rem;
+    border-top: 1px solid #E2E8F0;
+    padding-top: 2rem;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.backLink:hover {
+    transform: translateX(-4px);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .content {
+        font-size: 1rem;
+    }
+}

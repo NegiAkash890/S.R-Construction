@@ -22,6 +22,7 @@ import { client } from "@/utils/sanity/client";
 import { NAVIGATION_QUERY } from "@/utils/sanity/queries";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { EnquiryProvider } from "@/context/EnquiryContext";
 
 // ... existing imports
 
@@ -47,10 +48,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar links={headerLinks} />
-        {children}
-        <Footer links={footerLinks} />
-        <ScrollToTop />
+        <EnquiryProvider>
+          <Navbar links={headerLinks} />
+          {children}
+          <Footer links={footerLinks} />
+          <ScrollToTop />
+        </EnquiryProvider>
       </body>
     </html>
   );

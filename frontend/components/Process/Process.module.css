@@ -1,0 +1,98 @@
+.section {
+    padding: 80px 0;
+    background-color: #F8FAFC;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #0F172A;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #64748B;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+}
+
+.card {
+    background: #fff;
+    padding: 2rem;
+    /* border-radius removed */
+    position: relative;
+    border-bottom: 4px solid transparent;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-bottom-color: var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #E2E8F0;
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+
+.card:hover .number {
+    color: var(--accent-color);
+    opacity: 0.3;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.6;
+}
+
+/* Connector Line (Desktop Only) */
+@media (min-width: 768px) {
+    .connector {
+        position: absolute;
+        top: 2rem;
+        right: -1rem;
+        /* Halfway gap */
+        width: 2rem;
+        height: 2px;
+        background: #E2E8F0;
+        display: none;
+        /* Hard to position perfectly without flex/grid nuances, omitting for simplicity or implementing simpler visual */
+    }
+
+    /* Simpler: just use spacing */
+}

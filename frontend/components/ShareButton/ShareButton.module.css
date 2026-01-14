@@ -1,0 +1,27 @@
+.shareBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid #CBD5E1;
+    padding: 8px 16px;
+    /* border-radius removed */
+    cursor: pointer;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.shareBtn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+    border-color: #94A3B8;
+}
+
+.copied {
+    background: #DCFCE7 !important;
+    border-color: #16A34A !important;
+    color: #15803D !important;
+}
