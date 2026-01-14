@@ -1,5 +1,6 @@
 "use client";
-import React from 'react';
+
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { urlFor } from "@/utils/sanity/client";
@@ -11,6 +12,36 @@ interface Props {
 }
 
 export default function BlogSection({ data }: Props) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollButtons = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5);
+    }
+  };
+
+  useEffect(() => {
+    checkScrollButtons();
+    window.addEventListener('resize', checkScrollButtons);
+    return () => window.removeEventListener('resize', checkScrollButtons);
+  }, [data]);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const scrollAmount = container.clientWidth / (window.innerWidth < 768 ? 1 : 3);
+
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className={styles.blogSection} id="blog">
       <div className="container">
@@ -19,11 +50,27 @@ export default function BlogSection({ data }: Props) {
             {content?.sections?.blog?.title || "News & Featured Stories"}
           </h2>
           <div className={styles.navArrows}>
-            <button className={styles.arrowBtn}><BsArrowLeft /></button>
-            <button className={styles.arrowBtn}><BsArrowRight /></button>
+            <button
+              className={`${styles.arrowBtn} ${!canScrollLeft ? styles.disabled : ''}`}
+              onClick={() => scroll('left')}
+              disabled={!canScrollLeft}
+            >
+              <BsArrowLeft />
+            </button>
+            <button
+              className={`${styles.arrowBtn} ${!canScrollRight ? styles.disabled : ''}`}
+              onClick={() => scroll('right')}
+              disabled={!canScrollRight}
+            >
+              <BsArrowRight />
+            </button>
           </div>
         </div>
-        <div className={styles.blogGrid}>
+        <div
+          className={styles.sliderContainer}
+          ref={scrollRef}
+          onScroll={checkScrollButtons}
+        >
           {data?.map((post) => (
             <article key={post._id} className={styles.blogCard}>
               <div className={styles.cardBg}>
@@ -34,7 +81,7 @@ export default function BlogSection({ data }: Props) {
                     className={styles.bgImage}
                   />
                 )}
-                <div className={styles.overlay}></div>
+                <div className={styles.overlay} />
               </div>
 
               <div className={styles.cardInner}>
@@ -48,10 +95,14 @@ export default function BlogSection({ data }: Props) {
 
                   <div className={styles.cardActions}>
                     <Link href={`/blog/${post.slug?.current}`} className={styles.actionLink}>
-                      Read More <BsArrowRight className={styles.icon} />
+                      Read More
+                      {' '}
+                      <BsArrowRight className={styles.icon} />
                     </Link>
                     <button className={styles.actionLink}>
-                      Share <BsArrowRight className={styles.shareIcon} />
+                      Share
+                      {' '}
+                      <BsArrowRight className={styles.shareIcon} />
                     </button>
                   </div>
                 </div>

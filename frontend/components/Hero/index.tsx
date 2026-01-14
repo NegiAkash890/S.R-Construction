@@ -1,4 +1,5 @@
 "use client";
+
 import { BsArrowDown } from "react-icons/bs";
 import { urlFor } from "@/utils/sanity/client";
 import content from "../../data/siteContent.json";
@@ -14,7 +15,9 @@ interface HeroProps {
 
 export default function Hero({ data }: HeroProps) {
   const bgImage = data?.heroImage ? urlFor(data.heroImage).url() : '';
-  const { defaultHeading, defaultSubheading, ctaPrimary, ctaPrimaryLink, ctaSecondary, ctaSecondaryLink } = content.hero;
+  const {
+ defaultHeading, defaultSubheading, ctaPrimary, ctaPrimaryLink, ctaSecondary, ctaSecondaryLink
+} = content.hero;
 
   return (
     <section className={styles.hero} style={{ '--hero-bg-image': bgImage ? `url(${bgImage})` : undefined } as React.CSSProperties}>
@@ -29,7 +32,7 @@ export default function Hero({ data }: HeroProps) {
       <div className={styles.scrollIcon}>
         <BsArrowDown />
       </div>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} />
     </section>
   );
 }

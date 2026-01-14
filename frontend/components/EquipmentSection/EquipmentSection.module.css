@@ -12,8 +12,8 @@
 
 .header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 3rem;
     padding: 0 1rem;
     position: relative;
@@ -40,54 +40,49 @@
     margin: 0.5rem 0 0;
 }
 
-.controls {
+.navArrows {
     display: flex;
-    gap: 1rem;
+    gap: 10px;
 }
 
-.navButton {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    /* Circular buttons as requested */
-    border: 1px solid var(--slate-300);
-    background: transparent;
+.arrowBtn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--slate-300);
+    color: var(--white);
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    color: var(--slate-500);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
 }
 
-.navButton:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.5);
+.arrowBtn:hover {
+    background-color: var(--primary-color);
 }
 
-.scrollContainer {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 2rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    /* Hide scrollbar Firefox */
+@media (max-width: 768px) {
+    .navArrows {
+        display: none;
+    }
 }
 
-/* Hide scrollbar Chrome/Safari */
-.scrollContainer::-webkit-scrollbar {
-    display: none;
-}
-
-.list {
+/* Slider Layout */
+.sliderContainer {
     display: flex;
     gap: 2rem;
-    width: max-content;
-    padding: 0 1rem;
-    /* Side padding */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sliderContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .card {
@@ -95,13 +90,22 @@
     border: 1px solid var(--slate-200);
     display: flex;
     flex-direction: column;
-    min-width: 300px;
-    width: 300px;
-    /* Fixed width for list items */
+    flex: 0 0 calc((100% - 4rem) / 3);
+    min-width: 0;
+    scroll-snap-align: start;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    /* Square borders */
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 100%;
+    }
+
+    .sliderContainer {
+        gap: 1rem;
+    }
 }
 
 .card:hover {
@@ -121,7 +125,6 @@
     font-size: 0.9rem;
     position: relative;
     overflow: hidden;
-    /* Ensure image scale stays inside */
 }
 
 .equipmentImage {
@@ -147,7 +150,6 @@
     margin-bottom: 1rem;
     line-height: 1.4;
     height: 3.2rem;
-    /* Limit lines */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -192,21 +194,15 @@
     .title {
         font-size: 2rem;
     }
+}
 
-    .card {
-        min-width: 85vw;
-        width: 85vw;
-        scroll-snap-align: start;
-    }
+.arrowBtn.disabled {
+    opacity: 0.3;
+    cursor: default;
+    background-color: var(--slate-200);
+    color: var(--slate-400);
+}
 
-    .list {
-        gap: 1rem;
-        /* Smaller gap on mobile */
-        padding-right: 20%;
-        /* Ensure user sees there is more to scroll */
-    }
-
-    .controls {
-        display: none;
-    }
+.arrowBtn.disabled:hover {
+    background-color: var(--slate-200);
 }

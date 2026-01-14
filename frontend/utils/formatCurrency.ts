@@ -11,7 +11,7 @@ export function formatIndianCurrency(value: string | number): string {
         // Crores (1,00,00,000)
         const cr = number / 10000000;
         return `${parseFloat(cr.toFixed(2))} Cr`; // Remove trailing zeros
-    } else if (number >= 100000) {
+    } if (number >= 100000) {
         // Lakhs (1,00,000)
         const lakh = number / 100000;
         return `${parseFloat(lakh.toFixed(2))} Lakhs`;

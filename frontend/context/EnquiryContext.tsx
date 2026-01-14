@@ -1,4 +1,5 @@
 "use client";
+
 import React, { createContext, useContext, useState } from 'react';
 import EnquiryModal from '@/components/EnquiryModal';
 
@@ -16,10 +17,10 @@ export function EnquiryProvider({ children }: { children: React.ReactNode }) {
     const closeEnquiry = () => setIsOpen(false);
 
     return (
-        <EnquiryContext.Provider value={{ openEnquiry, closeEnquiry }}>
-            {children}
-            <EnquiryModal isOpen={isOpen} onClose={closeEnquiry} />
-        </EnquiryContext.Provider>
+      <EnquiryContext.Provider value={{ openEnquiry, closeEnquiry }}>
+        {children}
+        <EnquiryModal isOpen={isOpen} onClose={closeEnquiry} />
+      </EnquiryContext.Provider>
     );
 }
 

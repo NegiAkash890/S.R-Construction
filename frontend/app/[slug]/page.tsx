@@ -1,4 +1,3 @@
-
 // Actually, generic page can be server component.
 
 import { client, urlFor } from '@/utils/sanity/client';
@@ -19,43 +18,43 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     }
 
     return (
-        <main className={styles.main}>
-            {/* Hero Section */}
-            {page.heroType === 'image' && page.heroImage && (
-                <div className={styles.heroImageContainer}>
-                    <Image
-                        src={urlFor(page.heroImage).url()}
-                        alt={page.heroHeading || page.title}
-                        fill
-                        className={styles.heroImage}
-                        priority
-                    />
-                    <div className={styles.heroOverlay}>
-                        <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
-                    </div>
-                </div>
+      <main className={styles.main}>
+        {/* Hero Section */}
+        {page.heroType === 'image' && page.heroImage && (
+        <div className={styles.heroImageContainer}>
+          <Image
+            src={urlFor(page.heroImage).url()}
+            alt={page.heroHeading || page.title}
+            fill
+            className={styles.heroImage}
+            priority
+          />
+          <div className={styles.heroOverlay}>
+            <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
+          </div>
+        </div>
             )}
 
-            {page.heroType === 'color' && (
-                <div
-                    className={styles.heroColorContainer}
-                    style={{ backgroundColor: page.heroColor || '#333' }}
-                >
-                    <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
-                </div>
+        {page.heroType === 'color' && (
+        <div
+          className={styles.heroColorContainer}
+          style={{ backgroundColor: page.heroColor || '#333' }}
+        >
+          <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
+        </div>
             )}
 
-            <div className={`container ${styles.container}`}>
-                {/* Back Button */}
-                <Link href="/" className={styles.backLink}>
-                    ← Back to Home
-                </Link>
+        <div className={`container ${styles.container}`}>
+          {/* Back Button */}
+          <Link href="/" className={styles.backLink}>
+            ← Back to Home
+          </Link>
 
-                {/* Content */}
-                <div className={styles.content}>
-                    {page.content && <PortableText value={page.content} />}
-                </div>
-            </div>
-        </main>
+          {/* Content */}
+          <div className={styles.content}>
+            {page.content && <PortableText value={page.content} />}
+          </div>
+        </div>
+      </main>
     );
 }

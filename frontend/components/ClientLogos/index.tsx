@@ -1,4 +1,5 @@
 "use client";
+
 import { urlFor } from "@/utils/sanity/client";
 import content from "../../data/siteContent.json";
 import styles from './ClientLogos.module.css';

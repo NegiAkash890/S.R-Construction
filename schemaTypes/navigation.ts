@@ -43,7 +43,7 @@ export const navigation = defineType({
                             name: 'internalLink',
                             title: 'Internal Link',
                             type: 'reference',
-                            to: [{ type: 'page' }, { type: 'homepage' }, { type: 'project' }],
+                            to: [{ type: 'page' }, { type: 'homepage' }, { type: 'project' }, { type: 'teamPage' }],
                             hidden: ({ parent }) => parent?.type !== 'internal',
                         }),
                         defineField({

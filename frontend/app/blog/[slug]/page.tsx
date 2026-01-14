@@ -33,44 +33,46 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
 
     return (
-        <main className={styles.container}>
-            <div className={styles.breadcrumb}>
-                <Link href="/">Home</Link>
-                <span>/</span>
-                <Link href="/#blog">News</Link>
-                <span>/</span>
-                <span className={styles.currentCrumb}>{post.title}</span>
+      <main className={styles.container}>
+        <div className={styles.breadcrumb}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <Link href="/#blog">News</Link>
+          <span>/</span>
+          <span className={styles.currentCrumb}>{post.title}</span>
+        </div>
+
+        <article className={styles.article}>
+          <header className={styles.header}>
+            <div className={styles.meta}>
+              <span className={styles.date}>
+                {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}
+              </span>
+              <span className={styles.location}> | Mumbai</span>
+              {' '}
+              {/* Placeholder or add location to schema */}
             </div>
+            <h1 className={styles.title}>{post.title}</h1>
+            <div className={styles.shareSection}>
+              <ShareButton title={post.title} />
+            </div>
+          </header>
 
-            <article className={styles.article}>
-                <header className={styles.header}>
-                    <div className={styles.meta}>
-                        <span className={styles.date}>
-                            {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}
-                        </span>
-                        <span className={styles.location}> | Mumbai</span> {/* Placeholder or add location to schema */}
-                    </div>
-                    <h1 className={styles.title}>{post.title}</h1>
-                    <div className={styles.shareSection}>
-                        <ShareButton title={post.title} />
-                    </div>
-                </header>
-
-                {post.mainImage && (
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src={urlFor(post.mainImage).url()}
-                            alt={post.title}
-                            fill
-                            className={styles.mainImage}
-                        />
-                    </div>
+          {post.mainImage && (
+            <div className={styles.imageWrapper}>
+              <Image
+                src={urlFor(post.mainImage).url()}
+                alt={post.title}
+                fill
+                className={styles.mainImage}
+              />
+            </div>
                 )}
 
-                <div className={styles.content}>
-                    <PortableText value={post.body} />
-                </div>
-            </article>
-        </main>
+          <div className={styles.content}>
+            <PortableText value={post.body} />
+          </div>
+        </article>
+      </main>
     );
 }

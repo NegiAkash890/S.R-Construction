@@ -1,11 +1,11 @@
 "use client";
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEnquiry } from '@/context/EnquiryContext';
 import content from '../../data/siteContent.json';
 import styles from './Navbar.module.css';
-
-import { useEnquiry } from '@/context/EnquiryContext';
 
 // Define types for the navigation items
 export interface NavItem {
@@ -41,9 +41,9 @@ export default function Navbar({ links }: NavbarProps) {
         <Link href="/" className={styles.logo}>{logo}</Link>
 
         <button className={`${styles.hamburger} ${isOpen ? styles.active : ''}`} onClick={() => setIsOpen(!isOpen)}>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
+          <span className={styles.bar} />
+          <span className={styles.bar} />
+          <span className={styles.bar} />
         </button>
 
         <ul className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>

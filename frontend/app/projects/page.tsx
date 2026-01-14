@@ -20,11 +20,11 @@ export default async function ProjectsPage() {
     const { projects, meta } = await sanityClient.fetch(query);
 
     return (
-        <main>
-            <ProjectsHero data={meta} />
-            <div>
-                <ProjectsGallery data={projects} />
-            </div>
-        </main>
+      <main>
+        <ProjectsHero data={meta} />
+        <div>
+          <ProjectsGallery data={projects} />
+        </div>
+      </main>
     );
 }

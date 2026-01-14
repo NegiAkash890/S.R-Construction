@@ -14,7 +14,9 @@ async function getData() {
   const featuredProjects = await client.fetch(`*[_type == "project" && isFeatured == true] | order(_createdAt desc)[0...3]`);
   const industries = await client.fetch(`*[_type == "industry"] | order(_createdAt asc)`);
 
-  return { homepage, clients, posts, featuredProjects, industries };
+  return {
+ homepage, clients, posts, featuredProjects, industries
+};
 }
 
 export default async function Home() {

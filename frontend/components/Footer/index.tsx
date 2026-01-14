@@ -1,7 +1,10 @@
 "use client";
+
+import {
+ FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt
+} from 'react-icons/fa';
 import content from '../../data/siteContent.json';
 import styles from './Footer.module.css';
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 
 interface NavItem {
   label: string;
@@ -13,7 +16,9 @@ interface FooterProps {
 }
 
 export default function Footer({ links }: FooterProps) {
-  const { brand, tagline, address, phone, email, copyright, social } = content.footer;
+  const {
+ brand, tagline, address, phone, email, copyright, social
+} = content.footer;
 
   const getIcon = (platform: string) => {
     switch (platform) {
@@ -46,13 +51,19 @@ export default function Footer({ links }: FooterProps) {
 
             <div className={styles.miniExcellence}>
               <div className={styles.certItem}>
-                <FaAward /> ISO 9001:2015
+                <FaAward />
+                {' '}
+                ISO 9001:2015
               </div>
               <div className={styles.certItem}>
-                <FaHardHat /> NSC Member
+                <FaHardHat />
+                {' '}
+                NSC Member
               </div>
               <div className={styles.certItem}>
-                <FaAward /> Leading EPC 2024
+                <FaAward />
+                {' '}
+                Leading EPC 2024
               </div>
             </div>
 
@@ -103,7 +114,13 @@ export default function Footer({ links }: FooterProps) {
         </div>
 
         <div className={styles.bottomBar}>
-          <p className={styles.copyright}>© {new Date().getFullYear()} {copyright}.</p>
+          <p className={styles.copyright}>
+            ©
+            {new Date().getFullYear()}
+            {' '}
+            {copyright}
+            .
+          </p>
           <div className={styles.legalLinks}>
             <a href="/privacy">Privacy</a>
             <a href="/terms">Terms</a>
@@ -114,4 +131,3 @@ export default function Footer({ links }: FooterProps) {
     </footer>
   );
 }
-

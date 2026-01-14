@@ -1,11 +1,10 @@
 "use client";
-import { useRef } from 'react';
+
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import content from '../../data/siteContent.json';
 import styles from './EquipmentSection.module.css';
-
-const SCROLL_AMOUNT = 320;
 
 const getImageForEquipment = (name: string) => {
     const n = name.toLowerCase();
@@ -22,57 +21,87 @@ const getImageForEquipment = (name: string) => {
 export default function EquipmentSection() {
     const { title, items } = content.sections.equipment;
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
+
+    const checkScrollButtons = () => {
+        if (scrollRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+            setCanScrollLeft(scrollLeft > 0);
+            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5); // 5px tolerance
+        }
+    };
+
+    useEffect(() => {
+        checkScrollButtons();
+        window.addEventListener('resize', checkScrollButtons);
+        return () => window.removeEventListener('resize', checkScrollButtons);
+    }, []);
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
-            const targetScroll = scrollRef.current.scrollLeft + (direction === 'left' ? -SCROLL_AMOUNT : SCROLL_AMOUNT);
-            scrollRef.current.scrollTo({
-                left: targetScroll,
+            const container = scrollRef.current;
+            const scrollAmount = container.clientWidth / (window.innerWidth < 768 ? 1 : 3); // Scroll 1 item width
+
+            container.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
                 behavior: 'smooth'
             });
         }
     };
 
     return (
-        <section className={styles.section} id="equipment">
-            <div className="container">
-                <div className={styles.header}>
-                    <h2 className={styles.title}>{title}</h2>
-                    <div className={styles.controls}>
-                        <button onClick={() => scroll('left')} className={styles.navButton} aria-label="Scroll Left">
-                            <BsArrowLeft />
-                        </button>
-                        <button onClick={() => scroll('right')} className={styles.navButton} aria-label="Scroll Right">
-                            <BsArrowRight />
-                        </button>
-                    </div>
-                </div>
-                <div className={styles.scrollContainer} ref={scrollRef}>
-                    <div className={styles.list}>
-                        {items.map((item, index) => (
-                            <div key={index} className={styles.card}>
-                                <div className={styles.imagePlaceholder}>
-                                    <Image
-                                        src={getImageForEquipment(item.name)}
-                                        alt={item.name}
-                                        fill
-                                        className={styles.equipmentImage}
-                                        sizes="(max-width: 768px) 100vw, 300px"
-                                    />
-                                </div>
-                                <div className={styles.cardContent}>
-                                    <h3 className={styles.itemName}>{item.name}</h3>
-                                    <div className={styles.divider}></div>
-                                    <div className={styles.quantityWrapper}>
-                                        <span className={styles.qtyLabel}>Quantity</span>
-                                        <span className={styles.qtyValue}>{item.quantity}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+      <section className={styles.section} id="equipment">
+        <div className="container">
+          <div className={styles.header}>
+            <h2 className={styles.title}>{title}</h2>
+            <div className={styles.navArrows}>
+              <button
+                onClick={() => scroll('left')}
+                className={`${styles.arrowBtn} ${!canScrollLeft ? styles.disabled : ''}`}
+                disabled={!canScrollLeft}
+                aria-label="Previous"
+              >
+                <BsArrowLeft />
+              </button>
+              <button
+                onClick={() => scroll('right')}
+                className={`${styles.arrowBtn} ${!canScrollRight ? styles.disabled : ''}`}
+                disabled={!canScrollRight}
+                aria-label="Next"
+              >
+                <BsArrowRight />
+              </button>
             </div>
-        </section>
+          </div>
+          <div
+            className={styles.sliderContainer}
+            ref={scrollRef}
+            onScroll={checkScrollButtons}
+          >
+            {items.map((item, index) => (
+              <div key={`${item.name}-${index}`} className={styles.card}>
+                <div className={styles.imagePlaceholder}>
+                  <Image
+                    src={getImageForEquipment(item.name)}
+                    alt={item.name}
+                    fill
+                    className={styles.equipmentImage}
+                    sizes="(max-width: 768px) 100vw, 300px"
+                  />
+                </div>
+                <div className={styles.cardContent}>
+                  <h3 className={styles.itemName}>{item.name}</h3>
+                  <div className={styles.divider} />
+                  <div className={styles.quantityWrapper}>
+                    <span className={styles.qtyLabel}>Quantity</span>
+                    <span className={styles.qtyValue}>{item.quantity}</span>
+                  </div>
+                </div>
+              </div>
+                    ))}
+          </div>
+        </div>
+      </section>
     );
 }

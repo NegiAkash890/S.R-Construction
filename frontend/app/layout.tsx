@@ -3,6 +3,16 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
 
+import { client } from "@/utils/sanity/client";
+import { NAVIGATION_QUERY } from "@/utils/sanity/queries";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { EnquiryProvider } from "@/context/EnquiryContext";
+
+// ... existing imports
+
+import SchemaMarkup from "@/components/SchemaMarkup";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -58,16 +68,6 @@ export const metadata: Metadata = {
     // 'ICBM': '19.0760, 72.8777',
   }
 };
-
-import { client } from "@/utils/sanity/client";
-import { NAVIGATION_QUERY } from "@/utils/sanity/queries";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { EnquiryProvider } from "@/context/EnquiryContext";
-
-// ... existing imports
-
-import SchemaMarkup from "@/components/SchemaMarkup";
 
 // ... (existing helper imports)
 

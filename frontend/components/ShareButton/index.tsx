@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from 'react';
 import { BsShare, BsCheck } from 'react-icons/bs';
 import styles from './ShareButton.module.css';
@@ -38,9 +39,9 @@ export default function ShareButton({ title, text, url }: ShareButtonProps) {
     };
 
     return (
-        <button className={`${styles.shareBtn} ${copied ? styles.copied : ''}`} onClick={handleShare}>
-            {copied ? <BsCheck size={18} /> : <BsShare size={14} />}
-            {copied ? 'Copied Link' : 'Share'}
-        </button>
+      <button className={`${styles.shareBtn} ${copied ? styles.copied : ''}`} onClick={handleShare}>
+        {copied ? <BsCheck size={18} /> : <BsShare size={14} />}
+        {copied ? 'Copied Link' : 'Share'}
+      </button>
     );
 }

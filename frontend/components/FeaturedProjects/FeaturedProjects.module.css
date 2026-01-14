@@ -49,9 +49,59 @@
     }
 }
 
+.section {
+    padding: var(--section-padding);
+    background-color: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 1rem auto 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .card {
     background: var(--white);
-    /* overflow: hidden; Removed to allow tooltip to pop out */
     border-radius: 12px;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -67,7 +117,6 @@
     box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
     border-color: rgba(234, 179, 8, 0.3);
     z-index: 50;
-    /* Ensure tooltip shows above other cards */
 }
 
 .imageContainer {
@@ -76,10 +125,204 @@
     width: 100%;
     background-color: var(--slate-200);
     overflow: hidden;
-    /* Keep image zoom contained */
     border-top-left-radius: 11px;
-    /* Match card radius - border width */
     border-top-right-radius: 11px;
+}
+
+.projectImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .projectImage {
+    transform: scale(1.05);
+}
+
+.statusOverlay {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+}
+
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.statusCompleted {
+    background-color: rgba(220, 252, 231, 0.9);
+    color: #15803d;
+}
+
+.statusInProgress {
+    background-color: rgba(219, 234, 254, 0.9);
+    color: #1d4ed8;
+}
+
+.cardContent {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cardHeader {
+    margin-bottom: 0.75rem;
+}
+
+.clientName {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.cardBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--slate-500);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.metaGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--slate-100);
+}
+
+@media (min-width: 768px) {
+    .metaGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.metaLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: var(--slate-400);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.metaValue {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.viewAllButton {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
+}
+
+.viewAllButton:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.3);
+}
+
+.locationWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.moreLocations {
+    background: var(--slate-100);
+    color: var(--slate-500);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    cursor: help;
+    border: 1px solid var(--slate-200);
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+}
+
+.moreLocations:hover {
+    background: var(--slate-200);
+    color: var(--slate-900);
+}
+
+.locationsTooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: normal;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.locationsTooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-color) transparent transparent transparent;
+}
+
+.moreLocations:hover .locationsTooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: 130%;
 }
 
 .projectImage {

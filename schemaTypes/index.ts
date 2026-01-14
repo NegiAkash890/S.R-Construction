@@ -9,6 +9,7 @@ import { staffRole } from './staffRole'
 import { equipment } from './equipment'
 import { siteSettings } from './siteSettings'
 import { projectsPage } from './projectsPage'
+import { teamPage } from './teamPage'
 
 export const schemaTypes = [
     client,
@@ -21,5 +22,6 @@ export const schemaTypes = [
     staffRole,
     equipment,
     siteSettings,
-    projectsPage
+    projectsPage,
+    teamPage
 ]

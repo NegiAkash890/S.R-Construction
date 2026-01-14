@@ -1,9 +1,10 @@
 "use client";
+
 import { useEffect, useState, useRef } from 'react';
 import content from '../../data/siteContent.json';
 import styles from './ProjectsHero.module.css';
 
-const CountUp = ({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) => {
+function CountUp({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
     const [count, setCount] = useState(0);
     const countRef = useRef(null);
 
@@ -34,8 +35,13 @@ const CountUp = ({ end, duration = 2000, suffix = '' }: { end: number, duration?
         return () => observer.disconnect();
     }, [end, duration]);
 
-    return <span ref={countRef}>{count}{suffix}</span>;
-};
+    return (
+      <span ref={countRef}>
+        {count}
+        {suffix}
+      </span>
+    );
+}
 
 interface HeroProps {
     data: {
@@ -53,7 +59,6 @@ export default function ProjectsHero({ data }: HeroProps) {
     const heroSubtitle = data?.heroSubtitle || subtitle;
     const heroStats = data?.stats || stats;
 
-
     const parseStat = (value: string) => {
         const number = parseInt(value, 10);
         const suffix = value.replace(number.toString(), '');
@@ -61,27 +66,27 @@ export default function ProjectsHero({ data }: HeroProps) {
     };
 
     return (
-        <section className={styles.hero}>
-            <div className="container">
-                <div className={styles.heroContent}>
-                    <h1>{heroTitle}</h1>
-                    <p className={styles.subtitle}>{heroSubtitle}</p>
+      <section className={styles.hero}>
+        <div className="container">
+          <div className={styles.heroContent}>
+            <h1>{heroTitle}</h1>
+            <p className={styles.subtitle}>{heroSubtitle}</p>
 
-                    <div className={styles.statsGrid}>
-                        {heroStats && heroStats.map((stat: any, index: number) => {
+            <div className={styles.statsGrid}>
+              {heroStats && heroStats.map((stat: any, index: number) => {
                             const { number, suffix } = parseStat(stat.value);
                             return (
-                                <div key={index} className={styles.statItem}>
-                                    <div className={styles.statValue}>
-                                        <CountUp end={number} suffix={suffix} />
-                                    </div>
-                                    <span className={styles.statLabel}>{stat.label}</span>
+                              <div key={index} className={styles.statItem}>
+                                <div className={styles.statValue}>
+                                  <CountUp end={number} suffix={suffix} />
                                 </div>
+                                <span className={styles.statLabel}>{stat.label}</span>
+                              </div>
                             );
                         })}
-                    </div>
-                </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     );
 }
