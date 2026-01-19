@@ -1,0 +1,154 @@
+.section {
+    padding: var(--section-padding);
+    background: white;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.content {
+    position: sticky;
+    top: 120px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--slate-500);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+}
+
+.supportBox {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.supportBox h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--slate-800);
+}
+
+.supportBox p {
+    color: var(--slate-500);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.contactLink {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: var(--slate-900);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contactLink:hover {
+    color: var(--accent-color);
+}
+
+/* Accordion */
+.accordion {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.item:first-child {
+    border-top: 1px solid #e2e8f0;
+}
+
+.question {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.35rem;
+    /* Larger, premium font size */
+    font-weight: 600;
+    color: var(--slate-800);
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.item:hover .question {
+    color: var(--accent-color);
+}
+
+.item.open .question {
+    color: var(--slate-900);
+}
+
+.icon {
+    font-size: 1rem;
+    color: var(--slate-400);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s;
+    min-width: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item.open .icon {
+    transform: rotate(45deg);
+    /* If using Plus icon, 45deg makes it X. If Minus, 180 is fine. 
+       Let's assume Plus/Minus logic in JS creates the icon change, 
+       but for aesthetic, a rotating Plus -> X is standard 'premium'. 
+       However, the JS swaps icons. So 180 spin is fine. */
+    transform: rotate(180deg);
+    color: var(--accent-color);
+}
+
+.answer {
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.answer p {
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+    color: var(--slate-600);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    max-width: 90%;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .content {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .question {
+        font-size: 1.15rem;
+        padding: 1.5rem 0;
+    }
+}
