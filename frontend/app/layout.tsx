@@ -12,6 +12,7 @@ import { EnquiryProvider } from "@/context/EnquiryContext";
 // ... existing imports
 
 import SchemaMarkup from "@/components/SchemaMarkup";
+import ViewTransitions from "@/components/ViewTransitions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,6 +95,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <EnquiryProvider>
+          <ViewTransitions />
           <SchemaMarkup />
           <Navbar links={headerLinks} />
           {children}
