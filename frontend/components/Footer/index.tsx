@@ -1,7 +1,7 @@
 "use client";
 
 import {
- FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt
+  FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaFilePdf
 } from 'react-icons/fa';
 import content from '../../data/siteContent.json';
 import styles from './Footer.module.css';
@@ -17,8 +17,8 @@ interface FooterProps {
 
 export default function Footer({ links }: FooterProps) {
   const {
- brand, tagline, address, phone, email, copyright, social
-} = content.footer;
+    brand, tagline, address, phone, email, copyright, social
+  } = content.footer;
 
   const getIcon = (platform: string) => {
     switch (platform) {
@@ -110,6 +110,11 @@ export default function Footer({ links }: FooterProps) {
                 <p><a href={`tel:${phone}`}>{phone}</a></p>
               </div>
             </div>
+
+            <a href="/company-profile.pdf" className={styles.downloadBtn} target="_blank" rel="noopener noreferrer">
+              <FaFilePdf />
+              Download Company Profile
+            </a>
           </div>
         </div>
 
