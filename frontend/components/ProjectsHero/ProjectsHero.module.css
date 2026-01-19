@@ -1,148 +1,140 @@
 .hero {
-    background-color: var(--primary-color);
-    background-image:
-        radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 50%),
-        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background-color: var(--slate-900);
+    /* Deep architectural dark */
     color: white;
-    min-height: 80vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
     padding: 120px 0;
+    isolation: isolate;
 }
 
+/* Background Texture */
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 90%);
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
     pointer-events: none;
-    z-index: 1;
+    z-index: -1;
 }
 
 .heroContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
     position: relative;
     z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-    /* Default center, can be changed */
 }
 
-.hero h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
+/* Left Column */
+.titleColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heroTitle {
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
     font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
     color: white;
-    background: linear-gradient(to right, #fff, #cbd5e1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
-    animation: fadeInUp 0.8s ease-out;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    /* Optional: Outline effect for "Architectural" feel - mostly solid for readability, 
+       but we could add a ghost duplicate behind it if we had splitting. 
+       For now, just pure bold impact. */
 }
 
 .subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    color: var(--slate-300);
-    margin-bottom: 4rem;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--slate-400);
     line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 300;
-    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    max-width: 480px;
+    font-weight: 400;
+    margin-left: 0.5rem;
+    border-left: 2px solid var(--accent-color);
+    padding-left: 1.5rem;
 }
 
-.statsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+/* Right Column - Stats */
+.statsColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
 }
 
 .statItem {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
 }
 
-.statItem:not(:last-child)::after {
+.statItem::before {
     content: '';
     position: absolute;
-    right: -1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 50%;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    display: none;
-    /* Hidden on mobile */
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.statValue {
-    display: block;
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 800;
-    color: var(--accent-color);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    font-feature-settings: "tnum";
-    font-variant-numeric: tabular-nums;
+.hero:hover .statItem::before {
+    width: 100%;
 }
 
 .statLabel {
     font-size: 0.875rem;
-    color: var(--slate-400);
-    letter-spacing: 2px;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-500);
+    margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.statValue {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    /* Thinner weight for contrast with title */
+    color: white;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
 }
 
-@media (min-width: 768px) {
-    .statItem:not(:last-child)::after {
-        display: block;
-    }
-
-    .hero {
-        text-align: left;
-    }
-
+/* Responsive */
+@media (min-width: 992px) {
     .heroContent {
-        margin: 0 auto;
-        text-align: center;
+        grid-template-columns: 1.2fr 0.8fr;
+        /* Asymmetrical split */
+        align-items: center;
+    }
+
+    .statsColumn {
+        padding-left: 4rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .hero {
+        padding-top: 140px;
         min-height: auto;
-        padding-top: 160px;
     }
 
-    .statsGrid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+    .heroTitle {
+        font-size: 4rem;
     }
 }

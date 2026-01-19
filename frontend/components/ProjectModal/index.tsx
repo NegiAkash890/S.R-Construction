@@ -14,19 +14,26 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     const [isVisible, setIsVisible] = useState(false);
+    const [animate, setAnimate] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    // Combine main image + gallery for the carousel
-    const carouselImages = project ? [project.image, ...(project.gallery || [])].filter(Boolean) : [];
+    // Only use gallery images for the carousel (Main image is treated as logo)
+    const carouselImages = project ? (project.gallery || []).filter(Boolean) : [];
 
     useEffect(() => {
         if (isOpen) {
             setIsVisible(true);
             document.body.style.overflow = 'hidden';
-            setCurrentImageIndex(0); // Reset to first image on open
+            setCurrentImageIndex(0);
+            // Trigger animation after mount
+            const timer = setTimeout(() => setAnimate(true), 10);
+            return () => clearTimeout(timer);
         } else {
-            const timer = setTimeout(() => setIsVisible(false), 300);
-            document.body.style.overflow = 'unset';
+            setAnimate(false);
+            const timer = setTimeout(() => {
+                setIsVisible(false);
+                document.body.style.overflow = 'unset';
+            }, 300); // Match CSS transition duration
             return () => clearTimeout(timer);
         }
     }, [isOpen]);
@@ -44,8 +51,8 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
     if (!isVisible && !isOpen) return null;
 
     return (
-        <div className={`${styles.backdrop} ${isOpen ? styles.open : ''}`} onClick={onClose}>
-            <div className={`${styles.modal} ${isOpen ? styles.slideIn : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`${styles.backdrop} ${animate ? styles.open : ''}`} onClick={onClose}>
+            <div className={`${styles.modal} ${animate ? styles.slideIn : ''}`} onClick={(e) => e.stopPropagation()}>
                 <button className={styles.closeButton} onClick={onClose}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
@@ -76,7 +83,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                                     </button>
 
                                     <div className={styles.carouselIndicators}>
-                                        {carouselImages.map((_, idx) => (
+                                        {carouselImages.map((_: any, idx: number) => (
                                             <span
                                                 key={idx}
                                                 className={`${styles.indicator} ${idx === currentImageIndex ? styles.activeIndicator : ''}`}
@@ -115,7 +122,20 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                                 </div>
                                 <div className={styles.statItem}>
                                     <span className={styles.statLabel}>Client</span>
-                                    <span className={styles.statValue}>{project.client?.name || 'N/A'}</span>
+                                    <div className={styles.clientWrapper}>
+                                        {project.image && (
+                                            <div className={styles.clientLogoWrapper}>
+                                                <Image
+                                                    src={urlFor(project.image).url()}
+                                                    alt={project.clientName || 'Client'}
+                                                    width={40}
+                                                    height={40}
+                                                    className={styles.clientLogo}
+                                                />
+                                            </div>
+                                        )}
+                                        <span className={styles.statValue}>{project.clientName || 'N/A'}</span>
+                                    </div>
                                 </div>
                             </div>
 
