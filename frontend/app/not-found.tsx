@@ -2,59 +2,33 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import styles from './not-found.module.css';
 
 export default function NotFound() {
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minHeight: '100vh',
-            backgroundColor: '#0B1121', // Dark Hero Background
-            padding: '2rem',
-            textAlign: 'center'
-        }}>
-            <div style={{ width: '400px', maxWidth: '100%', marginBottom: '2rem' }}>
-                <DotLottieReact
-                    src="https://lottie.host/a6705f8f-8eef-4de6-96c4-248c851ddcef/JVZ2EKBdh1.lottie"
-                    loop
-                    autoplay
-                />
+        <div className={styles.container}>
+            {/* Marquee Background */}
+            <div className={styles.marqueeContainer}>
+                <div className={styles.marqueeContent}>
+                    <span>PAGE NOT FOUND — CONSTRUCTION HALTED — BLUEPRINT MISSING — SAFETY HAZARD — </span>
+                    <span>PAGE NOT FOUND — CONSTRUCTION HALTED — BLUEPRINT MISSING — SAFETY HAZARD — </span>
+                </div>
             </div>
 
-            <h1 style={{
-                fontSize: '2rem',
-                fontWeight: '700',
-                color: 'white',
-                marginBottom: '1rem'
-            }}>
-                Page Not Found
-            </h1>
+            <div className={styles.content}>
+                {/* <h1 className={styles.glitch} data-text="404">404</h1> */}
 
-            <p style={{
-                color: '#94a3b8', // slate-400
-                marginBottom: '2rem'
-            }}>
-                Sorry, we couldn't find the page you're looking for.
-            </p>
+                <div className={styles.messageBox}>
+                    <p className={styles.description}>
+                        The page you are looking for has been moved, removed, or possibly never existed.
+                        Proceed with caution back to the main site.
+                    </p>
 
-            <Link
-                href="/"
-                style={{
-                    display: 'inline-block',
-                    padding: '0.75rem 2rem',
-                    backgroundColor: '#f97316', // Orange Accent
-                    color: 'white',
-                    fontWeight: '600',
-                    borderRadius: '9999px',
-                    textDecoration: 'none',
-                    transition: 'opacity 0.2s ease'
-                }}
-            >
-                Go Back Home
-            </Link>
+                    <Link href="/" className={styles.homeBtn}>
+                        RETURN TO SAFETY
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }
