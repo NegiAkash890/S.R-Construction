@@ -1,10 +1,15 @@
 "use client";
 
+// Imports Need to check if BsArrowRight is imported.
+// I will replace the whole component content from return statement ideally, or just the form side.
+// Let's replace the Logic + Return to catch imports.
+
 import { useState, FormEvent } from 'react';
 import Image from 'next/image';
 import {
   FaFacebook, FaInstagram, FaLinkedin, FaTwitter
 } from 'react-icons/fa';
+import { BsArrowRight } from 'react-icons/bs';
 import styles from './EnquiryForm.module.css';
 
 export default function EnquiryForm() {
@@ -12,7 +17,6 @@ export default function EnquiryForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  // ... (handler logic remains same)
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
@@ -23,6 +27,7 @@ export default function EnquiryForm() {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
       mobile: formData.get('mobile') as string,
+      projectType: formData.get('projectType') as string,
       message: formData.get('message') as string,
     };
 
@@ -30,6 +35,8 @@ export default function EnquiryForm() {
     if (!data.name.trim()) newErrors.name = 'Required';
     if (!data.email.trim()) newErrors.email = 'Required';
     if (!data.mobile.trim()) newErrors.mobile = 'Required';
+    if (!data.projectType || data.projectType === 'default') newErrors.projectType = 'Required'; // Basic check
+    if (!data.message.trim()) newErrors.message = 'Required';
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -91,71 +98,88 @@ export default function EnquiryForm() {
 
           {/* Right Side - Form */}
           <div className={styles.formSide}>
-            <h2 className={styles.formTitle}>GET IN TOUCH</h2>
-            <p className={styles.formSubtitle}>24/7 We will answer your questions and problems</p>
+            <h2 className={styles.formTitle}>Send Us Message!</h2>
 
             <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.row}>
-                <div className={styles.field}>
 
-                  <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    className={styles.input}
-                    placeholder="First Name"
-                    style={errors.name ? { borderColor: '#ef4444' } : {}}
-                    required
-                  />
-                </div>
-                <div className={styles.field}>
-
-                  <input
-                    id="lastname" // Added for visual match, optional logic
-                    type="text"
-                    name="lastname"
-                    className={styles.input}
-                    placeholder="Last Name"
-                  />
-                </div>
+              <div className={styles.field}>
+                <label className={styles.label} htmlFor="name">Full Name*</label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  className={styles.input}
+                  placeholder="Your name"
+                  style={errors.name ? { borderColor: '#ef4444' } : {}}
+                  required
+                />
               </div>
 
               <div className={styles.field}>
+                <label className={styles.label} htmlFor="email">Email Address*</label>
                 <input
                   id="email"
                   type="email"
                   name="email"
                   className={styles.input}
-                  placeholder="Email Id"
+                  placeholder="Your email"
                   style={errors.email ? { borderColor: '#ef4444' } : {}}
                   required
                 />
               </div>
 
-              <div className={styles.field}>
-                <input
-                  id="mobile"
-                  type="tel"
-                  name="mobile"
-                  className={styles.input}
-                  placeholder="Phone"
-                  style={errors.mobile ? { borderColor: '#ef4444' } : {}}
-                  required
-                />
+              <div className={styles.row}>
+                <div className={styles.field}>
+                  <label className={styles.label} htmlFor="mobile">Phone Number*</label>
+                  <input
+                    id="mobile"
+                    type="tel"
+                    name="mobile"
+                    className={styles.input}
+                    placeholder="Your phone number"
+                    style={errors.mobile ? { borderColor: '#ef4444' } : {}}
+                    required
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label className={styles.label} htmlFor="projectType">Project Type*</label>
+                  <div className={styles.selectWrapper}>
+                    <select
+                      id="projectType"
+                      name="projectType"
+                      className={styles.select}
+                      defaultValue=""
+                      required
+                    >
+                      <option value="" disabled>Select project type</option>
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="industrial">Industrial</option>
+                      <option value="renovation">Renovation</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
               <div className={styles.field}>
+                <label className={styles.label} htmlFor="message">Message*</label>
                 <textarea
                   id="message"
                   name="message"
                   className={styles.textarea}
-                  placeholder="Describe your issue"
+                  placeholder="Tell us about your project..."
+                  style={errors.message ? { borderColor: '#ef4444' } : {}}
+                  required
                 />
               </div>
 
-              <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send'}
-              </button>
+              <div className={styles.submitWrapper}>
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {!isSubmitting && <BsArrowRight className={styles.btnIcon} />}
+                </button>
+              </div>
             </form>
           </div>
         </div>

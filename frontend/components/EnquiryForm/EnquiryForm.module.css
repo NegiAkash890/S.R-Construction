@@ -82,7 +82,7 @@
 /* Right Side - Form */
 .formSide {
     flex: 1;
-    padding: 4rem;
+    padding: 3rem 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,23 +90,17 @@
 
 .formTitle {
     font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent-color);
-    /* Will be updated next */
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-}
-
-.formSubtitle {
-    color: var(--slate-500);
-    margin-bottom: 3rem;
-    font-size: 1rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    /* Dark Navy */
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .row {
@@ -118,57 +112,88 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--slate-700);
 }
 
 .input,
-.textarea {
+.textarea,
+.select {
     width: 100%;
-    padding: 12px;
+    padding: 12px 16px;
     border: 1px solid #e2e8f0;
-    /* Full border */
-    font-size: 1rem;
+    /* Light border */
+    font-size: 0.95rem;
     outline: none;
     transition: all 0.3s;
-    background: transparent;
-    color: var(--primary-color);
-    border-radius: 0;
-    /* No radius */
+    background: white;
+    border-radius: 4px;
+    /* Slight radius */
+    color: var(--slate-800);
 }
 
 .input::placeholder,
 .textarea::placeholder {
-    color: #94a3b8;
+    color: #cbd5e1;
 }
 
 .input:focus,
-.textarea:focus {
+.textarea:focus,
+.select:focus {
     border-color: var(--accent-color);
-    background: transparent;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
 
 .textarea {
     resize: none;
-    min-height: 100px;
+    min-height: 120px;
+}
+
+.select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+.submitWrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 .submitBtn {
-    margin-top: 1rem;
-    background: var(--accent-color);
+    background: #F97316;
+    /* Orange from reference */
     color: var(--white);
-    font-weight: 700;
-    padding: 16px;
+    font-weight: 600;
+    padding: 14px 32px;
     border: none;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 200px;
+    justify-content: center;
 }
 
 .submitBtn:hover {
-    background: var(--primary-color);
+    background: #ea580c;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.btnIcon {
+    font-size: 1.2rem;
 }
 
 /* Success Message */
@@ -191,6 +216,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    border-radius: 50%;
 }
 
 /* Mobile Responsiveness */
@@ -216,7 +242,7 @@
 
     .row {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .formTitle {
