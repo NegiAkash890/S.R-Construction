@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import FeaturedProjects from '@/components/FeaturedProjects';
 import styles from './page.module.css';
 
 // Revalidate every 60 seconds
@@ -28,12 +29,18 @@ async function getIndustryData(slug: string) {
     { id: industry._id }
   );
 
-  return { industry, posts };
+  // Fetch projects related to this industry
+  const projects = await client.fetch(
+    `*[_type == "project" && references($id)] | order(_createdAt desc)[0...6]`,
+    { id: industry._id }
+  );
+
+  return { industry, posts, projects };
 }
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const { industry, posts } = await getIndustryData(slug);
+  const { industry, posts, projects } = await getIndustryData(slug);
 
   if (!industry) {
     notFound();
@@ -99,6 +106,16 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
           </div>
         </section>
       )}
+
+
+
+      {/* Industry Projects */}
+      <FeaturedProjects
+        projects={projects}
+        title="Key Projects"
+        className={styles.projectsSection}
+        variant="scroll"
+      />
 
       {/* Statistics Section */}
       {industry.stats && industry.stats.length > 0 && (

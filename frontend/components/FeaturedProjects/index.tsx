@@ -17,23 +17,27 @@ interface Project {
   image?: any;
   category?: string;
   gallery?: any[];
+  industry?: { title: string };
 }
 
 interface FeaturedProjectsProps {
   projects: Project[];
+  title?: string;
+  className?: string;
+  variant?: 'grid' | 'scroll';
 }
 
-export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
+export default function FeaturedProjects({ projects, title = "Featured Projects", className, variant = 'grid' }: FeaturedProjectsProps) {
   if (!projects || projects.length === 0) return null;
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${className || ''}`}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Featured Projects</h2>
+          <h2 className={styles.title}>{title}</h2>
         </div>
 
-        <div className={styles.grid}>
+        <div className={`${styles.grid} ${variant === 'scroll' ? styles.horizontal : ''}`}>
           {projects.map((project) => (
             <Link href={`/projects?projectId=${project._id}`} key={project._id} className={styles.card}>
               <div className={styles.imageContainer}>
@@ -57,7 +61,7 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                 {/* Fallback pattern if no image? keeping simple for now */}
 
                 {/* Mock Category/Industry if not present in Top Level or use a default */}
-                <span className={styles.badge}>{project.category || 'Construction'}</span>
+                <span className={styles.badge}>{project.industry?.title || project.category || 'Construction'}</span>
               </div>
 
               <div className={styles.content}>
