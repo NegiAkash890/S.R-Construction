@@ -13,6 +13,8 @@ import { EnquiryProvider } from "@/context/EnquiryContext";
 
 import SchemaMarkup from "@/components/SchemaMarkup";
 import ViewTransitions from "@/components/ViewTransitions";
+import NextTopLoader from 'nextjs-toploader';
+import Loader from "@/components/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,20 +84,28 @@ export default async function RootLayout({
   const siteSettings = await client.fetch(SITE_SETTINGS_QUERY);
 
   // Fallback to empty array if no menu found
+  const mapLink = (item: any) => {
+    if (item.type === 'internal') return `/${item.internalLink?.slug || ''}`;
+    if (item.type === 'section') return `/#${item.sectionId}`; // Root + anchor
+    return item.externalUrl || '#';
+  };
+
   const headerLinks = headerData?.items?.map((item: any) => ({
     label: item.label,
-    href: item.type === 'internal' ? `/${item.internalLink?.slug || ''}` : item.externalUrl
+    href: mapLink(item),
   })) || [];
 
   const footerLinks = footerData?.items?.map((item: any) => ({
     label: item.label,
-    href: item.type === 'internal' ? `/${item.internalLink?.slug || ''}` : item.externalUrl
+    href: mapLink(item),
   })) || [];
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <EnquiryProvider>
+          <NextTopLoader color="#f97316" showSpinner={false} height={3} shadow={false} />
+          <Loader />
           <ViewTransitions />
           <SchemaMarkup />
           <Navbar links={headerLinks} logo={siteSettings?.logo || "S.R. Construction"} />

@@ -12,7 +12,8 @@
     color: var(--white);
 }
 
-.navbar.scrolled {
+.navbar.scrolled,
+.navbar.dark {
     background: rgba(15, 23, 42, 0.85);
     /* Light Dark / Slate-900 with transparency */
     backdrop-filter: blur(12px);
@@ -88,48 +89,58 @@
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    /* Hide Desktop Nav on Mobile */
     .navLinks {
+        display: none;
+    }
+
+    /* Mobile Menu Container (for Framer Motion) */
+    .mobileMenu {
         position: fixed;
-        left: -100%;
+        left: 0;
         top: 0;
         padding: var(--header-height) 2rem 2rem;
         height: 100vh;
-        gap: 0;
-        flex-direction: column;
-        background-color: var(--white);
-        color: var(--text-color);
         width: 100%;
-        max-width: none;
-        box-shadow: none;
-        text-align: center;
-        transition: 0.3s ease-in-out;
+        background-color: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        z-index: 998;
+        /* Below hamburger (1001) */
+        overflow-y: auto;
+    }
+
+    .mobileMenuList {
+        list-style: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         align-items: center;
     }
 
-    .navLinks.active {
-        left: 0;
-    }
-
-    .navLinks li {
+    .mobileMenuList li {
         margin: 16px 0;
         width: 100%;
+        text-align: center;
     }
 
-    /* Push first link down to center group */
-    .navLinks li:first-child {
+    .mobileMenuList li:first-child {
         margin-top: auto;
     }
 
-    /* Push last item (button) to bottom */
-    .navLinks li:last-child {
+    .mobileMenuList li:last-child {
         margin-top: auto;
     }
 
-    .navLinks a {
+    .mobileMenuList a {
         font-size: 1.5rem;
         font-weight: 300;
-        /* Thin font */
         display: block;
+        color: var(--white);
+        text-decoration: none;
     }
 }
 

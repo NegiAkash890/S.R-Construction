@@ -7,17 +7,31 @@ export const structure = (S: StructureBuilder) =>
             // Group: Site Settings (Singletons)
             S.listItem()
                 .id('settings')
-                .title('Site Settings')
+                .title('Site Configuration')
                 .child(
                     S.list()
                         .title('Settings')
                         .items([
                             S.listItem()
-                                .title('Homepage')
+                                .title('Homepage Config')
                                 .child(
                                     S.document()
                                         .schemaType('homepage')
                                         .documentId('homepage')
+                                ),
+                            S.listItem()
+                                .title('Projects Page Config')
+                                .child(
+                                    S.document()
+                                        .schemaType('projectsPage')
+                                        .documentId('projectsPage')
+                                ),
+                            S.listItem()
+                                .title('Team Page Config')
+                                .child(
+                                    S.document()
+                                        .schemaType('teamPage')
+                                        .documentId('teamPage')
                                 ),
                             S.listItem()
                                 .title('Navigation')
@@ -38,51 +52,53 @@ export const structure = (S: StructureBuilder) =>
 
             S.divider(),
 
-            // Group: Portfolio
+            // Group: Portfolio & Assets
             S.listItem()
                 .id('portfolio')
-                .title('Project Portfolio')
+                .title('Projects & Assets')
                 .child(
                     S.list()
                         .title('Portfolio')
                         .items([
-                            S.documentTypeListItem('project').title('All Projects'),
-                            S.documentTypeListItem('industry').title('Industries Served'),
+                            S.documentTypeListItem('project').title('Projects'),
+                            S.documentTypeListItem('industry').title('Industries'),
+                            S.documentTypeListItem('equipment').title('Equipment & Machinery'),
                         ])
                 ),
 
             // Group: Organization
             S.listItem()
                 .id('organization')
-                .title('Our Organization')
+                .title('Organization')
                 .child(
                     S.list()
                         .title('Organization')
                         .items([
-                            S.documentTypeListItem('staffRole').title('Team & Staff'),
-                            S.documentTypeListItem('client').title('Client Register'),
+                            S.documentTypeListItem('staffRole').title('Team'),
+                            S.documentTypeListItem('client').title('Clients'),
                         ])
                 ),
 
             S.divider(),
 
-            // Group: Editorial
+            // Group: Content
             S.listItem()
                 .id('editorial')
-                .title('Editorial & Pages')
+                .title('Content')
                 .child(
                     S.list()
                         .title('Content')
                         .items([
-                            S.documentTypeListItem('blog').title('Blog Posts'),
+                            S.documentTypeListItem('blog').title('News / Blog'),
+                            S.documentTypeListItem('faq').title('FAQs'),
                             S.documentTypeListItem('page').title('Custom Pages'),
                         ])
                 ),
 
-            // Filter out mapped items from the default list
+            // Filter out mapped items
             ...S.documentTypeListItems().filter(
                 (listItem) =>
-                    !['homepage', 'navigation', 'siteSettings', 'project', 'industry', 'staffRole', 'client', 'blog', 'page'].includes(
+                    !['homepage', 'navigation', 'siteSettings', 'project', 'industry', 'staffRole', 'client', 'blog', 'page', 'equipment', 'faq', 'projectsPage', 'teamPage'].includes(
                         listItem.getId() as string
                     )
             ),

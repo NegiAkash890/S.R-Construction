@@ -175,48 +175,46 @@ h3 {
   }
 
   .container {
+    padding: 0 20px;
+  }
+}
 
-    /* View Transitions */
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: 0.4s;
-      mix-blend-mode: normal;
-    }
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  mix-blend-mode: normal;
+}
 
-    /* Optional: Slide animation example 
 ::view-transition-old(root) {
-  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+  animation: fade-out 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 ::view-transition-new(root) {
-  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+  animation: fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
-*/
 
-    ::view-transition-old(root) {
-      animation: fade-out 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-
-    ::view-transition-new(root) {
-      animation: fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-      }
-    }
-
-    @keyframes fade-out {
-      to {
-        opacity: 0;
-      }
-    }
-
-    ::view-transition-group(hero-title) {
-      animation-duration: 0.5s;
-    }
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* NProgress Bar - Bottom of Navbar */
+#nprogress .bar {
+  top: var(--header-height) !important;
+  height: 3px !important;
+  z-index: 2000 !important;
+  box-shadow: none !important;
+}
+
+#nprogress .spinner {
+  display: none !important;
+  /* Disable spinner as requested/configured */
 }

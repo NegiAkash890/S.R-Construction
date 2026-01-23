@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef } from 'react';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { urlFor } from '@/utils/sanity/client';
-import { formatIndianCurrency } from '@/utils/formatCurrency';
 import styles from './FeaturedProjects.module.css';
 
 interface Project {
@@ -25,19 +28,62 @@ interface FeaturedProjectsProps {
   title?: string;
   className?: string;
   variant?: 'grid' | 'scroll';
+  showViewAll?: boolean;
+  showCategoryBadge?: boolean;
 }
 
-export default function FeaturedProjects({ projects, title = "Featured Projects", className, variant = 'grid' }: FeaturedProjectsProps) {
+export default function FeaturedProjects({
+  projects,
+  title = "Featured Projects",
+  className,
+  variant = 'grid',
+  showViewAll = true,
+  showCategoryBadge = true,
+}: FeaturedProjectsProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 480; // approximate card width + gap
+      if (direction === 'left') {
+        scrollContainerRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
   if (!projects || projects.length === 0) return null;
 
   return (
     <section className={`${styles.section} ${className || ''}`}>
       <div className={styles.container}>
-        <div className={styles.header}>
+        <div className={`${styles.header} ${variant === 'scroll' ? styles.scrollHeader : ''}`}>
           <h2 className={styles.title}>{title}</h2>
+          {variant === 'scroll' && projects.length > 3 && (
+            <div className={styles.controls}>
+              <button
+                onClick={() => scroll('left')}
+                className={styles.controlBtn}
+                aria-label="Scroll Left"
+              >
+                <BsArrowLeft />
+              </button>
+              <button
+                onClick={() => scroll('right')}
+                className={styles.controlBtn}
+                aria-label="Scroll Right"
+              >
+                <BsArrowRight />
+              </button>
+            </div>
+          )}
         </div>
 
-        <div className={`${styles.grid} ${variant === 'scroll' ? styles.horizontal : ''}`}>
+        <div
+          ref={scrollContainerRef}
+          className={`${styles.grid} ${variant === 'scroll' ? styles.horizontal : ''}`}
+        >
           {projects.map((project) => (
             <Link href={`/projects?projectId=${project._id}`} key={project._id} className={styles.card}>
               <div className={styles.imageContainer}>
@@ -61,7 +107,9 @@ export default function FeaturedProjects({ projects, title = "Featured Projects"
                 {/* Fallback pattern if no image? keeping simple for now */}
 
                 {/* Mock Category/Industry if not present in Top Level or use a default */}
-                <span className={styles.badge}>{project.industry?.title || project.category || 'Construction'}</span>
+                {showCategoryBadge && (
+                  <span className={styles.badge}>{project.industry?.title || project.category || 'Construction'}</span>
+                )}
               </div>
 
               <div className={styles.content}>
@@ -86,11 +134,13 @@ export default function FeaturedProjects({ projects, title = "Featured Projects"
           ))}
         </div>
 
-        <div className={styles.footer}>
-          <Link href="/projects" className={styles.viewAllButton}>
-            View All Projects
-          </Link>
-        </div>
+        {showViewAll && (
+          <div className={styles.footer}>
+            <Link href="/projects" className={styles.viewAllButton}>
+              View All Projects
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -44,9 +44,24 @@ export default function EnquiryForm() {
       return;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrors({ ...newErrors, form: 'Something went wrong. Please try again later.' });
+      setIsSubmitting(false);
+    }
   }
 
   if (isSuccess) {

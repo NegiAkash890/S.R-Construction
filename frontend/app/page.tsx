@@ -13,7 +13,7 @@ async function getData() {
   const homepage = await client.fetch(`*[_type == "homepage"][0]`);
   const clients = await client.fetch(`*[_type == "client"]`);
   const posts = await client.fetch(`*[_type == "blog"] | order(publishedAt desc)[0...6]`);
-  const featuredProjects = await client.fetch(`*[_type == "project"] | order(isFeatured desc, _createdAt desc)[0...6]{ ..., industry->{title} }`);
+  const featuredProjects = await client.fetch(`*[_type == "project"] | order(isFeatured desc, _createdAt desc)[0...3]{ ..., industry->{title} }`);
   const industries = await client.fetch(`*[_type == "industry"] | order(_createdAt asc)`);
   const equipment = await client.fetch(`*[_type == "equipment"] | order(name asc)[0...5]`);
   const faqs = await client.fetch(`*[_type == "faq"] | order(order asc)`);
@@ -23,20 +23,42 @@ async function getData() {
   };
 }
 
+import { Reveal } from '@/components/Reveal';
+
 export default async function Home() {
   const data = await getData();
 
   return (
     <main>
       <Hero data={data.homepage} />
-      <ClientLogos data={data.clients} title={data.homepage?.clientsTitle} />
-      <Industries data={data.industries} />
-      <FeaturedProjects projects={data.featuredProjects} />
-      <EquipmentSection data={data.equipment} title={data.homepage?.equipmentTitle} />
-      <Process />
-      <SafetyCertifications />
-      <FAQSection faqs={data.faqs} />
-      <BlogSection data={data.posts} title={data.homepage?.blogTitle} />
+
+      <Reveal>
+        <ClientLogos data={data.clients} title={data.homepage?.clientsTitle} />
+      </Reveal>
+
+      <Reveal>
+        <Industries data={data.industries} />
+      </Reveal>
+
+      <Reveal>
+        <FeaturedProjects projects={data.featuredProjects} />
+      </Reveal>
+
+      <Reveal>
+        <EquipmentSection data={data.equipment} title={data.homepage?.equipmentTitle} />
+      </Reveal>
+
+      <Reveal>
+        <Process />
+      </Reveal>
+
+      <Reveal>
+        <BlogSection data={data.posts} title={data.homepage?.blogTitle} />
+      </Reveal>
+
+      <Reveal>
+        <FAQSection faqs={data.faqs} />
+      </Reveal>
     </main>
   );
 }

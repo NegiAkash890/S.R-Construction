@@ -17,6 +17,7 @@ export const NAVIGATION_QUERY = defineQuery(`
       label,
       type,
       externalUrl,
+      sectionId,
       internalLink->{
         "slug": slug.current,
         _type

@@ -32,8 +32,9 @@ export const navigation = defineType({
                             type: 'string',
                             options: {
                                 list: [
-                                    { title: 'Internal', value: 'internal' },
-                                    { title: 'External', value: 'external' },
+                                    { title: 'Internal Page', value: 'internal' },
+                                    { title: 'External / Custom URL', value: 'external' },
+                                    { title: 'Section (Scroll)', value: 'section' },
                                 ],
                                 layout: 'radio',
                             },
@@ -41,15 +42,23 @@ export const navigation = defineType({
                         }),
                         defineField({
                             name: 'internalLink',
-                            title: 'Internal Link',
+                            title: 'Internal Page',
                             type: 'reference',
                             to: [{ type: 'page' }, { type: 'homepage' }, { type: 'project' }, { type: 'teamPage' }],
                             hidden: ({ parent }) => parent?.type !== 'internal',
                         }),
                         defineField({
+                            name: 'sectionId',
+                            title: 'Section ID (without #)',
+                            type: 'string',
+                            description: 'e.g., about, contact, projects',
+                            hidden: ({ parent }) => parent?.type !== 'section',
+                        }),
+                        defineField({
                             name: 'externalUrl',
-                            title: 'External URL',
-                            type: 'url',
+                            title: 'URL',
+                            type: 'string', // Changed from 'url' to 'string' to allow relative paths if needed, or stick to url but less strict
+                            description: 'Full URL (https://...) or relative path (/projects)',
                             hidden: ({ parent }) => parent?.type !== 'external',
                         }),
                     ],
@@ -59,9 +68,14 @@ export const navigation = defineType({
                             type: 'type',
                             internalSlug: 'internalLink.slug.current',
                             externalUrl: 'externalUrl',
+                            sectionId: 'sectionId',
                         },
-                        prepare({ title, type, internalSlug, externalUrl }) {
-                            const subtitle = type === 'internal' ? `Internal: /${internalSlug || ''}` : `External: ${externalUrl}`;
+                        prepare({ title, type, internalSlug, externalUrl, sectionId }: any) {
+                            let subtitle = '';
+                            if (type === 'internal') subtitle = `Page: /${internalSlug || ''}`;
+                            else if (type === 'section') subtitle = `Scroll to: #${sectionId}`;
+                            else subtitle = `Link: ${externalUrl}`;
+
                             return {
                                 title,
                                 subtitle,

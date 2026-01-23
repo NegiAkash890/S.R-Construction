@@ -11,6 +11,7 @@ import { siteSettings } from './siteSettings'
 import { projectsPage } from './projectsPage'
 import { teamPage } from './teamPage'
 import { faq } from './faq'
+import { lead } from './lead'
 
 export const schemaTypes = [
     client,
@@ -25,5 +26,6 @@ export const schemaTypes = [
     siteSettings,
     projectsPage,
     teamPage,
-    faq
+    faq,
+    lead
 ]

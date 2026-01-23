@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEnquiry } from '@/context/EnquiryContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import styles from './Navbar.module.css';
 
@@ -33,37 +34,66 @@ export default function Navbar({ links, logo }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const showBackground = scrolled;
+  /* Force background if not home, or if scrolled */
+  const showBackground = scrolled || !isHome;
 
   return (
     <nav className={`${styles.navbar} ${showBackground ? styles.scrolled : ''}`}>
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo}>{logo}</Link>
 
+        {/* Hamburger */}
         <button className={`${styles.hamburger} ${isOpen ? styles.active : ''}`} onClick={() => setIsOpen(!isOpen)}>
           <span className={styles.bar} />
           <span className={styles.bar} />
           <span className={styles.bar} />
         </button>
 
-        <ul className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
+        {/* Desktop Nav */}
+        <ul className={styles.navLinks}>
           {links.map((link, index) => (
             <li key={index}>
-              <Link href={link.href} onClick={() => setIsOpen(false)}>{link.label}</Link>
+              <Link href={link.href}>{link.label}</Link>
             </li>
           ))}
           <li>
-            <button
-              className={styles.ctaButton}
-              onClick={() => {
-                setIsOpen(false);
-                openEnquiry();
-              }}
-            >
+            <button className={styles.ctaButton} onClick={openEnquiry}>
               Enquire Now
             </button>
           </li>
         </ul>
+
+        {/* Mobile Nav (Framer Motion) */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className={styles.mobileMenu}
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+            >
+              <ul className={styles.mobileMenuList}>
+                {links.map((link, index) => (
+                  <li key={index}>
+                    <Link href={link.href} onClick={() => setIsOpen(false)}>{link.label}</Link>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    className={styles.ctaButton}
+                    onClick={() => {
+                      setIsOpen(false);
+                      openEnquiry();
+                    }}
+                  >
+                    Enquire Now
+                  </button>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

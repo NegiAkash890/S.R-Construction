@@ -1,5 +1,6 @@
 import { client } from '@/utils/sanity/client';
 import EquipmentList from '@/components/EquipmentList';
+import Breadcrumb from '@/components/Breadcrumb';
 import styles from './equipment.module.css';
 
 export const revalidate = 60; // Revalidate every minute
@@ -31,6 +32,7 @@ export default async function EquipmentPage() {
     return (
         <main className={styles.section}>
             <div className="container">
+                <Breadcrumb items={[{ label: 'Equipment & Machinery' }]} />
                 <div className={styles.header}>
                     <span className={styles.subtitle}>Our Fleet</span>
                     <h1 className={styles.title}>Machinery & Equipment Assets</h1>

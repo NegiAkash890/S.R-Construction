@@ -7,20 +7,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import styles from './page.module.css';
 
 export default async function DynamicPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = await params;
-    const page = await client.fetch(PAGE_QUERY, { slug });
+  const { slug } = await params;
+  const page = await client.fetch(PAGE_QUERY, { slug });
 
-    if (!page) {
-        notFound();
-    }
+  if (!page) {
+    notFound();
+  }
 
-    return (
-      <main className={styles.main}>
-        {/* Hero Section */}
-        {page.heroType === 'image' && page.heroImage && (
+  return (
+    <main className={styles.main}>
+      {/* Hero Section */}
+      {page.heroType === 'image' && page.heroImage && (
         <div className={styles.heroImageContainer}>
           <Image
             src={urlFor(page.heroImage).url()}
@@ -33,28 +34,29 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
             <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
           </div>
         </div>
-            )}
+      )}
 
-        {page.heroType === 'color' && (
+      {page.heroType === 'color' && (
         <div
           className={styles.heroColorContainer}
           style={{ backgroundColor: page.heroColor || '#333' }}
         >
           <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
         </div>
-            )}
+      )}
 
-        <div className={`container ${styles.container}`}>
-          {/* Back Button */}
-          <Link href="/" className={styles.backLink}>
-            ← Back to Home
-          </Link>
+      <div className={`container ${styles.container}`}>
+        <Breadcrumb
+          items={[
+            { label: page.title }
+          ]}
+        />
 
-          {/* Content */}
-          <div className={styles.content}>
-            {page.content && <PortableText value={page.content} />}
-          </div>
+        {/* Content */}
+        <div className={styles.content}>
+          {page.content && <PortableText value={page.content} />}
         </div>
-      </main>
-    );
+      </div>
+    </main>
+  );
 }

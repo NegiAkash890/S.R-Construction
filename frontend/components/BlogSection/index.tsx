@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { urlFor } from "@/utils/sanity/client";
+import LoadingLink from "@/components/LoadingLink";
 
 import styles from './BlogSection.module.css';
 
@@ -95,16 +96,12 @@ export default function BlogSection({ data, title }: Props) {
                   <h3 className={styles.cardTitle}>{post.title}</h3>
 
                   <div className={styles.cardActions}>
-                    <Link href={`/news/${post.slug?.current}`} className={styles.actionLink}>
+                    <LoadingLink href={`/news/${post.slug?.current}`} className={styles.actionLink}>
                       Read More
                       {' '}
                       <BsArrowRight className={styles.icon} />
-                    </Link>
-                    <button className={styles.actionLink}>
-                      Share
-                      {' '}
-                      <BsArrowRight className={styles.shareIcon} />
-                    </button>
+                    </LoadingLink>
+
                   </div>
                 </div>
               </div>

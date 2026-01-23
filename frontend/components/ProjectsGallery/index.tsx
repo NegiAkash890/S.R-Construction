@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { urlFor } from "@/utils/sanity/client";
 import { BsArrowUpRight } from 'react-icons/bs';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ProjectsGallery.module.css';
 import ProjectModal from '../ProjectModal';
 
@@ -145,53 +146,60 @@ export default function ProjectsGallery({ data }: Props) {
           </div>
         </div>
 
-        <div className={styles.galleryGrid}>
-          {sortedData.map((item) => {
-            const displayImageUrl = item.gallery?.[0]
-              ? urlFor(item.gallery[0]).url()
-              : (item.image ? urlFor(item.image).url() : null);
+        <motion.div layout className={styles.galleryGrid}>
+          <AnimatePresence mode='popLayout'>
+            {sortedData.map((item) => {
+              const displayImageUrl = item.gallery?.[0]
+                ? urlFor(item.gallery[0]).url()
+                : (item.image ? urlFor(item.image).url() : null);
 
-            return (
-              <div
-                key={item._id}
-                className={styles.galleryItem}
-                onClick={() => handleProjectClick(item)}
-              >
-                <div className={styles.cardInner}>
-                  <div className={styles.imageWrapper}>
-                    {displayImageUrl ? (
-                      <Image
-                        src={displayImageUrl}
-                        alt={item.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className={styles.projectImage}
-                      />
-                    ) : (
-                      <div className={styles.placeholderImage}>
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.3 }}>
-                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2" />
-                          <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-                          <path d="M21 15L16 10L5 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  key={item._id}
+                  className={styles.galleryItem}
+                  onClick={() => handleProjectClick(item)}
+                >
+                  <div className={styles.cardInner}>
+                    <div className={styles.imageWrapper}>
+                      {displayImageUrl ? (
+                        <Image
+                          src={displayImageUrl}
+                          alt={item.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className={styles.projectImage}
+                        />
+                      ) : (
+                        <div className={styles.placeholderImage}>
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.3 }}>
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+                            <path d="M21 15L16 10L5 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className={styles.cardContent}>
+                      <div className={styles.textWrapper}>
+                        <span className={styles.clientName}>{item.clientName || 'Client Name'}</span>
+                        <h3 className={styles.projectTitle}>{item.title}</h3>
                       </div>
-                    )}
-                  </div>
-
-                  <div className={styles.cardContent}>
-                    <div className={styles.textWrapper}>
-                      <span className={styles.clientName}>{item.clientName || 'Client Name'}</span>
-                      <h3 className={styles.projectTitle}>{item.title}</h3>
-                    </div>
-                    <div className={styles.actionIcon}>
-                      <BsArrowUpRight />
+                      <div className={styles.actionIcon}>
+                        <BsArrowUpRight />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
 
         {
           sortedData.length === 0 && (
