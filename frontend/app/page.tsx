@@ -13,7 +13,7 @@ async function getData() {
   const homepage = await client.fetch(`*[_type == "homepage"][0]`);
   const clients = await client.fetch(`*[_type == "client"]`);
   const posts = await client.fetch(`*[_type == "blog"] | order(publishedAt desc)[0...6]`);
-  const featuredProjects = await client.fetch(`*[_type == "project" && isFeatured == true] | order(_createdAt desc)[0...3]`);
+  const featuredProjects = await client.fetch(`*[_type == "project"] | order(isFeatured desc, _createdAt desc)[0...6]{ ..., industry->{title} }`);
   const industries = await client.fetch(`*[_type == "industry"] | order(_createdAt asc)`);
   const equipment = await client.fetch(`*[_type == "equipment"] | order(name asc)[0...5]`);
   const faqs = await client.fetch(`*[_type == "faq"] | order(order asc)`);
