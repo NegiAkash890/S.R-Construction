@@ -79,6 +79,13 @@ export const project = defineType({
             group: 'details',
         }),
         defineField({
+            name: 'industry',
+            title: 'Related Industry',
+            type: 'reference',
+            to: [{ type: 'industry' }],
+            group: 'details',
+        }),
+        defineField({
             name: 'startDate',
             title: 'Project Start Date',
             type: 'date',

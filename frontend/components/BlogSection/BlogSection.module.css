@@ -206,3 +206,95 @@
 .arrowBtn.disabled:hover {
     background-color: var(--slate-200);
 }
+
+/* See More Card - Redesigned */
+.seeMoreCard {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--slate-800) 0%, var(--slate-900) 100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 0 0 calc((100% - 48px) / 3);
+    min-width: 0;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.seeMoreCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.seeMoreCard:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.seeMoreCard:hover::before {
+    opacity: 0.1;
+}
+
+.seeMoreContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.seeMoreText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.seeMoreIconWrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.seeMoreIcon {
+    font-size: 1.5rem;
+    transition: transform 0.4s ease;
+}
+
+.seeMoreCard:hover .seeMoreIconWrapper {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.seeMoreCard:hover .seeMoreIcon {
+    transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+    .seeMoreCard {
+        flex: 0 0 100%;
+    }
+}

@@ -49,24 +49,6 @@ export default function Footer({ links }: FooterProps) {
             <h2 className={styles.brandTitle}>{brand}</h2>
             <p className={styles.tagline}>{tagline}</p>
 
-            <div className={styles.miniExcellence}>
-              <div className={styles.certItem}>
-                <FaAward />
-                {' '}
-                ISO 9001:2015
-              </div>
-              <div className={styles.certItem}>
-                <FaHardHat />
-                {' '}
-                NSC Member
-              </div>
-              <div className={styles.certItem}>
-                <FaAward />
-                {' '}
-                Leading EPC 2024
-              </div>
-            </div>
-
             <div className={styles.socialRow}>
               {social?.map((item: any, index: number) => (
                 <a key={index} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>

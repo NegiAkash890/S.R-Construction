@@ -22,6 +22,30 @@ export const homepage = defineType({
             group: 'hero',
         }),
         defineField({
+            name: 'ctaPrimary',
+            title: 'Primary CTA Text',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'ctaPrimaryLink',
+            title: 'Primary CTA Link',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'ctaSecondary',
+            title: 'Secondary CTA Text',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'ctaSecondaryLink',
+            title: 'Secondary CTA Link',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
             name: 'heroImage',
             title: 'Hero Image',
             type: 'image',

@@ -168,6 +168,22 @@
     text-align: left;
 }
 
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-width: 80%;
+}
+
+.clientName {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.1rem;
+}
+
 .projectTitle {
     font-size: 1.25rem;
     font-weight: 700;
@@ -178,8 +194,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
     margin-bottom: 0;
-    max-width: 85%;
-    /* Make room for icon */
+    /* Remove max-width here as it is handled by wrapper */
 }
 
 .actionIcon {
@@ -232,16 +247,6 @@
         flex-shrink: 0;
         white-space: nowrap;
     }
-}
-
-.placeholderImage {
-    width: 100%;
-    height: 100%;
-    background-color: var(--slate-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--slate-500);
 }
 
 .placeholderImage {

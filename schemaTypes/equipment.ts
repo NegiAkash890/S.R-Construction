@@ -24,5 +24,21 @@ export const equipment = defineType({
                 hotspot: true,
             },
         }),
+        defineField({
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+        }),
+        defineField({
+            name: 'features',
+            title: 'Features',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
+        defineField({
+            name: 'specification',
+            title: 'Technical Specification',
+            type: 'text', // Or array of objects if key-value pairs needed, but simple text or block content is easier for "basic info"
+        }),
     ],
 })

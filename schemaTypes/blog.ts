@@ -11,6 +11,12 @@ export const blog = defineType({
             type: 'string',
         }),
         defineField({
+            name: 'industry',
+            title: 'Related Industry',
+            type: 'reference',
+            to: [{ type: 'industry' }],
+        }),
+        defineField({
             name: 'slug',
             title: 'Slug',
             type: 'slug',

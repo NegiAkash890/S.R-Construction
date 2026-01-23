@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { urlFor } from "@/utils/sanity/client";
 import content from '../../data/siteContent.json';
 import styles from './EquipmentSection.module.css';
 
@@ -18,11 +20,18 @@ const getImageForEquipment = (name: string) => {
   return '/images/equipment/hydra_crane.png'; // Default to crane for general heavy machinery vibe
 };
 
-export default function EquipmentSection() {
-  const { title, items } = content.sections.equipment;
+interface Props {
+  data: any[];
+}
+
+export default function EquipmentSection({ data = [] }: Props) {
+  const { title } = content.sections.equipment;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Use passed data or fallback to static content if empty
+  const items = data && data.length > 0 ? data : content.sections.equipment.items;
 
   const checkScrollButtons = () => {
     if (scrollRef.current) {
@@ -36,7 +45,7 @@ export default function EquipmentSection() {
     checkScrollButtons();
     window.addEventListener('resize', checkScrollButtons);
     return () => window.removeEventListener('resize', checkScrollButtons);
-  }, []);
+  }, [items]);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -48,6 +57,11 @@ export default function EquipmentSection() {
         behavior: 'smooth'
       });
     }
+  };
+
+  const getDisplayImage = (item: any) => {
+    if (item.image) return urlFor(item.image).url();
+    return getImageForEquipment(item.name);
   };
 
   return (
@@ -79,28 +93,40 @@ export default function EquipmentSection() {
           ref={scrollRef}
           onScroll={checkScrollButtons}
         >
-          {items.map((item, index) => (
-            <div key={`${item.name}-${index}`} className={styles.card}>
+          {items.map((item: any, index: number) => (
+            <div key={item._id || index} className={styles.card}>
               <div className={styles.imageContainer}>
                 <Image
-                  src={getImageForEquipment(item.name)}
+                  src={getDisplayImage(item)}
                   alt={item.name}
                   fill
                   className={styles.equipmentImage}
                   sizes="(max-width: 768px) 100vw, 300px"
                 />
-                <div className={styles.badge}>
-                  <span className={styles.badgeLabel}>Fleet</span>
-                  <span className={styles.badgeValue}>{item.quantity}</span>
-                </div>
+                {/* Placeholder logic removed in favor of helper method which covers all cases */}
+                {item.quantity && (
+                  <div className={styles.badge}>
+                    <span className={styles.badgeLabel}>Qty</span>
+                    <span className={styles.badgeValue}>{item.quantity}</span>
+                  </div>
+                )}
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.itemName}>{item.name}</h3>
                 <div className={styles.techLine} />
-                {/* Decorative tech line or status could go here */}
               </div>
             </div>
           ))}
+
+          {/* See More Card */}
+          <Link href="/equipment" className={styles.seeMoreCard}>
+            <div className={styles.seeMoreContent}>
+              <span className={styles.seeMoreText}>View All<br />Equipment</span>
+              <div className={styles.seeMoreIconWrapper}>
+                <BsArrowRight className={styles.seeMoreIcon} />
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </section>

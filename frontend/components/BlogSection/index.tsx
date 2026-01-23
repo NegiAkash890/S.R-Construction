@@ -94,7 +94,7 @@ export default function BlogSection({ data }: Props) {
                   <h3 className={styles.cardTitle}>{post.title}</h3>
 
                   <div className={styles.cardActions}>
-                    <Link href={`/blog/${post.slug?.current}`} className={styles.actionLink}>
+                    <Link href={`/news/${post.slug?.current}`} className={styles.actionLink}>
                       Read More
                       {' '}
                       <BsArrowRight className={styles.icon} />
@@ -109,6 +109,16 @@ export default function BlogSection({ data }: Props) {
               </div>
             </article>
           ))}
+
+          {/* See More Card */}
+          <Link href="/news" className={styles.seeMoreCard}>
+            <div className={styles.seeMoreContent}>
+              <span className={styles.seeMoreText}>See More<br />Stories</span>
+              <div className={styles.seeMoreIconWrapper}>
+                <BsArrowRight className={styles.seeMoreIcon} />
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </section>

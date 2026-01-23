@@ -126,7 +126,10 @@ export default function ProjectsGallery({ data }: Props) {
                   </div>
 
                   <div className={styles.cardContent}>
-                    <h3 className={styles.projectTitle}>{item.title}</h3>
+                    <div className={styles.textWrapper}>
+                      <span className={styles.clientName}>{item.clientName || 'Client Name'}</span>
+                      <h3 className={styles.projectTitle}>{item.title}</h3>
+                    </div>
                     <div className={styles.actionIcon}>
                       <BsArrowUpRight />
                     </div>
