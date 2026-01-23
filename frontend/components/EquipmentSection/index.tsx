@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { urlFor } from "@/utils/sanity/client";
-import content from '../../data/siteContent.json';
+
 import styles from './EquipmentSection.module.css';
 
 const getImageForEquipment = (name: string) => {
@@ -22,16 +22,17 @@ const getImageForEquipment = (name: string) => {
 
 interface Props {
   data: any[];
+  title?: string;
 }
 
-export default function EquipmentSection({ data = [] }: Props) {
-  const { title } = content.sections.equipment;
+export default function EquipmentSection({ data = [], title }: Props) {
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Use passed data or fallback to static content if empty
-  const items = data && data.length > 0 ? data : content.sections.equipment.items;
+  // Use passed data
+  const items = data;
 
   const checkScrollButtons = () => {
     if (scrollRef.current) {
@@ -68,7 +69,7 @@ export default function EquipmentSection({ data = [] }: Props) {
     <section className={styles.section} id="equipment">
       <div className="container">
         <div className={styles.header}>
-          <h2 className={styles.title}>{title}</h2>
+          <h2 className={styles.title}>{title || "Machinery & Equipment Assets"}</h2>
           <div className={styles.navArrows}>
             <button
               onClick={() => scroll('left')}
@@ -118,15 +119,17 @@ export default function EquipmentSection({ data = [] }: Props) {
             </div>
           ))}
 
-          {/* See More Card */}
-          <Link href="/equipment" className={styles.seeMoreCard}>
-            <div className={styles.seeMoreContent}>
-              <span className={styles.seeMoreText}>View All<br />Equipment</span>
-              <div className={styles.seeMoreIconWrapper}>
-                <BsArrowRight className={styles.seeMoreIcon} />
+          {/* See More Card - Only show if 3 or more items */}
+          {items.length >= 3 && (
+            <Link href="/equipments" className={styles.seeMoreCard}>
+              <div className={styles.seeMoreContent}>
+                <span className={styles.seeMoreText}>View All<br />Equipment</span>
+                <div className={styles.seeMoreIconWrapper}>
+                  <BsArrowRight className={styles.seeMoreIcon} />
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          )}
         </div>
       </div>
     </section>

@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import { urlFor } from "@/utils/sanity/client";
-import content from "../../data/siteContent.json";
+
 import styles from './ClientLogos.module.css';
 
 interface Props {
   data: any[];
+  title?: string;
 }
 
-export default function ClientLogos({ data }: Props) {
+export default function ClientLogos({ data, title }: Props) {
   // Use Sanity data
   const allClients = data || [];
 
@@ -19,7 +20,7 @@ export default function ClientLogos({ data }: Props) {
   return (
     <section className={styles.clientsSection} id="clients">
       <div className="container">
-        <h2 className={styles.sectionTitle}>{content.sections.clients.title}</h2>
+        <h2 className={styles.sectionTitle}>{title || "Our Trusted Clients"}</h2>
 
         <div className={styles.marqueeWrapper}>
           <div className={styles.marqueeTrack}>

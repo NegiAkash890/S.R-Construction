@@ -4,14 +4,15 @@ import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { urlFor } from "@/utils/sanity/client";
-import content from "../../data/siteContent.json";
+
 import styles from './BlogSection.module.css';
 
 interface Props {
   data: any[];
+  title?: string;
 }
 
-export default function BlogSection({ data }: Props) {
+export default function BlogSection({ data, title }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -47,7 +48,7 @@ export default function BlogSection({ data }: Props) {
       <div className="container">
         <div className={styles.header}>
           <h2 className={styles.sectionTitle}>
-            {content?.sections?.blog?.title || "News & Featured Stories"}
+            {title || "News & Featured Stories"}
           </h2>
           <div className={styles.navArrows}>
             <button
@@ -85,7 +86,7 @@ export default function BlogSection({ data }: Props) {
               </div>
 
               <div className={styles.cardInner}>
-                <span className={styles.tag}>Press Release</span>
+
 
                 <div className={styles.bottomContent}>
                   <span className={styles.date}>

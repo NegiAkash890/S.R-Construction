@@ -29,14 +29,14 @@ export default async function Home() {
   return (
     <main>
       <Hero data={data.homepage} />
-      <ClientLogos data={data.clients} />
+      <ClientLogos data={data.clients} title={data.homepage?.clientsTitle} />
       <Industries data={data.industries} />
       <FeaturedProjects projects={data.featuredProjects} />
-      <EquipmentSection data={data.equipment} />
+      <EquipmentSection data={data.equipment} title={data.homepage?.equipmentTitle} />
       <Process />
       <SafetyCertifications />
       <FAQSection faqs={data.faqs} />
-      <BlogSection data={data.posts} />
+      <BlogSection data={data.posts} title={data.homepage?.blogTitle} />
     </main>
   );
 }

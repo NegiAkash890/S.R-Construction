@@ -4,7 +4,7 @@ import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
 
 import { client } from "@/utils/sanity/client";
-import { NAVIGATION_QUERY } from "@/utils/sanity/queries";
+import { NAVIGATION_QUERY, SITE_SETTINGS_QUERY } from "@/utils/sanity/queries";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EnquiryProvider } from "@/context/EnquiryContext";
@@ -79,6 +79,7 @@ export default async function RootLayout({
 }>) {
   const headerData = await client.fetch(NAVIGATION_QUERY, { title: "Header Menu" });
   const footerData = await client.fetch(NAVIGATION_QUERY, { title: "Footer Menu" });
+  const siteSettings = await client.fetch(SITE_SETTINGS_QUERY);
 
   // Fallback to empty array if no menu found
   const headerLinks = headerData?.items?.map((item: any) => ({
@@ -97,9 +98,9 @@ export default async function RootLayout({
         <EnquiryProvider>
           <ViewTransitions />
           <SchemaMarkup />
-          <Navbar links={headerLinks} />
+          <Navbar links={headerLinks} logo={siteSettings?.logo || "S.R. Construction"} />
           {children}
-          <Footer links={footerLinks} />
+          <Footer links={footerLinks} data={siteSettings} />
           <ScrollToTop />
         </EnquiryProvider>
       </body>

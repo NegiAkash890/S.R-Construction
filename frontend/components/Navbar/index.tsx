@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEnquiry } from '@/context/EnquiryContext';
-import content from '../../data/siteContent.json';
+
 import styles from './Navbar.module.css';
 
 // Define types for the navigation items
@@ -15,10 +15,10 @@ export interface NavItem {
 
 interface NavbarProps {
   links: NavItem[];
+  logo: string;
 }
 
-export default function Navbar({ links }: NavbarProps) {
-  const { logo } = content.navbar;
+export default function Navbar({ links, logo }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { openEnquiry } = useEnquiry();

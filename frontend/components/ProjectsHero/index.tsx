@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
-import content from '../../data/siteContent.json';
+
 import styles from './ProjectsHero.module.css';
 
 function CountUp({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
@@ -52,12 +52,14 @@ interface HeroProps {
 }
 
 export default function ProjectsHero({ data }: HeroProps) {
-  const { title, subtitle, stats } = content.projectsPage.hero; // Fallback
-
-  // Use data from props if available, otherwise fallback (or just use defaults)
-  const heroTitle = data?.heroTitle || title;
-  const heroSubtitle = data?.heroSubtitle || subtitle;
-  const heroStats = data?.stats || stats;
+  // Use data from props if available
+  const heroTitle = data?.heroTitle || "Our Projects";
+  const heroSubtitle = data?.heroSubtitle || "Delivering excellence across residential, commercial, and industrial sectors.";
+  const heroStats = data?.stats || [
+    { label: "Years of Experience", value: "25+" },
+    { label: "Projects Completed", value: "500+" },
+    { label: "Happy Clients", value: "1200+" }
+  ];
 
   const parseStat = (value: string) => {
     const number = parseInt(value, 10);

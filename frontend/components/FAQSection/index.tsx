@@ -16,36 +16,14 @@ interface FAQSectionProps {
 }
 
 // Fallback data if CMS is empty/loading
-const fallbackFaqs: FAQ[] = [
-    {
-        question: "Do you handle industrial large-scale projects?",
-        answer: "Yes, we specialize in large-scale industrial infrastructure including factories, warehouses, and processing plants. Our team has the equipment and expertise to handle projects over 100,000 sq. ft."
-    },
-    {
-        question: "What is your safety record and protocol?",
-        answer: "Safety is our core value. We maintain a 'Zero Accident' policy with strict adherence to ISO 45001 standards. All our sites have dedicated safety officers and mandatory daily briefings."
-    },
-    {
-        question: "Do you provide turnkey construction solutions?",
-        answer: "Absolutely. We offer end-to-end solutions from design and approval to construction and handover (EPC). This ensures a single point of responsibility and smoother project execution."
-    },
-    {
-        question: "How do you handle quality control?",
-        answer: "We follow a strict Quality Assurance Plan (QAP). Materials are tested in NABL-accredited labs, and we conduct stage-wise inspections for steel reinforcement, concrete mix, and finishing."
-    }
-];
-
 export default function FAQSection({ faqs = [] }: FAQSectionProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-    // Use props if available, otherwise use fallback
-    const displayFaqs = (faqs && faqs.length > 0) ? faqs : fallbackFaqs;
 
     const toggleFAQ = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    if (!displayFaqs || displayFaqs.length === 0) return null;
+    if (!faqs || faqs.length === 0) return null;
 
     return (
         <section className={styles.section}>
@@ -59,7 +37,7 @@ export default function FAQSection({ faqs = [] }: FAQSectionProps) {
                     </div>
 
                     <div className={styles.accordion}>
-                        {displayFaqs.map((faq, index) => (
+                        {faqs.map((faq, index) => (
                             <div
                                 key={index}
                                 className={`${styles.item} ${openIndex === index ? styles.open : ''}`}

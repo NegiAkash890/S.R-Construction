@@ -3,7 +3,7 @@
 import {
   FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaFilePdf
 } from 'react-icons/fa';
-import content from '../../data/siteContent.json';
+
 import styles from './Footer.module.css';
 
 interface NavItem {
@@ -13,12 +13,13 @@ interface NavItem {
 
 interface FooterProps {
   links: NavItem[];
+  data: any;
 }
 
-export default function Footer({ links }: FooterProps) {
+export default function Footer({ links, data }: FooterProps) {
   const {
-    brand, tagline, address, phone, email, copyright, social
-  } = content.footer;
+    brand, tagline, address, phone, email, copyright, socialLinks
+  } = data || {};
 
   const getIcon = (platform: string) => {
     switch (platform) {
@@ -50,7 +51,7 @@ export default function Footer({ links }: FooterProps) {
             <p className={styles.tagline}>{tagline}</p>
 
             <div className={styles.socialRow}>
-              {social?.map((item: any, index: number) => (
+              {socialLinks?.map((item: any, index: number) => (
                 <a key={index} href={item.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                   {getIcon(item.platform)}
                 </a>
