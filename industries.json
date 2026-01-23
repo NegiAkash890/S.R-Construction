@@ -1,0 +1,42 @@
+[
+    {
+        "_id": "industry-power",
+        "_type": "industry",
+        "title": "Power & Energy",
+        "slug": {
+            "_type": "slug",
+            "current": "power-energy"
+        },
+        "description": "Specialized construction services for Thermal and Solar Power Plants."
+    },
+    {
+        "_id": "industry-oil-gas",
+        "_type": "industry",
+        "title": "Oil & Gas",
+        "slug": {
+            "_type": "slug",
+            "current": "oil-gas"
+        },
+        "description": "Infrastructure and finishing works for Refineries and Petrochemical complexes."
+    },
+    {
+        "_id": "industry-fertilizer",
+        "_type": "industry",
+        "title": "Fertilizers & Chemicals",
+        "slug": {
+            "_type": "slug",
+            "current": "fertilizers-chemicals"
+        },
+        "description": "Heavy industrial construction for Fertilizer and Chemical processing units."
+    },
+    {
+        "_id": "industry-steel",
+        "_type": "industry",
+        "title": "Steel & Metals",
+        "slug": {
+            "_type": "slug",
+            "current": "steel-metals"
+        },
+        "description": "Structural and finishing support for Steel and Aluminium plants."
+    }
+]

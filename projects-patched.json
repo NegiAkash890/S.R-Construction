@@ -1,0 +1,1346 @@
+[
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-1",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Tata Projects Ltd",
+    "description": "Rolling Shutter, Underdeck Insulation, False Ceiling, Aluminium, Painting, Fire and Steel Door, Deck Sheeting",
+    "endDate": "2025-01-01",
+    "location": [
+      "NTECL Vallur, Chennai"
+    ],
+    "startDate": "2023-08-01",
+    "status": "completed",
+    "title": "NTECL Vallur Finishing Works",
+    "workDescription": "Rolling Shutter, Underdeck Insulation, False Ceiling, Aluminium, Painting, Fire and Steel Door, Deck Sheeting",
+    "workValue": 19254742,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-10",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Driplex Water Engineering Pvt.Ltd",
+    "description": "Insulation Workwith Material, Blasting Painting, Painting, Letter Writing",
+    "endDate": "2024-03-01",
+    "location": [
+      "Hurl Sindri, Dhanbad"
+    ],
+    "startDate": "2023-06-01",
+    "status": "completed",
+    "title": "Hurl Sindri Insulation & Painting",
+    "workDescription": "Insulation Workwith Material, Blasting Painting, Painting, Letter Writing",
+    "workValue": 28867000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-fertilizer"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-11",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Tata Projects Ltd.",
+    "description": "False Ceiling Work",
+    "endDate": "2024-01-01",
+    "location": [
+      "Tata Steel Ltd., Kalinga Nagar"
+    ],
+    "startDate": "2023-11-01",
+    "status": "completed",
+    "title": "Tata Steel Kalinga Nagar Ceiling",
+    "workDescription": "False Ceiling Work",
+    "workValue": 1617282,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-steel"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-12",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "L&T PowerLimited",
+    "description": "Sheeting Work",
+    "endDate": "2023-12-01",
+    "location": [
+      "2x700 MW NPL, Rajpura(Punjab)"
+    ],
+    "startDate": "2022-09-01",
+    "status": "completed",
+    "title": "NPL Rajpura Sheeting",
+    "workDescription": "Sheeting Work",
+    "workValue": 1618322,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-13",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt. Ltd",
+    "description": "Blasting & Painting Work with Material",
+    "endDate": "2022-05-01",
+    "location": [
+      "1x800MWAPG ENCO Nellore, Andhra Pradesh"
+    ],
+    "startDate": "2018-06-01",
+    "status": "completed",
+    "title": "APG ENCO Nellore Painting",
+    "workDescription": "Blasting & Painting Work with Material",
+    "workValue": 27123545,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-14",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt. Ltd",
+    "description": "Blasting& Painting",
+    "endDate": "2024-06-01",
+    "location": [
+      "NTPCRamnna, Varanasi"
+    ],
+    "startDate": "2023-09-01",
+    "status": "completed",
+    "title": "NTPC RamnNa Painting",
+    "workDescription": "Blasting& Painting",
+    "workValue": 10565741,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-15",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Driplex Water Enginnering",
+    "description": "Painting Work",
+    "endDate": "2021-09-01",
+    "location": [
+      "2x660MWOPGC Jharsuguda, Odisha"
+    ],
+    "startDate": "2019-05-01",
+    "status": "completed",
+    "title": "OPGC Jharsuguda Painting",
+    "workDescription": "Painting Work",
+    "workValue": 14244496,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-16",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Toyo Engineering Pvt. Ltd.",
+    "description": "Manpower Supply work in commissioning Activities",
+    "endDate": "2022-05-01",
+    "location": [
+      "HURL Fertilizer, Gorakhpur(U.P)"
+    ],
+    "startDate": "2020-11-01",
+    "status": "completed",
+    "title": "HURL Fertilizer Commissioning Support",
+    "workDescription": "Manpower Supply work in commissioning Activities",
+    "workValue": 5856332,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-17",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Doosan Power Systems",
+    "description": "Blasting & Painting Work",
+    "endDate": "2022-08-01",
+    "location": [
+      "2x660 MW TPP, Obra(U.P.)"
+    ],
+    "startDate": "2021-07-01",
+    "status": "completed",
+    "title": "TPP Obra Blasting & Painting",
+    "workDescription": "Blasting & Painting Work",
+    "workValue": 6528642,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-18",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "ISGEC Heavy Engineering Ltd.",
+    "description": "Blasting & Painting Work with Material",
+    "endDate": "2022-04-01",
+    "location": [
+      "1x800MWAPG ENCO Nellore, Andhra Pradesh"
+    ],
+    "startDate": "2020-09-01",
+    "status": "completed",
+    "title": "APG ENCO Nellore Painting Phase 2",
+    "workDescription": "Blasting & Painting Work with Material",
+    "workValue": 6754117,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-19",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "The Indure Pvt. Ltd.",
+    "description": "Painting Work with Material",
+    "endDate": "2022-06-01",
+    "location": [
+      "2x800MWNTPC Lara, Raigarh, Chattishgarh"
+    ],
+    "startDate": "2021-08-01",
+    "status": "completed",
+    "title": "NTPC Lara Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 9042989,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-2",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "KC Cottrell",
+    "description": "False Ceiling Work",
+    "endDate": "2024-10-01",
+    "location": [
+      "Mahagenco"
+    ],
+    "startDate": "2024-08-01",
+    "status": "completed",
+    "title": "Mahagenco Ceiling Works",
+    "workDescription": "False Ceiling Work",
+    "workValue": 875461,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-20",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Driplex Water Engineering Pvt. Ltd.",
+    "description": "False Ceiling, False Flooring, Epoxy Coating, Blasting & Painting Work",
+    "endDate": "2023-01-01",
+    "location": [
+      "HURL Sindri, Jharkhand"
+    ],
+    "startDate": "2021-03-01",
+    "status": "completed",
+    "title": "HURL Sindri Finishing Works",
+    "workDescription": "False Ceiling, False Flooring, Epoxy Coating, Blasting & Painting Work",
+    "workValue": 17571851,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-fertilizer"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-21",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work Of AHP System",
+    "endDate": "2021-03-01",
+    "location": [
+      "2X250MWBTPS, Barauni, Bihar"
+    ],
+    "startDate": "2020-08-01",
+    "status": "completed",
+    "title": "BTPS Barauni AHP Painting",
+    "workDescription": "Painting Work Of AHP System",
+    "workValue": 2871851,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-22",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Manpower SupplyFor O&M Work",
+    "endDate": "2017-11-01",
+    "location": [
+      "2x600MWCoastal Energen Power Plant, Tuticorin, Tamil nadu"
+    ],
+    "startDate": "2016-09-01",
+    "status": "completed",
+    "title": "Coastal Energen Manpower Supply",
+    "workDescription": "Manpower SupplyFor O&M Work",
+    "workValue": 19447219,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-23",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work Of AHP System",
+    "endDate": "2020-02-01",
+    "location": [
+      "2x660MW RRVUNL Suratgarh Thermal Power Plant"
+    ],
+    "startDate": "2018-12-01",
+    "status": "completed",
+    "title": "RRVUNL Suratgarh AHP Painting",
+    "workDescription": "Painting Work Of AHP System",
+    "workValue": 5772152,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-24",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "The Indure Pvt. Ltd",
+    "description": "Blasting & Painting Work Of AHP System",
+    "endDate": "2020-10-01",
+    "location": [
+      "1x660MW Harduaganj Power Plant, Uttar Pradesh"
+    ],
+    "startDate": "2019-06-01",
+    "status": "completed",
+    "title": "Harduaganj Power Plant Painting",
+    "workDescription": "Blasting & Painting Work Of AHP System",
+    "workValue": 1850469,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-25",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "The Indure Pvt. Ltd",
+    "description": "Blasting & Painting Work Material",
+    "endDate": "2017-02-01",
+    "location": [
+      "1x500MWNTPC Unchahar, U.P."
+    ],
+    "startDate": "2016-07-01",
+    "status": "completed",
+    "title": "NTPC Unchahar Painting",
+    "workDescription": "Blasting & Painting Work Material",
+    "workValue": 1650491,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-26",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Griffin Power Pvt. Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2016-10-01",
+    "location": [
+      "4x270MW Reliance Dahej, Gujrat"
+    ],
+    "startDate": "2016-07-01",
+    "status": "completed",
+    "title": "Reliance Dahej Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 200000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-27",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Blasting & Painting Work Material",
+    "endDate": "2016-10-01",
+    "location": [
+      "4x270MW Reliance Dahej, Gujrat"
+    ],
+    "startDate": "2016-08-01",
+    "status": "completed",
+    "title": "Reliance Dahej Blasting & Painting",
+    "workDescription": "Blasting & Painting Work Material",
+    "workValue": 218000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-28",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting& ApplyOf Insulation Work",
+    "endDate": "2016-10-01",
+    "location": [
+      "1x500MWNTPC Unchahar,U.P."
+    ],
+    "startDate": "2016-08-01",
+    "status": "completed",
+    "title": "NTPC Unchahar Insulation",
+    "workDescription": "Painting& ApplyOf Insulation Work",
+    "workValue": 244200,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-29",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Supply& Apply Of Insulation Work",
+    "endDate": "2017-08-01",
+    "location": [
+      "2x800MWYTPS, Raichur Karnataka"
+    ],
+    "startDate": "2016-07-01",
+    "status": "completed",
+    "title": "YTPS Raichur Insulation",
+    "workDescription": "Supply& Apply Of Insulation Work",
+    "workValue": 402218,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-3",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt. Ltd",
+    "description": "Painting & Insulation Work With Material",
+    "endDate": "2025-03-01",
+    "location": [
+      "2x800 MW NTPC Ramagundam"
+    ],
+    "startDate": "2023-03-01",
+    "status": "completed",
+    "title": "NTPC Ramagundam Painting & Insulation",
+    "workDescription": "Painting & Insulation Work With Material",
+    "workValue": 25015937,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-30",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Manpower SupplyFor O&M Work",
+    "endDate": "2019-11-01",
+    "location": [
+      "2x600MWCoastal Energen Power Plant, Tuticorin, Tamilnadu"
+    ],
+    "startDate": "2016-09-01",
+    "status": "completed",
+    "title": "Coastal Energen Manpower Supply Phase 2",
+    "workDescription": "Manpower SupplyFor O&M Work",
+    "workValue": 19447219,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-31",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting & Insulation Work with Material",
+    "endDate": "2017-11-01",
+    "location": [
+      "1x250MW MAHAGENCO Power Plant, Parli Vaijnath, Maharastra"
+    ],
+    "startDate": "2017-01-01",
+    "status": "completed",
+    "title": "MAHAGENCO Parli Painting",
+    "workDescription": "Painting & Insulation Work with Material",
+    "workValue": 2791136,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-32",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "ShapoorJiPallonJi",
+    "description": "Sheeting Work",
+    "endDate": "2017-04-01",
+    "location": [
+      "5x270MW, India bulls nasik, Maharastra"
+    ],
+    "startDate": "2017-01-01",
+    "status": "completed",
+    "title": "India Bulls Nasik Sheeting",
+    "workDescription": "Sheeting Work",
+    "workValue": 500000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-33",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2017-07-01",
+    "location": [
+      "2x500MW WBPDCL Sagardihi, West Bengal"
+    ],
+    "startDate": "2017-05-01",
+    "status": "completed",
+    "title": "WBPDCL Sagardihi Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 765100,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-34",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Manpower SupplyFor O&M Work",
+    "endDate": "2017-11-01",
+    "location": [
+      "1x660MW,NTPC Mouda, Maharastra"
+    ],
+    "startDate": "2017-08-01",
+    "status": "completed",
+    "title": "NTPC Mouda Manpower Supply",
+    "workDescription": "Manpower SupplyFor O&M Work",
+    "workValue": 2017761,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-35",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2018-04-01",
+    "location": [
+      "5x270MW India bulls nasik, Maharastra"
+    ],
+    "startDate": "2017-08-01",
+    "status": "completed",
+    "title": "India Bulls Nasik Printing",
+    "workDescription": "Painting Work with Material",
+    "workValue": 2050139,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-36",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Manpower SupplyFor O&M Work",
+    "endDate": "2018-05-01",
+    "location": [
+      "2x660MW,TSPL Bhatida, Punjab"
+    ],
+    "startDate": "2017-12-01",
+    "status": "completed",
+    "title": "TSPL Bhatinda Manpower Supply",
+    "workDescription": "Manpower SupplyFor O&M Work",
+    "workValue": 1374405,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-37",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Blasting & Painting Work with Material",
+    "endDate": "2017-12-01",
+    "location": [
+      "2x660MW RRVUNL, Suratgarh, Rajasthan"
+    ],
+    "startDate": "2017-09-01",
+    "status": "completed",
+    "title": "RRVUNL Suratgarh Blasting & Painting",
+    "workDescription": "Blasting & Painting Work with Material",
+    "workValue": 1005985,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-38",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2018-02-01",
+    "location": [
+      "2x500MWNTPC Korba, Chattisgarh"
+    ],
+    "startDate": "2017-12-01",
+    "status": "completed",
+    "title": "NTPC Korba Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 423130,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-39",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Gannon Dunkerley Company Ltd.",
+    "description": "Painting Work with Material",
+    "endDate": "2018-08-01",
+    "location": [
+      "2x660MW RVUNL, Suratgarh, Rajasthan"
+    ],
+    "startDate": "2018-01-01",
+    "status": "completed",
+    "title": "RVUNL Suratgarh Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 3120000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-4",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "GE Power Ltd.",
+    "description": "Painting Workwith Material",
+    "endDate": "2024-06-01",
+    "location": [
+      "NTPC Solapur, (Maharastra)"
+    ],
+    "startDate": "2023-07-01",
+    "status": "completed",
+    "title": "NTPC Solapur Painting Works",
+    "workDescription": "Painting Workwith Material",
+    "workValue": 2736000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-40",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2018-07-01",
+    "location": [
+      "1x660MWNTPC Mauda Maharastra"
+    ],
+    "startDate": "2018-05-01",
+    "status": "completed",
+    "title": "NTPC Mauda Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 931975,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-41",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Insulation Work with Material",
+    "endDate": "2018-09-01",
+    "location": [
+      "9x170MWVedanta Power, Jharsuguda, Odisha"
+    ],
+    "startDate": "2018-06-01",
+    "status": "completed",
+    "title": "Vedanta Jharsuguda Insulation",
+    "workDescription": "Insulation Work with Material",
+    "workValue": 373800,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-42",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2018-10-01",
+    "location": [
+      "2x500MWNTPC Kanti, Bihar"
+    ],
+    "startDate": "2018-08-01",
+    "status": "completed",
+    "title": "NTPC Kanti Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 683710,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-43",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2019-07-01",
+    "location": [
+      "9x170MWVedanta Power, Jharsuguda, Odisha"
+    ],
+    "startDate": "2019-02-01",
+    "status": "completed",
+    "title": "Vedanta Jharsuguda Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 2147717,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-44",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2019-06-01",
+    "location": [
+      "2x660MWNabi Nagar Bihar"
+    ],
+    "startDate": "2019-03-01",
+    "status": "completed",
+    "title": "Nabi Nagar Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 1179213,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-45",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt.Ltd",
+    "description": "Painting Work with Material",
+    "endDate": "2019-07-01",
+    "location": [
+      "2x660MWNTPC Meja, Uttar Pradesh"
+    ],
+    "startDate": "2019-05-01",
+    "status": "completed",
+    "title": "NTPC Meja Painting",
+    "workDescription": "Painting Work with Material",
+    "workValue": 791706,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-5",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Driplex Water Engineering Pvt.Ltd",
+    "description": "Aluminum Door & Window, Waterprofing, False ceiling, Painting, Kota stone& Tiles, Plumbing Work, Rainwater Pipe, EpoxyPainting",
+    "endDate": "2024-04-01",
+    "location": [
+      "HURL, Gorakhpur(U.P.)"
+    ],
+    "startDate": "2022-09-01",
+    "status": "completed",
+    "title": "HURL Gorakhpur Finishing Works",
+    "workDescription": "Aluminum Door & Window, Waterprofing, False ceiling, Painting, Kota stone& Tiles, Plumbing Work, Rainwater Pipe, EpoxyPainting",
+    "workValue": 32156000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-fertilizer"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-6",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Macawber Beekay Pvt Ltd",
+    "description": "Blasting Painting & Painting",
+    "endDate": "2024-02-01",
+    "location": [
+      "NTPC Muzaffarpur"
+    ],
+    "startDate": "2023-04-01",
+    "status": "completed",
+    "title": "NTPC Muzaffarpur Blasting & Painting",
+    "workDescription": "Blasting Painting & Painting",
+    "workValue": 11423544,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-7",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Driplex Water Engineering Pvt. Ltd",
+    "description": "False Ceiling, False Flooring, Epoxy Coating, Blasting & Painting Work",
+    "endDate": "2023-03-01",
+    "location": [
+      "Hurl Barauni, Bihar"
+    ],
+    "startDate": "2021-01-01",
+    "status": "completed",
+    "title": "Hurl Barauni Finishing Works",
+    "workDescription": "False Ceiling, False Flooring, Epoxy Coating, Blasting & Painting Work",
+    "workValue": 21432000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-8",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "Bharat Heavy Electricals Ltd.",
+    "description": "Sheeting Work",
+    "endDate": "2024-03-01",
+    "location": [
+      "2x800 MW NTPC Ramagundam"
+    ],
+    "startDate": "2023-06-01",
+    "status": "completed",
+    "title": "NTPC Ramagundam Sheeting",
+    "workDescription": "Sheeting Work",
+    "workValue": 1456000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:27:57Z",
+    "_id": "project-completed-9",
+    "_rev": "JpaGv7KfL0ejMAb2dDcbG1",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:27:57Z",
+    "category": "industrial",
+    "clientName": "ISGEC Heavy Engineering Ltd",
+    "description": "Sheeting & Painting Work",
+    "endDate": "2024-04-01",
+    "location": [
+      "2x65 MW CPP Nalco Alkalies & chemical Pvt ltd"
+    ],
+    "startDate": "2023-05-01",
+    "status": "completed",
+    "title": "Nalco Alkalies Sheeting & Painting",
+    "workDescription": "Sheeting & Painting Work",
+    "workValue": 10963000,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-1",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "L&T Construction",
+    "description": "Fire and Steel Door, Aluminium door and window, Rolling Shutter, False ceiling, Epoxy Coating, False Flooring, IPS Flooring, Underdeck Insulation Glas...",
+    "isFeatured": true,
+    "location": [
+      "Talcher Fertilizer, Angul, Odisha"
+    ],
+    "startDate": "2024-05-01",
+    "status": "in-progress",
+    "title": "Talcher Fertilizer Facility Construction",
+    "workDescription": "Fire and Steel Door, Aluminium door and window, Rolling Shutter, False ceiling, Epoxy Coating, False Flooring, IPS Flooring, Underdeck Insulation Glass Partition",
+    "workValue": 46821895,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-fertilizer"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-10",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "KEC Company",
+    "description": "False Ceiling Work",
+    "location": [
+      "BALCO Korba"
+    ],
+    "startDate": "2025-03-01",
+    "status": "in-progress",
+    "title": "BALCO Korba Ceiling Works",
+    "workDescription": "False Ceiling Work",
+    "workValue": 3265985,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-11",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "L&T Construction",
+    "description": "Fire and Steel Door, Aluminium Door, window & Ventilators, and Rolling Shutter, False Ceiling",
+    "location": [
+      "ETP –NRL Refinery Assam"
+    ],
+    "startDate": "2025-03-01",
+    "status": "in-progress",
+    "title": "ETP NRL Refinery Works",
+    "workDescription": "Fire and Steel Door, Aluminium Door, window & Ventilators, and Rolling Shutter, False Ceiling",
+    "workValue": 1814399,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-oil-gas"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-12",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Tata Projects Limited",
+    "description": "Acid Resistance Tiles, Painting, Fire and Steel Door, False Ceiling",
+    "location": [
+      "Tata Power- Mundra"
+    ],
+    "startDate": "2025-04-01",
+    "status": "in-progress",
+    "title": "Tata Power Mundra Finishing",
+    "workDescription": "Acid Resistance Tiles, Painting, Fire and Steel Door, False Ceiling",
+    "workValue": 6977096,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-13",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Mata Janki Concrete Pvt Ltd",
+    "description": "False Ceiling and Underdeck Insulation",
+    "location": [
+      "NTPC Talcher"
+    ],
+    "startDate": "2025-08-01",
+    "status": "in-progress",
+    "title": "NTPC Talcher Insulation",
+    "workDescription": "False Ceiling and Underdeck Insulation",
+    "workValue": 3185633,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-14",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "KCPL",
+    "description": "Rolling Shutter, Aluminium Door And Window",
+    "location": [
+      "NTPC Talcher"
+    ],
+    "startDate": "2025-10-01",
+    "status": "in-progress",
+    "title": "NTPC Talcher Shutter & Windows",
+    "workDescription": "Rolling Shutter, Aluminium Door And Window",
+    "workValue": 2785777,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-2",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Stelmec Limited",
+    "description": "Fire And Steel Door, Aluminium Door And Window, False Ceiling, Tiles, Kota Stone, Granite, Epoxy, Waterproofing, Rolling Shutter",
+    "location": [
+      "Talcher Fertilizer, Angul, Odisha"
+    ],
+    "startDate": "2024-07-01",
+    "status": "in-progress",
+    "title": "Talcher Fertilizer Infrastructure",
+    "workDescription": "Fire And Steel Door, Aluminium Door And Window, False Ceiling, Tiles, Kota Stone, Granite, Epoxy, Waterproofing, Rolling Shutter",
+    "workValue": 35947222,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-fertilizer"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-3",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Tata Projects Ltd",
+    "description": "Fire And Steel Door, Aluminium Door And Window, False Ceiling, Underdeck Insulation, Ips Flooring, Roof treatment, Acid Resistance Tiles, Epoxy Coatin...",
+    "location": [
+      "NTECL Vallur, Chennai"
+    ],
+    "startDate": "2024-01-01",
+    "status": "in-progress",
+    "title": "NTECL Vallur Plant Works",
+    "workDescription": "Fire And Steel Door, Aluminium Door And Window, False Ceiling, Underdeck Insulation, Ips Flooring, Roof treatment, Acid Resistance Tiles, Epoxy Coating, Rolling Shutter, Injection Grouting",
+    "workValue": 58422874,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-4",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Thermax Limited",
+    "description": "Waterproofing, IPS Flooring, Underdeck insulation, False Ceiling, Tiles, Kota Stone, Granite, Steel Window, Plumbing and Sanitary Work",
+    "location": [
+      "NTPC Rihand, Sonbhadra"
+    ],
+    "startDate": "2025-05-01",
+    "status": "in-progress",
+    "title": "NTPC Rihand Infrastructure Upgrade",
+    "workDescription": "Waterproofing, IPS Flooring, Underdeck insulation, False Ceiling, Tiles, Kota Stone, Granite, Steel Window, Plumbing and Sanitary Work",
+    "workValue": 18975117,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-5",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "L&T Hydrocarbon",
+    "description": "False Ceiling, Building painting",
+    "location": [
+      "Panipat Refinery, Haryana"
+    ],
+    "startDate": "2025-05-01",
+    "status": "in-progress",
+    "title": "Panipat Refinery Finishing Works",
+    "workDescription": "False Ceiling, Building painting",
+    "workValue": 5220508,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-oil-gas"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-6",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Tata Projects Ltd",
+    "description": "Fire And Steel Door, Aluminium Door And Window, False Ceiling, Underdeck insulation, Rolling Shutter, Kota Stone, Granite, IPS Flooring",
+    "location": [
+      "NTPC Kaniha, Angul (Odisha)"
+    ],
+    "startDate": "2024-01-01",
+    "status": "in-progress",
+    "title": "NTPC Kaniha Building Works",
+    "workDescription": "Fire And Steel Door, Aluminium Door And Window, False Ceiling, Underdeck insulation, Rolling Shutter, Kota Stone, Granite, IPS Flooring",
+    "workValue": 30987444,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-7",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Thyssenkrupp Industries India Pvt Ltd",
+    "description": "False Ceiling and Underdeck Insulation",
+    "location": [
+      "Talcher Fertilizer, Angul, Odisha"
+    ],
+    "startDate": "2025-06-01",
+    "status": "in-progress",
+    "title": "Talcher Fertilizer Insulation Works",
+    "workDescription": "False Ceiling and Underdeck Insulation",
+    "workValue": 8440632,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-fertilizer"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-8",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Thermax Limited",
+    "description": "Fire And Steel Door, Aluminium Door And Window, Partition, Rolling Shutter, Monorail Door And Steel Window",
+    "location": [
+      "Tata Power, Prayagraj"
+    ],
+    "startDate": "2024-10-01",
+    "status": "in-progress",
+    "title": "Tata Power Prayagraj Doors & Windows",
+    "workDescription": "Fire And Steel Door, Aluminium Door And Window, Partition, Rolling Shutter, Monorail Door And Steel Window",
+    "workValue": 17675236,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  },
+  {
+    "_createdAt": "2026-01-23T15:25:22Z",
+    "_id": "project-ongoing-9",
+    "_rev": "eYsIcmLR0HusXGsq9VrT6k",
+    "_type": "project",
+    "_updatedAt": "2026-01-23T15:25:22Z",
+    "category": "industrial",
+    "clientName": "Rohan Builders",
+    "description": "False Ceiling Work",
+    "location": [
+      "Adani Power, Korba"
+    ],
+    "startDate": "2025-01-01",
+    "status": "in-progress",
+    "title": "Adani Power Ceiling Works",
+    "workDescription": "False Ceiling Work",
+    "workValue": 3265985,
+    "industry": {
+      "_type": "reference",
+      "_ref": "industry-power"
+    }
+  }
+]
