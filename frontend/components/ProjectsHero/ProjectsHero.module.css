@@ -130,7 +130,9 @@
 
 @media (max-width: 991px) {
     .hero {
-        padding-top: 140px;
+        padding-top: 100px;
+        /* Reduced from 140px for mobile first look */
+        padding-bottom: 60px;
         min-height: auto;
     }
 
