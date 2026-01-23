@@ -1,0 +1,224 @@
+/* Component-specific variables */
+.modal {
+    --modal-bg: rgba(0, 0, 0, 0.5);
+    /* Slate 800 with opacity */
+    --modal-text: #f8fafc;
+    --modal-text-secondary: #cbd5e1;
+    --modal-border: rgba(255, 255, 255, 0.1);
+    --modal-accent: #f97316;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Lighter backdrop to show off the glass blur of the modal itself? Or standard dark. Keeping standard dark is safer for contrast. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(8px);
+    /* Blur the site behind */
+    padding: 1rem;
+}
+
+.backdrop.open {
+    opacity: 1;
+}
+
+.modal {
+    background-color: var(--modal-bg);
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 16px;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--modal-border);
+
+    /* Glassmorphism Logic */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.modal.slideIn {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.closeButton {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 10;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.closeButton:hover {
+    background: var(--modal-accent);
+    border-color: var(--modal-accent);
+    transform: rotate(90deg);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    /* Fixed ratio for Image/Content */
+    min-height: 500px;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background-color: transparent;
+    /* Slate 900 semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--modal-border);
+}
+
+.image {
+    object-fit: contain;
+    padding: 2rem;
+}
+
+.details {
+    padding: 3rem;
+    overflow-y: auto;
+    background-color: transparent;
+    /* Let modal glass bg show through */
+    color: var(--modal-text);
+}
+
+.headerGroup {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--modal-border);
+    padding-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+}
+
+.tagline {
+    display: inline-flex;
+    padding: 0.35rem 1rem;
+    background-color: rgba(249, 115, 22, 0.15);
+    color: var(--modal-accent);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--modal-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    color: var(--modal-text);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.featureList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.featureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--modal-text);
+    font-size: 0.95rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.featureItem:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.featureItem::before {
+    content: "✓";
+    color: var(--modal-accent);
+    font-weight: bold;
+}
+
+.specs {
+    background-color: rgba(15, 23, 42, 0.6);
+    padding: 1.5rem;
+    border-radius: 8px;
+    white-space: pre-line;
+    color: var(--modal-text-secondary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    border: 1px solid var(--modal-border);
+}
+
+@media (max-width: 900px) {
+    .content {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .imageWrapper {
+        height: 300px;
+    }
+
+    .details {
+        padding: 2rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+}

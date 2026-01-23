@@ -1,0 +1,100 @@
+/* Copy of equipment.module.css specific to the list/grid */
+
+.equipmentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background-color: #1a1a1a;
+}
+
+.equipmentImage {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .equipmentImage {
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badgeLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+}
+
+.badgeValue {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.cardContent {
+    padding: 1.5rem;
+}
+
+.itemName {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: white;
+    line-height: 1.3;
+}
+
+.techLine {
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.viewMore {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.card:hover .viewMore {
+    opacity: 1;
+    transform: translateY(0);
+}
