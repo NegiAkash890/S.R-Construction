@@ -13,10 +13,11 @@ interface FAQ {
 
 interface FAQSectionProps {
     faqs?: FAQ[];
+    title?: string;
 }
 
 // Fallback data if CMS is empty/loading
-export default function FAQSection({ faqs = [] }: FAQSectionProps) {
+export default function FAQSection({ faqs = [], title = "Frequently Asked Questions" }: FAQSectionProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     const toggleFAQ = (index: number) => {
@@ -30,7 +31,7 @@ export default function FAQSection({ faqs = [] }: FAQSectionProps) {
             <div className="container">
                 <div className={styles.layout}>
                     <div className={styles.content}>
-                        <h2 className={styles.title}>Frequently Asked Questions</h2>
+                        <h2 className={styles.title}>{title}</h2>
                         <p className={styles.subtitle}>
                             Find answers to common questions about our construction services, safety standards, and project management.
                         </p>

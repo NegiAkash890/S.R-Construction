@@ -1,24 +1,89 @@
 import { StructureBuilder } from 'sanity/structure'
 
+// Helper to filter out singleton types from the default list
+const hiddenDocTypes = (listItem: any) =>
+    ![
+        'homepage',
+        'siteSettings',
+        'projectsPage',
+        'teamPage',
+        // We will list these manually
+        'project',
+        'industry',
+        'equipment',
+        'blog',
+        'page',
+        'staffRole',
+        'client',
+        'faq',
+        'navigation',
+    ].includes(listItem.getId())
+
 export const structure = (S: StructureBuilder) =>
     S.list()
-        .title('Website Content')
+        .title('Content')
         .items([
-            // Group: Site Settings (Singletons)
+            // --- SINGLETONS (High Priority) ---
             S.listItem()
-                .id('settings')
-                .title('Site Configuration')
+                .title('Homepage')
+                .child(
+                    S.document()
+                        .schemaType('homepage')
+                        .documentId('homepage')
+                        .title('Homepage Content')
+                ),
+
+            S.listItem()
+                .title('Site Settings')
+                .child(
+                    S.document()
+                        .schemaType('siteSettings')
+                        .documentId('siteSettings')
+                        .title('Global Settings')
+                ),
+
+            S.divider(),
+
+            // --- CORE CONTENT ---
+            S.documentTypeListItem('project').title('Projects'),
+            S.documentTypeListItem('industry').title('Industries'),
+            S.documentTypeListItem('equipment').title('Equipments'),
+            S.documentTypeListItem('page').title('Pages (About, etc)'),
+
+            S.divider(),
+
+            // --- MARKETING / UPDATES ---
+            S.documentTypeListItem('blog').title('News & Blog'),
+            S.documentTypeListItem('faq').title('FAQs'),
+            S.documentTypeListItem('client').title('Clients / Logos'),
+            S.documentTypeListItem('staffRole').title('Team Members'),
+
+            S.divider(),
+
+            // --- CONFIGURATION ---
+            S.listItem()
+                .title('Navigation Menus')
                 .child(
                     S.list()
-                        .title('Settings')
+                        .title('Menus')
                         .items([
-                            S.listItem()
-                                .title('Homepage Config')
-                                .child(
-                                    S.document()
-                                        .schemaType('homepage')
-                                        .documentId('homepage')
-                                ),
+                            S.documentListItem()
+                                .title('Header Menu')
+                                .schemaType('navigation')
+                                .id('header-menu'),
+                            S.documentListItem()
+                                .title('Footer Menu')
+                                .schemaType('navigation')
+                                .id('footer-menu'),
+                        ])
+                ),
+
+            S.listItem()
+                .title('Page Configs')
+                .child(
+                    S.list()
+                        .title('Page Configurations')
+                        .items([
                             S.listItem()
                                 .title('Projects Page Config')
                                 .child(
@@ -33,73 +98,9 @@ export const structure = (S: StructureBuilder) =>
                                         .schemaType('teamPage')
                                         .documentId('teamPage')
                                 ),
-                            S.listItem()
-                                .title('Navigation')
-                                .child(
-                                    S.document()
-                                        .schemaType('navigation')
-                                        .documentId('navigation')
-                                ),
-                            S.listItem()
-                                .title('General Settings')
-                                .child(
-                                    S.document()
-                                        .schemaType('siteSettings')
-                                        .documentId('siteSettings')
-                                ),
                         ])
                 ),
 
-            S.divider(),
-
-            // Group: Portfolio & Assets
-            S.listItem()
-                .id('portfolio')
-                .title('Projects & Assets')
-                .child(
-                    S.list()
-                        .title('Portfolio')
-                        .items([
-                            S.documentTypeListItem('project').title('Projects'),
-                            S.documentTypeListItem('industry').title('Industries'),
-                            S.documentTypeListItem('equipment').title('Equipment & Machinery'),
-                        ])
-                ),
-
-            // Group: Organization
-            S.listItem()
-                .id('organization')
-                .title('Organization')
-                .child(
-                    S.list()
-                        .title('Organization')
-                        .items([
-                            S.documentTypeListItem('staffRole').title('Team'),
-                            S.documentTypeListItem('client').title('Clients'),
-                        ])
-                ),
-
-            S.divider(),
-
-            // Group: Content
-            S.listItem()
-                .id('editorial')
-                .title('Content')
-                .child(
-                    S.list()
-                        .title('Content')
-                        .items([
-                            S.documentTypeListItem('blog').title('News / Blog'),
-                            S.documentTypeListItem('faq').title('FAQs'),
-                            S.documentTypeListItem('page').title('Custom Pages'),
-                        ])
-                ),
-
-            // Filter out mapped items
-            ...S.documentTypeListItems().filter(
-                (listItem) =>
-                    !['homepage', 'navigation', 'siteSettings', 'project', 'industry', 'staffRole', 'client', 'blog', 'page', 'equipment', 'faq', 'projectsPage', 'teamPage'].includes(
-                        listItem.getId() as string
-                    )
-            ),
+            // --- CATCH-ALL ---
+            ...S.documentTypeListItems().filter(hiddenDocTypes),
         ])

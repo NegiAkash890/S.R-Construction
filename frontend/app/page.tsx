@@ -37,11 +37,11 @@ export default async function Home() {
       </Reveal>
 
       <Reveal>
-        <Industries data={data.industries} />
+        <Industries data={data.industries} title={data.homepage?.industriesTitle} />
       </Reveal>
 
       <Reveal>
-        <FeaturedProjects projects={data.featuredProjects} />
+        <FeaturedProjects projects={data.featuredProjects} title={data.homepage?.projectsTitle} />
       </Reveal>
 
       <Reveal>
@@ -49,7 +49,7 @@ export default async function Home() {
       </Reveal>
 
       <Reveal>
-        <Process />
+        <Process title={data.homepage?.processTitle} />
       </Reveal>
 
       <Reveal>
@@ -57,7 +57,7 @@ export default async function Home() {
       </Reveal>
 
       <Reveal>
-        <FAQSection faqs={data.faqs} />
+        <FAQSection faqs={data.faqs} title={data.homepage?.faqTitle} />
       </Reveal>
     </main>
   );

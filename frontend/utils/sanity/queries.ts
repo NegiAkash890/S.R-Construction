@@ -12,7 +12,7 @@ export const PAGE_QUERY = defineQuery(`
 `);
 
 export const NAVIGATION_QUERY = defineQuery(`
-  *[_type == "navigation" && title == $title][0]{
+  *[_type == "navigation" && _id == $id][0]{
     items[]{
       label,
       type,

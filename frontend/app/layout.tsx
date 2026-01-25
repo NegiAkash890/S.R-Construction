@@ -9,6 +9,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EnquiryProvider } from "@/context/EnquiryContext";
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 // ... existing imports
 
 import SchemaMarkup from "@/components/SchemaMarkup";
@@ -79,21 +81,48 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerData = await client.fetch(NAVIGATION_QUERY, { title: "Header Menu" });
-  const footerData = await client.fetch(NAVIGATION_QUERY, { title: "Footer Menu" });
+  const headerData = await client.fetch(NAVIGATION_QUERY, { id: "header-menu" });
+  const footerData = await client.fetch(NAVIGATION_QUERY, { id: "footer-menu" });
   const siteSettings = await client.fetch(SITE_SETTINGS_QUERY);
 
   // Fallback to empty array if no menu found
   const mapLink = (item: any) => {
-    if (item.type === 'internal') return `/${item.internalLink?.slug || ''}`;
+    if (item.type === 'internal') {
+      const slug = item.internalLink?.slug || '';
+      // If it's a generic page (like about-us), it lives at root /slug
+      // If user creates a page doc type for these, it works.
+      // If it returns null slug, handle gracefully.
+      return slug ? `/${slug}` : '#';
+    }
     if (item.type === 'section') return `/#${item.sectionId}`; // Root + anchor
     return item.externalUrl || '#';
   };
 
+  // NAVIGATION: Fetched from Sanity CMS ("Header Menu").
+  // The code below applies TEMPORARY overrides to match specific user requests.
+  // To give CMS full control, remove 'finalHeaderLinks' logic and use 'headerLinks' directly.
   const headerLinks = headerData?.items?.map((item: any) => ({
     label: item.label,
     href: mapLink(item),
   })) || [];
+
+  // PRE-FILTER: User requested to remove Clients, Testimonials, Industries
+  // We filter them out from CMS data first.
+  let finalHeaderLinks = headerLinks.filter((link: any) => !['Clients', 'Projects', 'Testimonials', 'Industries'].includes(link.label));
+
+  // TEMPORARY: Inject user requested links
+  const manualLinks = [
+    { label: 'About', href: '/about-us' },
+    // { label: 'Industries', href: '/#industries' }, // User asked to remove Industries
+    { label: 'Machinery', href: '/equipments' },
+  ];
+
+  manualLinks.forEach(link => {
+    // Add manual links if not already in the filtered list
+    if (!finalHeaderLinks.some((l: any) => l.label === link.label)) {
+      finalHeaderLinks.push(link);
+    }
+  });
 
   const footerLinks = footerData?.items?.map((item: any) => ({
     label: item.label,
@@ -108,8 +137,9 @@ export default async function RootLayout({
           <Loader />
           <ViewTransitions />
           <SchemaMarkup />
-          <Navbar links={headerLinks} logo={siteSettings?.logo || "S.R. Construction"} />
+          <Navbar links={finalHeaderLinks} logo={siteSettings?.logo || "S.R. Construction"} />
           {children}
+          <div id="footer-breadcrumb-slot" style={{ width: '100%', position: 'relative', zIndex: 99 }}></div>
           <Footer links={footerLinks} data={siteSettings} />
           <ScrollToTop />
         </EnquiryProvider>
