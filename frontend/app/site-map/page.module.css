@@ -1,0 +1,119 @@
+/* Main container */
+.main {
+    padding: calc(var(--header-height) + 4rem) 0 6rem;
+    min-height: 80vh;
+    background-color: var(--slate-50);
+}
+
+/* Typography */
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--slate-900);
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--slate-500);
+    margin-bottom: 4rem;
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Styling */
+.section {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--slate-100);
+    display: flex;
+    flex-direction: column;
+}
+
+.section:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.08),
+        0 10px 10px -5px rgba(0, 0, 0, 0.03);
+    border-color: rgba(249, 115, 22, 0.2);
+    /* Accent color faint border */
+}
+
+/* Section Header */
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--slate-800);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--slate-200);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sectionTitle svg {
+    color: var(--accent-color);
+    font-size: 1.1em;
+}
+
+/* Links List */
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.linkList a {
+    color: var(--slate-600);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin: 0 -1rem;
+    /* Hitbox extends to edge */
+    font-weight: 500;
+}
+
+.linkList a:hover {
+    color: var(--slate-900);
+    background-color: var(--slate-50);
+    padding-left: 1.25rem;
+}
+
+.linkList a::before {
+    content: "→";
+    opacity: 0;
+    margin-right: 0.75rem;
+    transition: all 0.2s ease;
+    transform: translateX(-10px);
+    font-size: 0.9em;
+    color: var(--accent-color);
+}
+
+.linkList a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}

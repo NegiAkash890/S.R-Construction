@@ -43,16 +43,16 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
           {page.heroType === 'color' && (
             <div
               className={styles.heroColorContainer}
-              style={{ backgroundColor: page.heroColor || '#333' }}
+              style={{ backgroundColor: page.heroColor || 'var(--slate-900)' }}
             >
-              <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
+              <h1 className={styles.heroHeading} style={{ color: 'white' }}>{page.heroHeading || page.title}</h1>
             </div>
           )}
         </>
       ) : (
         /* Default Hero if none specified */
         <div className={styles.heroColorContainer} style={{ backgroundColor: 'var(--slate-900)' }}>
-          <h1 className={styles.heroHeading}>{page.title}</h1>
+          <h1 className={styles.heroHeading} style={{ color: 'white' }}>{page.title}</h1>
         </div>
       )}
 
