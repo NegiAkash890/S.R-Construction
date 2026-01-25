@@ -14,7 +14,7 @@
 
 .navbar.scrolled,
 .navbar.dark {
-    background: rgba(15, 23, 42, 0.85);
+    background: rgba(15, 23, 42, 0.95);
     /* Light Dark / Slate-900 with transparency */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -69,7 +69,7 @@
     height: 3px;
     margin: 5px auto;
     transition: all 0.3s ease-in-out;
-    background-color: currentColor;
+    background-color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -89,28 +89,50 @@
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    .hamburger.active .bar {
+        background-color: var(--white);
+    }
+
     /* Hide Desktop Nav on Mobile */
     .navLinks {
         display: none;
     }
 
     /* Mobile Menu Container (for Framer Motion) */
+    /* Mobile Menu Container (for Framer Motion) */
     .mobileMenu {
         position: fixed;
         left: 0;
         top: 0;
-        padding: var(--header-height) 2rem 2rem;
+        /* padding: var(--header-height) 2rem 2rem; */
+        padding: 0;
         height: 100vh;
         width: 100%;
         background-color: rgba(15, 23, 42, 0.98);
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 0;
+        justify-content: space-between;
         z-index: 998;
         /* Below hamburger (1001) */
-        overflow-y: auto;
+        overflow-y: hidden;
+    }
+
+    .mobileHeader {
+        padding: 1.5rem 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: var(--header-height);
+        /* Match header height */
+    }
+
+    .mobileLogo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--white);
+        text-decoration: none;
     }
 
     .mobileMenuList {
@@ -119,28 +141,38 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        flex: 1;
+        /* Take remaining space */
+        gap: 2rem;
     }
 
     .mobileMenuList li {
-        margin: 16px 0;
         width: 100%;
         text-align: center;
-    }
-
-    .mobileMenuList li:first-child {
-        margin-top: auto;
-    }
-
-    .mobileMenuList li:last-child {
-        margin-top: auto;
+        margin: 0;
     }
 
     .mobileMenuList a {
-        font-size: 1.5rem;
-        font-weight: 300;
+        font-size: 2rem;
+        font-weight: 700;
         display: block;
         color: var(--white);
         text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+
+    .mobileMenuList a:hover {
+        opacity: 1;
+        color: var(--accent-color);
+    }
+
+    .mobileFooter {
+        width: 100%;
+        padding: 2rem;
+        padding-bottom: 3rem;
+        /* Safe area */
     }
 }
 
