@@ -73,24 +73,29 @@ export default function Navbar({ links, logo }: NavbarProps) {
               exit={{ x: '-100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
             >
+              <div className={styles.mobileHeader}>
+                <Link href="/" className={styles.mobileLogo} onClick={() => setIsOpen(false)}>{logo}</Link>
+              </div>
+
               <ul className={styles.mobileMenuList}>
                 {links.map((link, index) => (
                   <li key={index}>
                     <Link href={link.href} onClick={() => setIsOpen(false)}>{link.label}</Link>
                   </li>
                 ))}
-                <li>
-                  <button
-                    className={styles.ctaButton}
-                    onClick={() => {
-                      setIsOpen(false);
-                      openEnquiry();
-                    }}
-                  >
-                    Enquire Now
-                  </button>
-                </li>
               </ul>
+
+              <div className={styles.mobileFooter}>
+                <button
+                  className={styles.ctaButton}
+                  onClick={() => {
+                    setIsOpen(false);
+                    openEnquiry();
+                  }}
+                >
+                  Enquire Now
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

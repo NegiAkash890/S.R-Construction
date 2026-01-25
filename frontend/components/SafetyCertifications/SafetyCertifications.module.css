@@ -73,4 +73,25 @@
     .title {
         font-size: 1.75rem;
     }
+
+    .grid {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 2rem;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .card {
+        min-width: 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+    }
 }

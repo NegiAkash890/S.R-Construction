@@ -37,32 +37,48 @@
 
 @media (max-width: 768px) {
     .mainGrid {
-        padding: 40px 0 30px;
-        gap: 3rem;
-        text-align: center;
+        padding: 30px 0 20px;
+        gap: 2rem;
+        text-align: left;
     }
 
     .columnBrand,
     .miniExcellence,
     .socialRow,
     .columnContact {
-        align-items: center;
+        align-items: flex-start;
+    }
+
+    .brandTitle {
+        font-size: 1.35rem;
+        /* Reduced from 1.5 on desktop */
     }
 
     .miniExcellence {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .tagline {
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
     }
 
     .contactItem {
         justify-content: flex-start;
         text-align: left;
-        width: 260px;
-        margin: 0 auto;
+        width: 100%;
+        margin: 0;
+        gap: 0;
+        /* Remove gap since icon is hidden */
+    }
+
+    .contactIcon {
+        display: none;
+    }
+
+    .colTitle {
+        margin-bottom: 0.8rem;
     }
 }
 
@@ -151,7 +167,7 @@
     font-size: 0.9rem;
     font-weight: 700;
     margin-bottom: 1.25rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 0.1em;
 }
 

@@ -26,7 +26,7 @@
 
 .sectionDescription {
     font-size: 1.125rem;
-    color: var(--slate-600);
+    color: var(--slate-700);
     line-height: 1.6;
     margin: 0;
 }
@@ -112,4 +112,27 @@
     font-size: 1.25rem;
     color: var(--slate-900);
     /* Dark blue/slate */
+}
+
+@media (max-width: 768px) {
+    .grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding-bottom: 2rem;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .card {
+        min-width: 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+    }
 }

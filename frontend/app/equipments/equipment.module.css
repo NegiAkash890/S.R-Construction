@@ -1,9 +1,17 @@
 /* Basic Section Styles */
 .section {
-    padding: 6rem 0;
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 6rem;
     min-height: 100vh;
     background-color: var(--white);
     color: var(--slate-700);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding-top: calc(var(--header-height) + 2rem);
+        padding-bottom: 4rem;
+    }
 }
 
 /* Header */
@@ -15,7 +23,7 @@
 .subtitle {
     color: var(--accent-color);
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
     display: block;
@@ -24,7 +32,7 @@
 .title {
     font-size: 3rem;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: var(--slate-900);
     margin: 0;
 }
@@ -86,7 +94,7 @@
 
 .badgeLabel {
     font-size: 0.65rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.05em;
 }

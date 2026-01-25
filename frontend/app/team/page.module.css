@@ -25,7 +25,13 @@
 }
 
 .gridSection {
-    padding: 4rem 0;
+    padding: var(--section-padding);
+}
+
+@media (max-width: 768px) {
+    .gridSection {
+        padding: var(--section-padding-mobile);
+    }
 }
 
 .grid {

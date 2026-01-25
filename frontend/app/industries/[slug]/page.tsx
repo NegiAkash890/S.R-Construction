@@ -132,42 +132,44 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       )}
 
       {/* News Section */}
-      <section className={styles.section}>
-        <div className="container">
-          <div className={styles.newsHeader}>
-            <h2 className={styles.sectionTitle}>Latest Updates</h2>
-            <div className={styles.newsNav}>
-              <button className={styles.navBtn}><BsArrowLeft /></button>
-              <button className={styles.navBtn}><BsArrowRight /></button>
+      {posts && posts.length > 0 && (
+        <section className={styles.section}>
+          <div className="container">
+            <div className={styles.newsHeader}>
+              <h2 className={styles.sectionTitle}>Latest Updates</h2>
+              <div className={styles.newsNav}>
+                <button className={styles.navBtn}><BsArrowLeft /></button>
+                <button className={styles.navBtn}><BsArrowRight /></button>
+              </div>
+            </div>
+            <div className={styles.newsGrid}>
+              {posts.map((post: any) => (
+                <div key={post._id} className={styles.newsCard}>
+                  <div className={styles.newsImageWrapper}>
+                    {post.mainImage && (
+                      <Image
+                        src={urlFor(post.mainImage).url()}
+                        alt={post.title}
+                        fill
+                        className={styles.newsImage}
+                      />
+                    )}
+                  </div>
+                  <div className={styles.newsContent}>
+                    <span className={styles.newsDate}>
+                      {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}
+                    </span>
+                    <h3 className={styles.newsTitle}>{post.title}</h3>
+                    <Link href={`/news/${post.slug.current}`} className={styles.readMore}>
+                      Read More <BsArrowRight className={styles.arrowIcon} />
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className={styles.newsGrid}>
-            {posts.map((post: any) => (
-              <div key={post._id} className={styles.newsCard}>
-                <div className={styles.newsImageWrapper}>
-                  {post.mainImage && (
-                    <Image
-                      src={urlFor(post.mainImage).url()}
-                      alt={post.title}
-                      fill
-                      className={styles.newsImage}
-                    />
-                  )}
-                </div>
-                <div className={styles.newsContent}>
-                  <span className={styles.newsDate}>
-                    {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}
-                  </span>
-                  <h3 className={styles.newsTitle}>{post.title}</h3>
-                  <Link href={`/news/${post.slug.current}`} className={styles.readMore}>
-                    Read More <BsArrowRight className={styles.arrowIcon} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Breadcrumb Section */}
       <div className={styles.breadcrumbSection}>

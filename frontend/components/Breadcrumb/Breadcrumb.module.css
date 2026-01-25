@@ -1,18 +1,23 @@
 .nav {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    padding: 1.5rem 0;
+    background-color: var(--bg-color);
+    /* Match body bg */
 }
 
 .list {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    /* Force left align */
     gap: 0.5rem;
     font-size: 0.875rem;
     color: var(--slate-500);
     list-style: none;
-    /* Remove default list numbers */
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .item {

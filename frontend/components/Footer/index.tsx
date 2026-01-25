@@ -43,6 +43,7 @@ export default function Footer({ links, data }: FooterProps) {
         </div>
       </div> */}
 
+
       <div className="container">
         <div className={styles.mainGrid}>
           {/* Combined Brand & Excellence Column */}

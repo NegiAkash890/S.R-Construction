@@ -1,6 +1,7 @@
 .section {
     padding: var(--section-padding);
-    background-color: var(--bg-color);
+    background-color: var(--white);
+    /* Contrast with Equipment Section (slate-50) */
 }
 
 @media (max-width: 768px) {

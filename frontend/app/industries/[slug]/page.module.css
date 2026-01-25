@@ -57,7 +57,7 @@
     /* Yellow explicitly */
     font-size: 1.5rem;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-bottom: 0.5rem;
     letter-spacing: 0.05em;
     padding-left: 2px;
@@ -66,7 +66,7 @@
 .heroTitle {
     font-size: 3.5rem;
     font-weight: 900;
-    text-transform: uppercase;
+    text-transform: capitalize;
     line-height: 1;
     margin: 0;
     letter-spacing: 0.02em;
@@ -87,7 +87,65 @@
 
 /* Standard Sections */
 .section {
-    padding: 3rem 0;
+    padding: var(--section-padding);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
+
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .heroTitle {
+        font-size: 2.25rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .statValue {
+        font-size: 2rem;
+    }
+
+    .introText {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    /* Offerings horizontal scroll like other sections */
+    .offeringsGrid {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 2rem;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        flex-wrap: nowrap;
+        grid-template-columns: none;
+        /* Reset grid */
+    }
+
+    .offeringsGrid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .offeringCard {
+        min-width: 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+    }
 }
 
 .sectionTitle {
@@ -179,7 +237,7 @@
 .statsTitle {
     font-weight: 700;
     color: #333;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 1.5rem;
     letter-spacing: 0.05em;
     margin-bottom: 3rem;
@@ -385,4 +443,75 @@
 .breadcrumbActive {
     color: #111827;
     font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--section-padding-mobile);
+    }
+
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .heroTitle {
+        font-size: 2.25rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    /* Force single column for stats */
+    .statsGrid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .statItem {
+        padding: 0;
+        border-left: none;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 1rem;
+    }
+
+    .statItem:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .statValue {
+        font-size: 2rem;
+    }
+
+    .introText {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    /* Offerings horizontal scroll like other sections */
+    .offeringsGrid {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 2rem;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        flex-wrap: nowrap;
+        grid-template-columns: none;
+        /* Reset grid */
+    }
+
+    .offeringsGrid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .offeringCard {
+        min-width: 85%;
+        max-width: 85%;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+    }
 }

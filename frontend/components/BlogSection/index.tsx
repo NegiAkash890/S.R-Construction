@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
+import { BsArrowRight, BsArrowLeft, BsNewspaper } from 'react-icons/bs';
 import { urlFor } from "@/utils/sanity/client";
 import LoadingLink from "@/components/LoadingLink";
 
@@ -76,12 +76,16 @@ export default function BlogSection({ data, title }: Props) {
           {data?.map((post) => (
             <article key={post._id} className={styles.blogCard}>
               <div className={styles.cardBg}>
-                {post.mainImage && (
+                {post.mainImage ? (
                   <img
                     src={urlFor(post.mainImage).width(600).height(600).url()}
                     alt={post.title}
                     className={styles.bgImage}
                   />
+                ) : (
+                  <div className={styles.placeholder}>
+                    <BsNewspaper className={styles.placeholderIcon} />
+                  </div>
                 )}
                 <div className={styles.overlay} />
               </div>

@@ -105,13 +105,17 @@ export default function NewsFeed({ initialPosts, industries }: NewsFeedProps) {
                     filteredAndSortedPosts.map((post) => (
                         <article key={post._id} className={styles.newsCard}>
                             <div className={styles.cardImageWrapper}>
-                                {post.mainImage && (
+                                {post.mainImage ? (
                                     <Image
                                         src={urlFor(post.mainImage).url()}
                                         alt={post.title}
                                         fill
                                         className={styles.cardImage}
                                     />
+                                ) : (
+                                    <div className={styles.placeholderImage}>
+                                        <BsNewspaper className={styles.placeholderIcon} />
+                                    </div>
                                 )}
                             </div>
                             <div className={styles.cardContent}>

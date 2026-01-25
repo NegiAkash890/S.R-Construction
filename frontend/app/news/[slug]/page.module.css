@@ -6,6 +6,12 @@
     font-family: 'Inter', sans-serif;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 100px 20px 2.5rem;
+    }
+}
+
 .breadcrumb {
     display: flex;
     gap: 0.5rem;
