@@ -1,5 +1,6 @@
 "use client";
 
+import Typewriter from '@/components/Typewriter';
 import { BsArrowDown } from "react-icons/bs";
 import { urlFor } from "@/utils/sanity/client";
 
@@ -8,6 +9,7 @@ import styles from './Hero.module.css';
 interface HeroProps {
   data: {
     heroHeading?: string;
+    heroPhrases?: string[];
     heroSubheading?: string;
     heroImage?: any;
     ctaPrimary?: string;
@@ -23,12 +25,17 @@ export default function Hero({ data }: HeroProps) {
   return (
     <section className={styles.hero} style={{ '--hero-bg-image': bgImage ? `url(${bgImage})` : undefined } as React.CSSProperties}>
       <div className={`container ${styles.heroContent}`}>
-        <h1 style={{ viewTransitionName: 'hero-title' } as React.CSSProperties}>{data?.heroHeading}</h1>
+        <h1 style={{ viewTransitionName: 'hero-title', minHeight: '1.2em' } as React.CSSProperties}>
+          <Typewriter
+            words={data?.heroPhrases}
+            text={data?.heroHeading}
+            speed={40}
+            delay={200}
+            loop={true}
+            pauseBeforeDelete={2000}
+          />
+        </h1>
         <p className={styles.subheading}>{data?.heroSubheading}</p>
-        <div className={styles.ctaGroup}>
-          <a href={data?.ctaPrimaryLink || "#gallery"} className="btn">{data?.ctaPrimary || "View Our Work"}</a>
-          <a href={data?.ctaSecondaryLink || "#contact"} className="btn btn-outline">{data?.ctaSecondary || "Contact Us"}</a>
-        </div>
       </div>
       <div className={styles.scrollIcon}>
         <BsArrowDown />

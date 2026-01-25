@@ -59,7 +59,7 @@ export default async function NewsPage() {
                     }}>
                         Updates & Insights
                     </span>
-                    <h1 style={{ fontSize: '3rem', fontWeight: 700, margin: 0 }}>News & Featured Stories</h1>
+                    <h1 style={{ fontSize: '3rem', fontWeight: 700, margin: 0, textTransform: 'capitalize' }}>News Headline</h1>
                 </div>
             </div>
 
