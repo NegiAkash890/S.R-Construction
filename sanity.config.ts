@@ -9,7 +9,7 @@ export default defineConfig({
   title: 'S.R. Construction',
 
   projectId: 't1lt9uvy',
-  dataset: 'production',
+  dataset: 'development',
 
   plugins: [
     structureTool({

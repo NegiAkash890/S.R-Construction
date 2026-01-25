@@ -52,7 +52,8 @@ export const page = defineType({
             name: 'heroColor',
             title: 'Hero Color',
             type: 'string',
-            description: 'Hex color code (e.g., #000000)',
+            description: 'Hex color code. Default is Slate 900 (#0F172A) to match navbar.',
+            initialValue: '#0F172A',
             hidden: ({ document }) => document?.heroType !== 'color',
         }),
         defineField({

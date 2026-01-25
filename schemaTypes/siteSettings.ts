@@ -16,9 +16,19 @@ export const siteSettings = defineType({
             type: 'text',
         }),
         defineField({
+            name: 'phoneNumbers',
+            title: 'Phone Numbers',
+            description: 'Add multiple phone numbers',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
+        defineField({
             name: 'phone',
-            title: 'Phone',
+            title: 'Phone (Legacy)',
             type: 'string',
+            readOnly: true,
+            description: 'Use "Phone Numbers" list instead.',
+            hidden: true,
         }),
         defineField({
             name: 'email',

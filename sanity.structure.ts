@@ -1,13 +1,13 @@
 import { StructureBuilder } from 'sanity/structure'
 
-// Helper to filter out singleton types from the default list
-const hiddenDocTypes = (listItem: any) =>
-    ![
+// Helper to filter out types we've manually listed to avoid duplicates in the "catch-all" section
+const hiddenDocTypes = (listItem: any) => {
+    const typeName = listItem.getSchemaType()?.name || listItem.getId()
+    return ![
         'homepage',
         'siteSettings',
         'projectsPage',
         'teamPage',
-        // We will list these manually
         'project',
         'industry',
         'equipment',
@@ -16,8 +16,11 @@ const hiddenDocTypes = (listItem: any) =>
         'staffRole',
         'client',
         'faq',
+        'lead',
         'navigation',
-    ].includes(listItem.getId())
+        'media.tag', // Exclude media tags if using media plugin
+    ].includes(typeName)
+}
 
 export const structure = (S: StructureBuilder) =>
     S.list()
@@ -57,6 +60,11 @@ export const structure = (S: StructureBuilder) =>
             S.documentTypeListItem('faq').title('FAQs'),
             S.documentTypeListItem('client').title('Clients / Logos'),
             S.documentTypeListItem('staffRole').title('Team Members'),
+
+            S.divider(),
+
+            // --- SALES & CONTACTS ---
+            S.documentTypeListItem('lead').title('Inquiries / Leads'),
 
             S.divider(),
 

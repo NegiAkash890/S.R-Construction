@@ -11,6 +11,7 @@ export const homepage = defineType({
         { name: 'projects', title: 'Projects Section' },
         { name: 'equipment', title: 'Equipment Section' },
         { name: 'process', title: 'Process Section' },
+        { name: 'safety', title: 'Safety Section' },
         { name: 'blog', title: 'Blog Section' },
         { name: 'faq', title: 'FAQ Section' },
         { name: 'sections', title: 'Legacy / Misc' }, // Keep for safety if needed, though we move fields
@@ -112,6 +113,50 @@ export const homepage = defineType({
             type: 'string',
             group: 'process',
             initialValue: 'How We Work',
+        }),
+        defineField({
+            name: 'processSteps',
+            title: 'Process Steps',
+            type: 'array',
+            group: 'process',
+            of: [{
+                type: 'object',
+                fields: [
+                    { name: 'number', type: 'string', title: 'Step Number (e.g. 01)' },
+                    { name: 'title', type: 'string', title: 'Step Title' },
+                    { name: 'description', type: 'text', title: 'Description' },
+                ]
+            }]
+        }),
+
+        // --- Safety & Certifications ---
+        defineField({
+            name: 'safetyTitle',
+            title: 'Safety Section Title',
+            type: 'string',
+            group: 'safety',
+            initialValue: 'Safety & Standards',
+        }),
+        defineField({
+            name: 'safetySubheading',
+            title: 'Safety Subheading',
+            type: 'string',
+            group: 'safety',
+            initialValue: 'Commitment to excellence and zero-compromise safety.',
+        }),
+        defineField({
+            name: 'safetyCertifications',
+            title: 'Certifications',
+            type: 'array',
+            group: 'safety',
+            of: [{
+                type: 'object',
+                fields: [
+                    { name: 'title', type: 'string', title: 'Certification Title' },
+                    { name: 'description', type: 'string', title: 'Brief Description' },
+                    { name: 'iconName', type: 'string', title: 'Icon Name (e.g. award, shield, hat, leaf)' },
+                ]
+            }]
         }),
 
         // --- Blog Section ---
