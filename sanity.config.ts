@@ -9,7 +9,7 @@ export default defineConfig({
   title: 'S.R. Construction',
 
   projectId: 't1lt9uvy',
-  dataset: 'development',
+  dataset: process.env.SANITY_STUDIO_DATASET || 'production',
 
   plugins: [
     structureTool({
