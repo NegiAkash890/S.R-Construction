@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { BsArrowUp } from 'react-icons/bs';
+import { BsArrowUp, BsEnvelope } from 'react-icons/bs';
 import styles from './ScrollToTop.module.css';
+import { useEnquiry } from '@/context/EnquiryContext';
 
 export default function ScrollToTop() {
     const [isVisible, setIsVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const { openEnquiry } = useEnquiry();
 
     const toggleVisibility = () => {
         if (window.scrollY > 300) {
@@ -15,25 +18,42 @@ export default function ScrollToTop() {
         }
     };
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    };
-
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
         window.addEventListener('scroll', toggleVisibility);
-        return () => window.removeEventListener('scroll', toggleVisibility);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+            window.removeEventListener('scroll', toggleVisibility);
+        };
     }, []);
 
+    if (!isVisible) return null;
+
     return (
-      <>
-        {isVisible && (
-        <button onClick={scrollToTop} className={styles.scrollToTopBtn} aria-label="Scroll to top">
-          <BsArrowUp />
-        </button>
+        <>
+            {isMobile ? (
+                <button
+                    onClick={openEnquiry}
+                    className={styles.enquiryFab}
+                    aria-label="Enquire Now"
+                >
+                    <BsEnvelope />
+                </button>
+            ) : (
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className={styles.scrollToTopBtn}
+                    aria-label="Scroll to top"
+                >
+                    <BsArrowUp />
+                </button>
             )}
-      </>
+        </>
     );
 }

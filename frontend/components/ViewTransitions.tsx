@@ -4,15 +4,15 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 // Extend the Document interface to include startViewTransition
-declare global {
-    interface Document {
-        startViewTransition: (callback: () => void | Promise<void>) => {
-            finished: Promise<void>;
-            ready: Promise<void>;
-            updateCallbackDone: Promise<void>;
-        };
-    }
-}
+// declare global {
+//     interface Document {
+//         startViewTransition: (callback: () => void | Promise<void>) => {
+//             finished: Promise<void>;
+//             ready: Promise<void>;
+//             updateCallbackDone: Promise<void>;
+//         };
+//     }
+// }
 
 export default function ViewTransitions() {
     const router = useRouter();

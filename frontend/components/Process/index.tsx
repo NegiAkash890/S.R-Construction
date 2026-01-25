@@ -2,7 +2,7 @@
 
 import styles from './Process.module.css';
 
-const steps = [
+const defaultSteps = [
   {
     number: "01",
     title: "Consultation",
@@ -27,9 +27,16 @@ const steps = [
 
 interface ProcessProps {
   title?: string;
+  steps?: {
+    number: string;
+    title: string;
+    description: string;
+  }[];
 }
 
-export default function Process({ title = "How We Work" }: ProcessProps) {
+export default function Process({ title = "How We Work", steps }: ProcessProps) {
+  const displaySteps = steps && steps.length > 0 ? steps : defaultSteps;
+
   return (
     <section className={styles.section} id="process">
       <div className="container">
@@ -38,12 +45,12 @@ export default function Process({ title = "How We Work" }: ProcessProps) {
           <p className={styles.subtitle}>A streamlined process ensuring quality and efficiency from start to finish.</p>
         </div>
         <div className={styles.grid}>
-          {steps.map((step, index) => (
+          {displaySteps.map((step, index) => (
             <div key={index} className={styles.card}>
               <span className={styles.number}>{step.number}</span>
               <h3 className={styles.cardTitle}>{step.title}</h3>
               <p className={styles.description}>{step.description}</p>
-              {index < steps.length - 1 && <div className={styles.connector} />}
+              {index < displaySteps.length - 1 && <div className={styles.connector} />}
             </div>
           ))}
         </div>
@@ -51,3 +58,4 @@ export default function Process({ title = "How We Work" }: ProcessProps) {
     </section>
   );
 }
+

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import {
   FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaHardHat, FaAward, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaFilePdf
 } from 'react-icons/fa';
@@ -65,7 +66,13 @@ export default function Footer({ links, data }: FooterProps) {
             <h4 className={styles.colTitle}>Company</h4>
             <ul className={styles.linkList}>
               {links.map((link, index) => (
-                <li key={index}><a href={link.href}>{link.label}</a></li>
+                <li key={index}>
+                  {(link.href && typeof link.href === 'string' && link.href.startsWith('/')) ? (
+                    <Link href={link.href} scroll={true}>{link.label}</Link>
+                  ) : (
+                    <a href={link.href || '#'} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                  )}
+                </li>
               ))}
             </ul>
           </div>
@@ -91,14 +98,20 @@ export default function Footer({ links, data }: FooterProps) {
             <div className={styles.contactItem}>
               <FaPhoneAlt className={styles.contactIcon} />
               <div className={styles.contactContent}>
-                <p><a href={`tel:${phone}`}>{phone}</a></p>
+                {data?.phoneNumbers && data.phoneNumbers.length > 0 ? (
+                  data.phoneNumbers.map((num: string, idx: number) => (
+                    <p key={idx}><a href={`tel:${num}`}>{num}</a></p>
+                  ))
+                ) : (
+                  <p><a href={`tel:${phone}`}>{phone}</a></p>
+                )}
               </div>
             </div>
 
-            <a href="/company-profile.pdf" className={styles.downloadBtn} target="_blank" rel="noopener noreferrer">
+            {/* <a href="/company-profile.pdf" className={styles.downloadBtn} target="_blank" rel="noopener noreferrer">
               <FaFilePdf />
               Download Company Profile
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -110,11 +123,6 @@ export default function Footer({ links, data }: FooterProps) {
             {copyright}
             .
           </p>
-          <div className={styles.legalLinks}>
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="/sitemap">Sitemap</a>
-          </div>
         </div>
       </div>
     </footer>

@@ -108,4 +108,8 @@
         justify-content: center;
         text-align: center;
     }
+
+    .scrollIcon {
+        display: none;
+    }
 }

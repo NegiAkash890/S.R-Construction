@@ -1,7 +1,7 @@
 import { FaHardHat, FaAward, FaShieldAlt, FaLeaf } from 'react-icons/fa';
 import styles from './SafetyCertifications.module.css';
 
-const certifications = [
+const defaultCertifications = [
     {
         icon: <FaAward />,
         title: "ISO 9001:2015",
@@ -24,17 +24,43 @@ const certifications = [
     }
 ];
 
-export default function SafetyCertifications() {
+const iconMap: { [key: string]: React.ReactNode } = {
+    award: <FaAward />,
+    shield: <FaShieldAlt />,
+    hat: <FaHardHat />,
+    leaf: <FaLeaf />,
+    safety: <FaShieldAlt />,
+    default: <FaAward />
+};
+
+interface SafetyProps {
+    title?: string;
+    subtitle?: string;
+    certifications?: {
+        title: string;
+        description: string;
+        iconName?: string;
+    }[];
+}
+
+export default function SafetyCertifications({ title, subtitle, certifications }: SafetyProps) {
+    const displayCerts = certifications && certifications.length > 0
+        ? certifications.map(c => ({
+            ...c,
+            icon: iconMap[c.iconName?.toLowerCase() || 'default'] || iconMap.default
+        }))
+        : defaultCertifications;
+
     return (
         <section className={styles.section}>
             <div className="container">
                 <div className={styles.header}>
-                    <h2 className={styles.title}>Safety & Standards</h2>
-                    <p className={styles.subtitle}>Commitment to excellence and zero-compromise safety.</p>
+                    <h2 className={styles.title}>{title || "Safety & Standards"}</h2>
+                    <p className={styles.subtitle}>{subtitle || "Commitment to excellence and zero-compromise safety."}</p>
                 </div>
 
                 <div className={styles.grid}>
-                    {certifications.map((cert, index) => (
+                    {displayCerts.map((cert, index) => (
                         <div key={index} className={styles.card}>
                             <div className={styles.iconWrapper}>
                                 {cert.icon}
@@ -48,3 +74,4 @@ export default function SafetyCertifications() {
         </section>
     );
 }
+
