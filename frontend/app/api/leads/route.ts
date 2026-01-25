@@ -3,7 +3,7 @@ import { createClient } from 'next-sanity';
 
 const client = createClient({
     projectId: 't1lt9uvy',
-    dataset: 'production',
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'development',
     apiVersion: '2024-01-01',
     token: process.env.SANITY_API_TOKEN, // Must be added to .env.local
     useCdn: false,

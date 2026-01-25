@@ -49,7 +49,15 @@ export default async function Home() {
       </Reveal>
 
       <Reveal>
-        <Process title={data.homepage?.processTitle} />
+        <Process title={data.homepage?.processTitle} steps={data.homepage?.processSteps} />
+      </Reveal>
+
+      <Reveal>
+        <SafetyCertifications
+          title={data.homepage?.safetyTitle}
+          subtitle={data.homepage?.safetySubheading}
+          certifications={data.homepage?.safetyCertifications}
+        />
       </Reveal>
 
       <Reveal>

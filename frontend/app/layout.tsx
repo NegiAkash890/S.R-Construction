@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { EnquiryProvider } from "@/context/EnquiryContext";
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 5; // Revalidate every 5 seconds for better sync
 
 // ... existing imports
 
@@ -106,23 +106,10 @@ export default async function RootLayout({
     href: mapLink(item),
   })) || [];
 
-  // PRE-FILTER: User requested to remove Clients, Testimonials, Industries
-  // We filter them out from CMS data first.
-  let finalHeaderLinks = headerLinks.filter((link: any) => !['Clients', 'Projects', 'Testimonials', 'Industries'].includes(link.label));
-
-  // TEMPORARY: Inject user requested links
-  const manualLinks = [
-    { label: 'About', href: '/about-us' },
-    // { label: 'Industries', href: '/#industries' }, // User asked to remove Industries
-    { label: 'Machinery', href: '/equipments' },
-  ];
-
-  manualLinks.forEach(link => {
-    // Add manual links if not already in the filtered list
-    if (!finalHeaderLinks.some((l: any) => l.label === link.label)) {
-      finalHeaderLinks.push(link);
-    }
-  });
+  // PRE-FILTER: User requested to remove Clients, Testimonials, Industries (Optional / Clean up later if CMS is fully correct)
+  // For now, we trust the CMS "Header Menu" completely if you removed the overrides.
+  // Converting back to pure CMS source:
+  const finalHeaderLinks = headerLinks;
 
   const footerLinks = footerData?.items?.map((item: any) => ({
     label: item.label,
