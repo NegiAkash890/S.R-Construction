@@ -18,30 +18,41 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  const hasHero = (page.heroType === 'image' && page.heroImage) || page.heroType === 'color';
+
   return (
     <main className={styles.main}>
       {/* Hero Section */}
-      {page.heroType === 'image' && page.heroImage && (
-        <div className={styles.heroImageContainer}>
-          <Image
-            src={urlFor(page.heroImage).url()}
-            alt={page.heroHeading || page.title}
-            fill
-            className={styles.heroImage}
-            priority
-          />
-          <div className={styles.heroOverlay}>
-            <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
-          </div>
-        </div>
-      )}
+      {hasHero ? (
+        <>
+          {page.heroType === 'image' && page.heroImage && (
+            <div className={styles.heroImageContainer}>
+              <Image
+                src={urlFor(page.heroImage).url()}
+                alt={page.heroHeading || page.title}
+                fill
+                className={styles.heroImage}
+                priority
+              />
+              <div className={styles.heroOverlay}>
+                <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
+              </div>
+            </div>
+          )}
 
-      {page.heroType === 'color' && (
-        <div
-          className={styles.heroColorContainer}
-          style={{ backgroundColor: page.heroColor || '#333' }}
-        >
-          <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
+          {page.heroType === 'color' && (
+            <div
+              className={styles.heroColorContainer}
+              style={{ backgroundColor: page.heroColor || '#333' }}
+            >
+              <h1 className={styles.heroHeading}>{page.heroHeading || page.title}</h1>
+            </div>
+          )}
+        </>
+      ) : (
+        /* Default Hero if none specified */
+        <div className={styles.heroColorContainer} style={{ backgroundColor: 'var(--slate-900)' }}>
+          <h1 className={styles.heroHeading}>{page.title}</h1>
         </div>
       )}
 
