@@ -14,8 +14,11 @@ interface Props {
 }
 
 export default function ProjectsGallery({ data }: Props) {
-  const [filter, setFilter] = useState<string>('all');
-  const [sort, setSort] = useState<'date' | 'client' | 'value'>('date'); // New Sort State
+  // Independent Filter States
+  const [statusFilter, setStatusFilter] = useState<'all' | 'completed' | 'ongoing'>('all');
+  const [industryFilter, setIndustryFilter] = useState<string>('all');
+
+  const [sort, setSort] = useState<'date' | 'client' | 'value'>('date');
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
   const searchParams = useSearchParams();
@@ -44,17 +47,25 @@ export default function ProjectsGallery({ data }: Props) {
 
   // 1. Filter Data
   const filteredData = data.filter((item) => {
-    if (filter === 'all') return true;
-    const status = item.status?.toLowerCase() || '';
+    // Check Status
+    let statusMatch = true;
+    if (statusFilter !== 'all') {
+      const status = item.status?.toLowerCase() || '';
+      if (statusFilter === 'completed') {
+        statusMatch = status === 'completed';
+      } else if (statusFilter === 'ongoing') {
+        statusMatch = status === 'ongoing' || status === 'in-progress' || status === 'in progress';
+      }
+    }
 
-    // Status filters
-    if (filter === 'completed') return status === 'completed';
-    if (filter === 'ongoing') return status === 'ongoing' || status === 'in-progress' || status === 'in progress';
+    // Check Industry
+    let industryMatch = true;
+    if (industryFilter !== 'all') {
+      industryMatch = item.industry?.slug?.current === industryFilter;
+    }
 
-    // Industry filters
-    if (item.industry?.slug?.current === filter) return true;
-
-    return false;
+    // Combine checks independenty (AND logic)
+    return statusMatch && industryMatch;
   });
 
   // 2. Sort Data
@@ -75,75 +86,127 @@ export default function ProjectsGallery({ data }: Props) {
     <section className={styles.gallerySection}>
       <div className="container">
 
-        {/* Control Bar: Filter & Sort */}
-        <div className={styles.controlBar}>
+        {/* Control Bar Container */}
+        <div className={styles.controlsContainer}>
 
-          {/* Filter Buttons (Expanded) */}
-          <div className={styles.filterButtons}>
-            <button
-              className={`${styles.filterBtn} ${filter === 'all' ? styles.active : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              All
-            </button>
-            <button
-              className={`${styles.filterBtn} ${filter === 'completed' ? styles.active : ''}`}
-              onClick={() => setFilter('completed')}
-            >
-              Completed
-            </button>
-            <button
-              className={`${styles.filterBtn} ${filter === 'ongoing' ? styles.active : ''}`}
-              onClick={() => setFilter('ongoing')}
-            >
-              Ongoing
-            </button>
-            <div className={styles.divider} style={{ width: '1px', background: 'var(--slate-300)', margin: '0 0.5rem' }} />
-            <button
-              className={`${styles.filterBtn} ${filter === 'power-energy' ? styles.active : ''}`}
-              onClick={() => setFilter('power-energy')}
-            >
-              Power
-            </button>
-            <button
-              className={`${styles.filterBtn} ${filter === 'oil-gas' ? styles.active : ''}`}
-              onClick={() => setFilter('oil-gas')}
-            >
-              Oil & Gas
-            </button>
-            <button
-              className={`${styles.filterBtn} ${filter === 'fertilizers-chemicals' ? styles.active : ''}`}
-              onClick={() => setFilter('fertilizers-chemicals')}
-            >
-              Fertilizers
-            </button>
-            <button
-              className={`${styles.filterBtn} ${filter === 'steel-metals' ? styles.active : ''}`}
-              onClick={() => setFilter('steel-metals')}
-            >
-              Steel
-            </button>
-            <button
-              className={`${styles.filterBtn} ${filter === 'other-infrastructure' ? styles.active : ''}`}
-              onClick={() => setFilter('other-infrastructure')}
-            >
-              Other Infra
-            </button>
+          {/* Top Bar: Status + Sort */}
+          <div className={styles.topBar}>
+            {/* Status Filter */}
+            {/* Desktop: Buttons */}
+            <div className={`${styles.filterButtons} ${styles.desktopFilter}`}>
+              <button
+                className={`${styles.filterBtn} ${statusFilter === 'all' ? styles.active : ''}`}
+                onClick={() => setStatusFilter('all')}
+              >
+                All
+              </button>
+              <button
+                className={`${styles.filterBtn} ${statusFilter === 'completed' ? styles.active : ''}`}
+                onClick={() => setStatusFilter('completed')}
+              >
+                Completed
+              </button>
+              <button
+                className={`${styles.filterBtn} ${statusFilter === 'ongoing' ? styles.active : ''}`}
+                onClick={() => setStatusFilter('ongoing')}
+              >
+                Ongoing
+              </button>
+            </div>
+
+            {/* Mobile: Status Dropdown */}
+            <div className={`${styles.selectWrapper} ${styles.mobileFilter}`}>
+              <label className={styles.selectLabel}>Status:</label>
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value as any)}
+                className={styles.selectInput}
+              >
+                <option value="all">All Status</option>
+                <option value="completed">Completed</option>
+                <option value="ongoing">Ongoing</option>
+              </select>
+            </div>
+
+            {/* Sort (Always Dropdown) */}
+            <div className={styles.selectWrapper}>
+              <label className={styles.selectLabel}>Sort:</label>
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value as any)}
+                className={styles.selectInput}
+              >
+                <option value="date">Newest</option>
+                <option value="client">Client</option>
+                <option value="value">Value</option>
+              </select>
+            </div>
           </div>
 
-          {/* Sort Dropdown */}
-          <div className={styles.selectWrapper}>
-            <label className={styles.selectLabel}>Sort By:</label>
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value as any)}
-              className={styles.selectInput}
-            >
-              <option value="date">Newest First</option>
-              <option value="client">Client Name (A-Z)</option>
-              <option value="value">Project Value (High-Low)</option>
-            </select>
+          {/* Industry Bar (Row 2) */}
+          <div className={styles.industryBar}>
+            {/* Desktop: Buttons */}
+            <div className={`${styles.filterButtons} ${styles.desktopFilter}`}>
+              <button
+                className={`${styles.filterBtn} ${industryFilter === 'all' ? styles.active : ''}`}
+                onClick={() => setIndustryFilter('all')}
+              >
+                All Industries
+              </button>
+              <button
+                className={`${styles.filterBtn} ${industryFilter === 'power-energy' ? styles.active : ''}`}
+                onClick={() => setIndustryFilter('power-energy')}
+              >
+                Power
+              </button>
+              <button
+                className={`${styles.filterBtn} ${industryFilter === 'oil-gas' ? styles.active : ''}`}
+                onClick={() => setIndustryFilter('oil-gas')}
+              >
+                Oil & Gas
+              </button>
+              <button
+                className={`${styles.filterBtn} ${industryFilter === 'fertilizers-chemicals' ? styles.active : ''}`}
+                onClick={() => setIndustryFilter('fertilizers-chemicals')}
+              >
+                Fertilizers
+              </button>
+              <button
+                className={`${styles.filterBtn} ${industryFilter === 'steel-metals' ? styles.active : ''}`}
+                onClick={() => setIndustryFilter('steel-metals')}
+              >
+                Steel
+              </button>
+              <button
+                className={`${styles.filterBtn} ${industryFilter === 'other-infrastructure' ? styles.active : ''}`}
+                onClick={() => setIndustryFilter('other-infrastructure')}
+              >
+                Other Infra
+              </button>
+            </div>
+
+            {/* Mobile: Industry Dropdown */}
+            <div className={`${styles.selectWrapper} ${styles.mobileFilter}`}>
+              <label className={styles.selectLabel}>Industry:</label>
+              <select
+                value={industryFilter}
+                onChange={(e) => setIndustryFilter(e.target.value)}
+                className={styles.selectInput}
+              >
+                <option value="all">All Industries</option>
+                <option value="power-energy">Power & Energy</option>
+                <option value="oil-gas">Oil & Gas</option>
+                <option value="fertilizers-chemicals">Fertilizers & Chemicals</option>
+                <option value="steel-metals">Steel & Metals</option>
+                <option value="other-infrastructure">Other Infrastructure</option>
+              </select>
+            </div>
           </div>
+
+        </div>
+
+        <div className={styles.resultsCount} style={{ marginBottom: '1rem', color: 'var(--slate-500)', fontSize: '0.9rem', fontWeight: 500 }}>
+          Showing {sortedData.length} project{sortedData.length !== 1 ? 's' : ''}
         </div>
 
         <motion.div layout className={styles.galleryGrid}>
