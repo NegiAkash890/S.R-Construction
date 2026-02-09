@@ -88,6 +88,13 @@ export const homepage = defineType({
             group: 'industries',
             initialValue: 'Industries We Serve',
         }),
+        defineField({
+            name: 'industriesDescription',
+            title: 'Industries Section Description',
+            type: 'text',
+            group: 'industries',
+            initialValue: 'Powering progress across the energy spectrum — from hydrocarbons and offshore wind to clean energy and carbon solutions. L&T Energy delivers end-to-end EPC and technology-driven solutions that enable global energy transition with efficiency, reliability, and sustainability at the core.',
+        }),
 
         // --- Projects Section ---
         defineField({

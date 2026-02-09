@@ -17,9 +17,10 @@ interface Industry {
 interface IndustriesProps {
   data: Industry[];
   title?: string;
+  description?: string;
 }
 
-function Industries({ data, title = "Industries We Serve" }: IndustriesProps) {
+function Industries({ data, title = "Industries We Serve", description }: IndustriesProps) {
   if (!data || data.length === 0) return null;
 
   return (
@@ -28,7 +29,7 @@ function Industries({ data, title = "Industries We Serve" }: IndustriesProps) {
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.sectionDescription}>
-            Powering progress across the energy spectrum — from hydrocarbons and offshore wind to clean energy and carbon solutions. L&T Energy delivers end-to-end EPC and technology-driven solutions that enable global energy transition with efficiency, reliability, and sustainability at the core.
+            {description || "Powering progress across the energy spectrum — from hydrocarbons and offshore wind to clean energy and carbon solutions. L&T Energy delivers end-to-end EPC and technology-driven solutions that enable global energy transition with efficiency, reliability, and sustainability at the core."}
           </p>
         </div>
 
