@@ -71,16 +71,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: grayscale(100%);
-    opacity: 0.6;
     transition: all 0.3s;
     position: relative;
     /* Required for Next.js Image fill */
 }
 
 .logoItem:hover {
-    filter: grayscale(0);
-    opacity: 1;
     transform: scale(1.15);
 }
 
