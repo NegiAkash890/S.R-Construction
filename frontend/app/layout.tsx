@@ -17,6 +17,7 @@ import SchemaMarkup from "@/components/SchemaMarkup";
 import ViewTransitions from "@/components/ViewTransitions";
 import NextTopLoader from 'nextjs-toploader';
 import Loader from "@/components/Loader";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -131,6 +132,9 @@ export default async function RootLayout({
           <ScrollToTop />
         </EnquiryProvider>
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }

@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# S.R. Construction Frontend (Next.js)
+
+This is the Next.js user-facing website for **S.R. Construction**, built using Next.js 15 (App Router), React, and custom styling.
+
+## Key Features
+
+- **Next.js App Router**: Optimized rendering, dynamic paths (e.g. `[slug]`), and routing.
+- **Top Loading Indicator**: Custom styled top progress bar using `nextjs-toploader`.
+- **Sanity Client Integration**: Fetches navigation structure, team, projects, news, and site settings directly from Sanity CMS.
+- **Google Analytics 4 (GA-4)**: Robust analytics tracking using `@next/third-parties/google`.
+
+---
+
+## Analytics Integration (GA-4)
+
+The application tracks visitor analytics using Google Analytics 4.
+
+### 1. Configuration
+Define your Measurement ID in [.env.local](file:///Users/akash/Desktop/projects/S.R-Construction/frontend/.env.local):
+```env
+NEXT_PUBLIC_GA_ID=G-E2ZGEBW3SR
+```
+The analytics tracker is conditionally initialized. If `NEXT_PUBLIC_GA_ID` is omitted or empty, no analytics scripts are loaded, preventing console errors in clean local or preview builds.
+
+### 2. Custom Events Tracked
+We track lead conversion interactions on the following components:
+- **Enquiry Form** ([EnquiryForm](file:///Users/akash/Desktop/projects/S.R-Construction/frontend/components/EnquiryForm/index.tsx)): Logs `enquiry_form_submit` with parameter `project_type`.
+- **Enquiry Modal** ([EnquiryModal](file:///Users/akash/Desktop/projects/S.R-Construction/frontend/components/EnquiryModal/index.tsx)): Logs `enquiry_modal_submit` with parameter `project_type`.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Local Development
 
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Start Dev Server**:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Build and Compilation
+
+To verify TypeScript and check for warnings before deploying, run:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployments are hosted on **Vercel** (`s-r-construction`).
+- **Production Branches**: Any merge/push to `main` branch triggers an automatic production build.
+- **Environment Variables**: Add `NEXT_PUBLIC_GA_ID` in your Vercel Project Settings > Environment Variables for the Production environment.

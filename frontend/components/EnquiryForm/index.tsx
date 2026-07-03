@@ -10,6 +10,7 @@ import {
   FaFacebook, FaInstagram, FaLinkedin, FaTwitter
 } from 'react-icons/fa';
 import { BsArrowRight } from 'react-icons/bs';
+import { sendGAEvent } from '@next/third-parties/google';
 import styles from './EnquiryForm.module.css';
 
 export default function EnquiryForm() {
@@ -54,6 +55,12 @@ export default function EnquiryForm() {
       if (!response.ok) {
         throw new Error('Submission failed');
       }
+
+      // Track submission event in Google Analytics
+      sendGAEvent({
+        event: 'enquiry_form_submit',
+        project_type: data.projectType,
+      });
 
       setIsSubmitting(false);
       setIsSuccess(true);

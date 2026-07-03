@@ -6,6 +6,7 @@ import Image from 'next/image';
 import {
   FaTimes, FaLinkedin, FaInstagram, FaTwitter, FaFacebook
 } from 'react-icons/fa';
+import { sendGAEvent } from '@next/third-parties/google';
 import styles from './EnquiryModal.module.css';
 
 interface EnquiryModalProps {
@@ -64,6 +65,12 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
       });
 
       if (!response.ok) throw new Error('Failed to submit');
+
+      // Track submission event in Google Analytics
+      sendGAEvent({
+        event: 'enquiry_modal_submit',
+        project_type: data.projectType,
+      });
 
       setIsSubmitting(false);
       setIsSuccess(true);
